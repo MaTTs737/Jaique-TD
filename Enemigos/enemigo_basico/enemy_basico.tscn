@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dpskncbuwp3w"]
+[gd_scene load_steps=8 format=3 uid="uid://dpskncbuwp3w"]
 
 [ext_resource type="PackedScene" uid="uid://b7ga7w5ckfte5" path="res://Enemigos/enemyClass.tscn" id="1_etbyi"]
 [ext_resource type="Script" path="res://Enemigos/enemigo_basico/enemy_basico.gd" id="2_e157m"]
 [ext_resource type="Texture2D" uid="uid://p86g4lfc8fcv" path="res://Enemigos/enemigo_basico/jaique_enemy_sheet_normal_n.png" id="3_m0hw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qnoh"]
+size = Vector2(48, 121.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkbcv"]
 atlas = ExtResource("3_m0hw6")
@@ -28,6 +31,10 @@ animations = [{
 
 [node name="enemy_Basico" instance=ExtResource("1_etbyi")]
 script = ExtResource("2_e157m")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-8, -2)
+shape = SubResource("RectangleShape2D_1qnoh")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_g7fmv")
