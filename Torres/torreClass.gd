@@ -7,7 +7,7 @@ var waitingTime : int
 var range : int
 var target : Object
 var priorTargegt : Object
-	
+
 func identifyEnemy(): #elige entre los enemigos que esten en rango uno para usar de target
 	pass
 
@@ -17,7 +17,7 @@ func shoot():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$shootTimer.wait_time=waitingTime
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

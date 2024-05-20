@@ -14,3 +14,5 @@ script = ExtResource("1_ppisq")
 shape = SubResource("CircleShape2D_i3iqc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="shootTimer" type="Timer" parent="."]
