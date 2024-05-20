@@ -7,7 +7,7 @@ var damage : int
 var reward : int
 var specialCondition = false
 @onready var anim = $AnimatedSprite2D
-
+var path_follow : PathFollow2D
 func getSpecialCondition(time,atribute,amount):
 	specialCondition = true
 	$specialCondition.start(time)
@@ -19,12 +19,18 @@ func die():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	anim.play("walking")
+	path_follow = self.get_parent()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if healthPoints <= 0:
 		die()
+	# Verificar si el nodo PathFollow2D está configurado
+	if path_follow:
+		path_follow.progress+=1
+	else:
+		print("no hay")
 
 
 func _on_special_condition_timeout():
