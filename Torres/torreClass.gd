@@ -9,6 +9,7 @@ var target : Object
 
 var enemyInCall = Callable($areaVision,"_on_DetectionArea_body_entered")
 var enemyOutCall = Callable($areaVision,"_on_DetectionArea_body_exited")
+var priorTargegt : Object
 
 func identifyEnemy(): #elige entre los enemigos que esten en rango uno para usar de target
 	var enemy_list=[]
@@ -19,7 +20,7 @@ func shoot():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$shootTimer.wait_time=waitingTime
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

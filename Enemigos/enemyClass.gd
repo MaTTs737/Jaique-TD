@@ -8,9 +8,10 @@ var reward : int
 var specialCondition = false
 
 
-func getSpecialCondition():
+func getSpecialCondition(time,atribute,amount):
 	specialCondition = true
-	$specialCondition.start()
+	$specialCondition.start(time)
+	self.atribute = self.atribute+amount
 	
 func die():
 	queue_free()
