@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpskncbuwp3w"]
+
+[ext_resource type="PackedScene" uid="uid://b7ga7w5ckfte5" path="res://Enemigos/enemyClass.tscn" id="1_etbyi"]
+[ext_resource type="Script" path="res://Enemigos/enemigo_basico/enemy_basico.gd" id="2_e157m"]
+[ext_resource type="Texture2D" uid="uid://p86g4lfc8fcv" path="res://Enemigos/enemigo_basico/jaique_enemy_sheet_normal_n.png" id="3_m0hw6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkbcv"]
+atlas = ExtResource("3_m0hw6")
+region = Rect2(0, 0, 183, 287)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhiph"]
+atlas = ExtResource("3_m0hw6")
+region = Rect2(183, 0, 183, 287)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7fmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkbcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhiph")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
+
+[node name="enemy_Basico" instance=ExtResource("1_etbyi")]
+script = ExtResource("2_e157m")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_g7fmv")
+animation = &"walking"
+frame_progress = 0.258048
