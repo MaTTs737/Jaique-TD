@@ -1,15 +1,17 @@
 extends Node
 
-var damage : int 
+var damage : int = 1
 var type : String
 var cost : int
-var waitingTime : int
+var waitingTime : int = 3
 var range : int
 var target : Object
-var priorTargegt : Object
-	
+
+var enemyInCall = Callable($areaVision,"_on_DetectionArea_body_entered")
+var enemyOutCall = Callable($areaVision,"_on_DetectionArea_body_exited")
+
 func identifyEnemy(): #elige entre los enemigos que esten en rango uno para usar de target
-	pass
+	var enemy_list=[]
 
 func shoot():
 	pass
@@ -23,3 +25,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_shoot_timer_timeout():
+	shoot()
