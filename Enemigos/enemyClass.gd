@@ -6,7 +6,7 @@ var speed : int
 var damage : int
 var reward : int
 var specialCondition = false
-
+@onready var anim = $AnimatedSprite2D
 
 func getSpecialCondition(time,atribute,amount):
 	specialCondition = true
@@ -18,7 +18,7 @@ func die():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	anim.play("walking")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
