@@ -8,9 +8,9 @@ radius = 36.0139
 [node name="torreClass" type="Node"]
 script = ExtResource("1_ppisq")
 
-[node name="areaVision" type="Area2D" parent="."]
+[node name="DetectionArea" type="Area2D" parent="."]
 
-[node name="colision" type="CollisionShape2D" parent="areaVision"]
+[node name="colision" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_i3iqc")
 
 [node name="Sprite" type="Sprite2D" parent="."]
