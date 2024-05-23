@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Torres/torreClass.gd" id="1_ppisq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3iqc"]
-radius = 84.3445
+radius = 149.03
 
-[node name="torreClass" type="Node"]
+[node name="torreClass" type="Node2D"]
 script = ExtResource("1_ppisq")
 
 [node name="DetectionArea" type="Area2D" parent="."]
@@ -19,4 +19,6 @@ shape = SubResource("CircleShape2D_i3iqc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_exited" from="DetectionArea" to="." method="_on_DetectionArea_area_exited"]
 [connection signal="timeout" from="shootTimer" to="." method="_on_shoot_timer_timeout"]

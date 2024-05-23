@@ -7,14 +7,14 @@ var spawn_timer = 0
 
 # Variables para el Path2D
 var path2d_node
-var path_follow
+@onready var path_follow = $Path/Pointer
 
 func _ready():
 	# Buscar el nodo Path2D en el mapa
-	path2d_node = get_node("Path2D")
-	
+	# path2d_node = get_node("Path2D")
+	pass
 	# Obtener el nodo PathFollow2D del nodo Path2D
-	path_follow = path2d_node.get_child(0)
+	# path_follow = path2d_node.get_child(0)
 
 func _process(delta):
 	# Incrementar el temporizador
@@ -24,7 +24,7 @@ func _process(delta):
 	if spawn_timer >= spawn_interval:
 		spawn_enemy()
 		spawn_timer = 0
-
+	
 # Método para generar un enemigo
 func spawn_enemy():
 	# Instanciar un nuevo enemigo desde la escena

@@ -1,3 +1,33 @@
-[gd_scene format=3 uid="uid://b7oo4wr7nfyvh"]
+[gd_scene load_steps=3 format=3 uid="uid://b7oo4wr7nfyvh"]
+
+[ext_resource type="PackedScene" uid="uid://dyk00xro5fje3" path="res://Escenario/mapa.tscn" id="1_qomae"]
+[ext_resource type="PackedScene" uid="uid://cngi0axo5vpxn" path="res://Torres/Torre Normal/torre_normal.tscn" id="1_x4840"]
 
 [node name="Main" type="Node"]
+
+[node name="map" parent="." instance=ExtResource("1_qomae")]
+position = Vector2(21, 11)
+
+[node name="torre_normal" parent="." instance=ExtResource("1_x4840")]
+position = Vector2(275, 201)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(278, 190)
+
+[node name="torre_normal2" parent="." instance=ExtResource("1_x4840")]
+position = Vector2(275, 290)
+
+[node name="torre_normal3" parent="." instance=ExtResource("1_x4840")]
+position = Vector2(623, 228)
+
+[node name="torre_normal4" parent="." instance=ExtResource("1_x4840")]
+position = Vector2(629, 325)
+
+[node name="torre_normal5" parent="." instance=ExtResource("1_x4840")]
+position = Vector2(627, 451)
+
+[node name="torre_normal6" parent="." instance=ExtResource("1_x4840")]
+position = Vector2(454, 196)
+
+[node name="torre_normal7" parent="." instance=ExtResource("1_x4840")]
+position = Vector2(477, 323)

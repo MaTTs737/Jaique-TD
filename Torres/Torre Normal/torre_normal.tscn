@@ -4,6 +4,21 @@
 [ext_resource type="Script" path="res://torre_normal.gd" id="2_j36ft"]
 [ext_resource type="Texture2D" uid="uid://b434cgocys3tj" path="res://Torres/assets/jaique_policia_sheet.png" id="3_e2mbx"]
 
+[sub_resource type="Animation" id="Animation_rgdd6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_jqldw"]
 resource_name = "shoot"
 length = 0.5
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 1, 0]
 }
 
-[sub_resource type="Animation" id="Animation_rgdd6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6hyxm"]
 _data = {
 "RESET": SubResource("Animation_rgdd6"),
@@ -44,11 +44,18 @@ _data = {
 [node name="torre_normal" instance=ExtResource("1_ep6qm")]
 script = ExtResource("2_j36ft")
 
+[node name="DetectionArea" parent="." index="0"]
+position = Vector2(-1.14258, 1.25006)
+monitorable = false
+
 [node name="Sprite" parent="." index="1"]
-position = Vector2(7, -5)
+position = Vector2(5.85742, -3.74994)
 scale = Vector2(0.177584, 0.163586)
 texture = ExtResource("3_e2mbx")
 hframes = 3
+
+[node name="shootTimer" parent="." index="2"]
+autostart = true
 
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {
