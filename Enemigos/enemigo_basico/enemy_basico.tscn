@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://p86g4lfc8fcv" path="res://Enemigos/enemigo_basico/jaique_enemy_sheet_normal_n.png" id="3_m0hw6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qnoh"]
-size = Vector2(14, 49.75)
+size = Vector2(48, 121.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hkbcv"]
 atlas = ExtResource("3_m0hw6")
@@ -30,16 +30,13 @@ animations = [{
 }]
 
 [node name="enemy_Basico" instance=ExtResource("1_etbyi")]
-position = Vector2(27, -34)
 script = ExtResource("2_e157m")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(-25, 33.875)
+position = Vector2(-8, -2)
 shape = SubResource("RectangleShape2D_1qnoh")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
-position = Vector2(-24.625, 32.625)
-scale = Vector2(0.203552, 0.213415)
 sprite_frames = SubResource("SpriteFrames_g7fmv")
 animation = &"walking"
 frame_progress = 0.258048

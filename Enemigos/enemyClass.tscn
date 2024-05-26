@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Enemigos/enemyClass.gd" id="1_awxay"]
 
-[node name="enemyClass" type="Area2D" groups=["enemies"]]
+[node name="enemyClass" type="Area2D"]
 script = ExtResource("1_awxay")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -11,5 +11,4 @@ script = ExtResource("1_awxay")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="specialCondition" to="." method="_on_special_condition_timeout"]

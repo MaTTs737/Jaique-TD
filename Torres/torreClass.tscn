@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Torres/torreClass.gd" id="1_ppisq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3iqc"]
-radius = 149.03
+radius = 84.3445
 
 [node name="torreClass" type="Node2D"]
 script = ExtResource("1_ppisq")

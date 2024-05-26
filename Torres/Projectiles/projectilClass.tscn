@@ -84,15 +84,15 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="ProjectilClass" type="Area2D" groups=["ammo"]]
+[node name="ProjectilClass" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_82qlg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r1v10")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.38419e-07, 4.76837e-07)
-scale = Vector2(0.1154, 0.11434)
+position = Vector2(5.96046e-08, -5.96046e-08)
+scale = Vector2(0.0337376, 0.0337131)
 sprite_frames = SubResource("SpriteFrames_g48he")
-autoplay = "default"
 frame_progress = 0.369832
