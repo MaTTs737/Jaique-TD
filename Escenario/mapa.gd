@@ -33,3 +33,4 @@ func spawn_enemy():
 	
 	# Agregar el nuevo enemigo como hijo del PathFollow2D
 	path_follow.add_child(new_enemy)
+
