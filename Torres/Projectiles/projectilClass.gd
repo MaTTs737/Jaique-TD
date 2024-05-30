@@ -1,21 +1,30 @@
-extends Node
+extends Area2D
 
-var damage
-var target
-var shooting_direction
+var damage: int
+var target: Area2D
+var speed: float = 600.0  # Adjust the speed as necessary
+var shooting_direction: Vector2
+var target_die : Callable = func(): queue_free()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	if target: target.connect("tree_exited",target_die)
 	damage = get_parent().damage
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	if target:
+		shooting_direction = (target.global_position - global_position).normalized()
+
 func _process(delta):
-	followTarget()
+	if target:
+		follow_target(delta)
+		if (target.global_position - global_position).length() < 1:  # Check if close enough to hit
+			hit()
+	else:
+		queue_free()
+
+func follow_target(delta):
+	var direction = (target.global_position - global_position).normalized()
+	position += direction * speed * delta
 
 func hit():
-	target.healthPoints -= damage
-	queue_free()
-
-func followTarget():
-	shooting_direction = (target.global_position - self.global_position).normalized()
-	self.global_position = self.global_position + shooting_direction
+	if target:
+		target.healthPoints -= damage
+		queue_free()

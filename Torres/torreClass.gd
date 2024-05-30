@@ -1,44 +1,50 @@
-extends Node
+extends Node2D
 
-var damage : int = 1
+var damage : int = 10
 var type : String
-var waitingTime : int = 3
-var range : int
+var waitingTime : int = 0.5
 var target : Object
 var enemies_in_range = []
-var enemyIn = Callable(self,"_on_DetectionArea_body_entered")
-var enemyOut = Callable(self,"_on_DetectionArea_body_exited")
+var enemyIn = Callable(self,"_on_DetectionArea_area_entered")
+var enemyOut = Callable(self,"_on_DetectionArea_area_exited")
 var projectil = preload("res://Torres/Projectiles/projectilClass.tscn")
 var animationShoot
+var can_shoot = true
+
 
 func shoot():
-	if enemies_in_range.size() > 0:
-		target = enemies_in_range[0]
-		var disparo = projectil.instance()
-		disparo.target = target
-		disparo.type = type	
-		self.add_child(disparo)
-		$shootTimer.start(waitingTime)
-		$AnimationPlayer.play(animationShoot)
+	var disparo = projectil.instantiate()
+	disparo.target = target
+	disparo.damage = damage
+	#disparo.type
+	add_child(disparo)
+	$shootTimer.start(waitingTime)
+	$AnimationPlayer.play(animationShoot)
+	can_shoot = false
+	
 
 	# Called when the node enters the scene tree for the first time.
 func _ready():
-	$shootTimer.wait_time=waitingTime
-	$DetectionArea.connect("body_entered", enemyIn)
-	$DetectionArea.connect("body_exited", enemyOut)
+	$shootTimer.start()
+	#$DetectionArea.connect("area_entered", enemyIn)
+	#$DetectionArea.connect("area_exited", enemyOut)
 
-func _on_DetectionArea_body_entered(body):
-	if body.is_in_group("enemies"):
-		enemies_in_range.append(body)
 
-func _on_DetectionArea_body_exited(body):
-	if body.is_in_group("enemies"):
-		enemies_in_range.erase(body)
+func _on_DetectionArea_area_exited(area):
+	if area.is_in_group("enemies"):
+		enemies_in_range.erase(area)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if enemies_in_range.size() > 0:
+		target = enemies_in_range[0]
 
 func _on_shoot_timer_timeout():
-	if target:
-		shoot()
+	can_shoot = true
+	if target : shoot()
+	else : $shootTimer.start()
+
+
+func _on_detection_area_area_entered(area):
+	if area.is_in_group("enemies"):
+		enemies_in_range.append(area)

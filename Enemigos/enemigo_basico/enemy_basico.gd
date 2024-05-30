@@ -3,7 +3,7 @@ extends "res://Enemigos/enemyClass.gd"
 
 func _init():
 	damage = 10
-	healthPoints = 10
+	healthPoints = 2
 	type = "normal"
 	speed = 1
 	reward = 10
