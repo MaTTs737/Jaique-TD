@@ -1,0 +1,67 @@
+[gd_scene load_steps=12 format=3 uid="uid://bdss0j852mxgg"]
+
+[ext_resource type="PackedScene" uid="uid://b7ga7w5ckfte5" path="res://Enemigos/enemyClass.tscn" id="1_uc7jo"]
+[ext_resource type="Texture2D" uid="uid://db4aju2ka12x3" path="res://Enemigos/assets/sprites/jaique_enemy_invi_f.png" id="2_cok28"]
+[ext_resource type="Script" path="res://Enemigos/enemy_invi/enemy_invi.gd" id="2_k8xyw"]
+[ext_resource type="Texture2D" uid="uid://netn6nsvqh0y" path="res://Enemigos/assets/sprites/invi_sombra.png" id="3_xonr3"]
+[ext_resource type="Texture2D" uid="uid://bf4alx5rhre0a" path="res://Enemigos/assets/sprites/jaique_enemy_invi_n.png" id="4_geffq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r7lg"]
+atlas = ExtResource("2_cok28")
+region = Rect2(0, 0, 181, 292)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_278qf"]
+atlas = ExtResource("2_cok28")
+region = Rect2(181, 0, 181, 292)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddvbg"]
+atlas = ExtResource("4_geffq")
+region = Rect2(0, 0, 165, 284)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vjyg"]
+atlas = ExtResource("4_geffq")
+region = Rect2(165, 0, 165, 284)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v45fu"]
+atlas = ExtResource("3_xonr3")
+region = Rect2(0, 0, 111, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p282m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r7lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_278qf")
+}],
+"loop": true,
+"name": &"frozen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddvbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vjyg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v45fu")
+}],
+"loop": true,
+"name": &"special",
+"speed": 5.0
+}]
+
+[node name="enemy_invi" instance=ExtResource("1_uc7jo")]
+script = ExtResource("2_k8xyw")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_p282m")
+autoplay = "idle"

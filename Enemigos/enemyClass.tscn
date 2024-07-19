@@ -1,14 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7ga7w5ckfte5"]
+[gd_scene load_steps=4 format=3 uid="uid://b7ga7w5ckfte5"]
 
 [ext_resource type="Script" path="res://Enemigos/enemyClass.gd" id="1_awxay"]
 
-[node name="enemyClass" type="Area2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5qc8v"]
+size = Vector2(10, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86auw"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"frozen",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"special",
+"speed": 5.0
+}]
+
+[node name="enemyClass" type="Area2D" groups=["enemies"]]
+collision_mask = 2
 script = ExtResource("1_awxay")
+initialSpeed = 70
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5qc8v")
 
 [node name="specialCondition" type="Timer" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.178, 0.164)
+sprite_frames = SubResource("SpriteFrames_86auw")
+animation = &"special"
 
 [connection signal="timeout" from="specialCondition" to="." method="_on_special_condition_timeout"]

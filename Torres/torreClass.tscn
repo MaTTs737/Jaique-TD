@@ -1,14 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2n8qqufu3gyv"]
+[gd_scene load_steps=5 format=3 uid="uid://c2n8qqufu3gyv"]
 
 [ext_resource type="Script" path="res://Torres/torreClass.gd" id="1_ppisq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3iqc"]
 radius = 84.3445
 
+[sub_resource type="Animation" id="Animation_64fkv"]
+resource_name = "shoot"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l05t2"]
+_data = {
+"shoot": SubResource("Animation_64fkv")
+}
+
 [node name="torreClass" type="Node2D"]
 script = ExtResource("1_ppisq")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="colision" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_i3iqc")
@@ -18,7 +27,10 @@ shape = SubResource("CircleShape2D_i3iqc")
 [node name="shootTimer" type="Timer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l05t2")
+}
 
-[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_DetectionArea_area_exited"]
 [connection signal="timeout" from="shootTimer" to="." method="_on_shoot_timer_timeout"]

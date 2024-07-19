@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cju4ik4s0yvju"]
+
+[ext_resource type="Texture2D" uid="uid://ngcxh6bmw3dk" path="res://Torres/assets/towerSelectSprite/torre_bomb_sheet.png" id="1_fbc5x"]
+[ext_resource type="Script" path="res://Torres/Torre Normal/selectedTower.gd" id="2_hmybx"]
+
+[node name="SelectBomb" type="Sprite2D"]
+scale = Vector2(0.178, 0.164)
+texture = ExtResource("1_fbc5x")
+hframes = 3
+script = ExtResource("2_hmybx")

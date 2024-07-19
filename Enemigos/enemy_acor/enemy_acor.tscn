@@ -1,0 +1,136 @@
+[gd_scene load_steps=22 format=3 uid="uid://cp642tvdd0clr"]
+
+[ext_resource type="PackedScene" uid="uid://b7ga7w5ckfte5" path="res://Enemigos/enemyClass.tscn" id="1_t1c7g"]
+[ext_resource type="Script" path="res://Enemigos/enemy_acor/enemy_acor.gd" id="2_ajoje"]
+[ext_resource type="Texture2D" uid="uid://wdvq38nfwnse" path="res://Enemigos/assets/sprites/jaique_enemy_acor_2_n.png" id="2_ggjid"]
+[ext_resource type="Texture2D" uid="uid://ce1pelp27mc4i" path="res://Enemigos/assets/sprites/jaique_enemy_acor_2_f.png" id="3_a52c8"]
+[ext_resource type="Texture2D" uid="uid://crmegij8vcuvx" path="res://Enemigos/assets/sprites/jaique_enemy_acor_3_n.png" id="3_rb32k"]
+[ext_resource type="Texture2D" uid="uid://bchnkv5vcwpxb" path="res://Enemigos/assets/sprites/jaique_enemy_acor_1_n.png" id="4_6vyqw"]
+[ext_resource type="Texture2D" uid="uid://bp6nqu5gk5m77" path="res://Enemigos/assets/sprites/jaique_enemy_acor_3_f.png" id="5_ldu5e"]
+[ext_resource type="Texture2D" uid="uid://8gyf1myoo76r" path="res://Enemigos/assets/sprites/jaique_enemy_acor_1_f.png" id="6_qabw7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d23eg"]
+atlas = ExtResource("2_ggjid")
+region = Rect2(0, 0, 189, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkkhh"]
+atlas = ExtResource("2_ggjid")
+region = Rect2(189, 0, 189, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_607uc"]
+atlas = ExtResource("3_a52c8")
+region = Rect2(0, 0, 189, 289)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3vkf"]
+atlas = ExtResource("3_a52c8")
+region = Rect2(189, 0, 189, 289)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmv8p"]
+atlas = ExtResource("3_rb32k")
+region = Rect2(0, 0, 189, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x57x2"]
+atlas = ExtResource("3_rb32k")
+region = Rect2(189, 0, 189, 288)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgulp"]
+atlas = ExtResource("5_ldu5e")
+region = Rect2(0, 0, 189, 289)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykrfb"]
+atlas = ExtResource("5_ldu5e")
+region = Rect2(189, 0, 189, 289)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acjce"]
+atlas = ExtResource("6_qabw7")
+region = Rect2(0, 0, 189, 289)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmgqr"]
+atlas = ExtResource("6_qabw7")
+region = Rect2(189, 0, 189, 289)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxo0j"]
+atlas = ExtResource("4_6vyqw")
+region = Rect2(0, 0, 218, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a343x"]
+atlas = ExtResource("4_6vyqw")
+region = Rect2(218, 0, 218, 291)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oyojb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d23eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkkhh")
+}],
+"loop": true,
+"name": &"broken_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_607uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3vkf")
+}],
+"loop": true,
+"name": &"broken_1_f",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmv8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x57x2")
+}],
+"loop": true,
+"name": &"broken_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgulp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykrfb")
+}],
+"loop": true,
+"name": &"broken_2_f",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acjce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmgqr")
+}],
+"loop": true,
+"name": &"frozen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxo0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a343x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="enemy_acor" instance=ExtResource("1_t1c7g")]
+script = ExtResource("2_ajoje")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(3, -1)
+sprite_frames = SubResource("SpriteFrames_oyojb")
+animation = &"idle"
+autoplay = "idle"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://4p6v0vnf7hpj"]
+
+[ext_resource type="Texture2D" uid="uid://b3kmtpv36vou1" path="res://Torres/assets/towerSelectSprite/torre_hard_sheet.png" id="1_jycle"]
+[ext_resource type="Script" path="res://Torres/Torre Normal/selectedTower.gd" id="2_bp3ft"]
+
+[node name="SelectHard" type="Sprite2D"]
+scale = Vector2(0.178, 0.164)
+texture = ExtResource("1_jycle")
+hframes = 3
+script = ExtResource("2_bp3ft")

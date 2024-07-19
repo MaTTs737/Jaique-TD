@@ -2,7 +2,7 @@ extends Area2D
 
 var damage: int
 var target: Area2D
-var speed: float = 600.0  # Adjust the speed as necessary
+var speed: float = 300.0  # Adjust the speed as necessary
 var shooting_direction: Vector2
 var target_die : Callable = func(): queue_free()
 
@@ -25,6 +25,4 @@ func follow_target(delta):
 	position += direction * speed * delta
 
 func hit():
-	if target:
-		target.healthPoints -= damage
-		queue_free()
+	queue_free()

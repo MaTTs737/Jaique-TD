@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://3yhsy6lns0g8"]
+
+[ext_resource type="PackedScene" uid="uid://b7ga7w5ckfte5" path="res://Enemigos/enemyClass.tscn" id="1_k16rq"]
+[ext_resource type="Script" path="res://Enemigos/enemigo_acc/enemy_acc.gd" id="2_21w8y"]
+[ext_resource type="Texture2D" uid="uid://7f5bwro3fup6" path="res://Enemigos/assets/sprites/jaique_acc_sheet.png" id="2_wsmag"]
+[ext_resource type="Texture2D" uid="uid://c1fmrheb80hy5" path="res://Enemigos/assets/sprites/jaique_acc_sheet_f.png" id="3_83aju"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oiey"]
+atlas = ExtResource("3_83aju")
+region = Rect2(0, 0, 218, 292)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psgbn"]
+atlas = ExtResource("3_83aju")
+region = Rect2(218, 0, 218, 292)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl8wd"]
+atlas = ExtResource("2_wsmag")
+region = Rect2(0, 0, 218, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5gp1"]
+atlas = ExtResource("2_wsmag")
+region = Rect2(218, 0, 218, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoleq"]
+atlas = ExtResource("2_wsmag")
+region = Rect2(436, 0, 218, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqx82"]
+atlas = ExtResource("2_wsmag")
+region = Rect2(654, 0, 218, 291)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_drq8h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4oiey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psgbn")
+}],
+"loop": true,
+"name": &"frozen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl8wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5gp1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoleq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqx82")
+}],
+"loop": true,
+"name": &"special",
+"speed": 5.0
+}]
+
+[node name="enemy_acc" instance=ExtResource("1_k16rq")]
+script = ExtResource("2_21w8y")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_drq8h")
+animation = &"idle"
+autoplay = "frozen"

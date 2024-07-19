@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://4403eb1fyxga"]
+
+[ext_resource type="Texture2D" uid="uid://b434cgocys3tj" path="res://Torres/assets/towerSelectSprite/jaique_policia_sheet.png" id="1_em0n1"]
+[ext_resource type="Script" path="res://Torres/Torre Normal/selectedTower.gd" id="2_eegkt"]
+
+[node name="SelectNormal" type="Sprite2D"]
+scale = Vector2(0.178, 0.164)
+texture = ExtResource("1_em0n1")
+hframes = 3
+script = ExtResource("2_eegkt")

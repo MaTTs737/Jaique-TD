@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d37d61o4k86wl"]
+
+[ext_resource type="Script" path="res://Escenario/PathFollow2D.gd" id="1_3jrxv"]
+
+[node name="Pointer" type="PathFollow2D"]
+position = Vector2(22, 351)
+rotation = -0.00624992
+script = ExtResource("1_3jrxv")
+
+[node name="_Timer_21830" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

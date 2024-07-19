@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhrybsvamaci0"]
+
+[ext_resource type="PackedScene" uid="uid://c2n8qqufu3gyv" path="res://Torres/torreClass.tscn" id="1_4n66n"]
+[ext_resource type="Script" path="res://Torres/Torre Bomb/torre_bomb.gd" id="2_lc6xl"]
+[ext_resource type="Texture2D" uid="uid://ngcxh6bmw3dk" path="res://Torres/assets/towerSelectSprite/torre_bomb_sheet.png" id="2_n50le"]
+
+[sub_resource type="Animation" id="Animation_ccicg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_qme45"]
+resource_name = "shoot"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_duwnd"]
+_data = {
+"RESET": SubResource("Animation_ccicg"),
+"shoot": SubResource("Animation_qme45")
+}
+
+[node name="torre_bomb" instance=ExtResource("1_4n66n")]
+script = ExtResource("2_lc6xl")
+
+[node name="Sprite" parent="." index="1"]
+scale = Vector2(0.178, 0.164)
+texture = ExtResource("2_n50le")
+hframes = 3
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_duwnd")
+}
+autoplay = "RESET"
