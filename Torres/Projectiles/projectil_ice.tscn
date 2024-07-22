@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dqe23fl6vxvkv" path="res://Torres/Projectiles/bolsa_hielo_sheet.png" id="2_iaj8u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
-radius = 3.0
+radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lsld"]
 atlas = ExtResource("2_iaj8u")
@@ -70,14 +70,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="projectil_ice" type="Area2D"]
-collision_mask = 2
+[node name="projectil_ice" type="Area2D" groups=["ammo"]]
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_1r7ny")
+metadata/_edit_vertical_guides_ = [-5.0, 5.0]
+metadata/_edit_horizontal_guides_ = [-5.0, 5.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r1v10")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["ammo"]]
 scale = Vector2(0.128731, 0.124384)
 sprite_frames = SubResource("SpriteFrames_3m3qn")
 autoplay = "default"

@@ -3,27 +3,25 @@ extends "res://Enemigos/enemyClass.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	super._ready()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	super._process(delta)
+
 
 func transition_to(new_state):
 	state = new_state
 	match state:
 		idle:
-			$AnimatedSprite2D.play("idle")
-			speed = initialSpeed
-			$CollisionShape2D.disabled = false
+			emit_signal("back_to_normal")
+			get_parent().speed = initialSpeed
 		frozen:
-			speed /= 2
-			$AnimatedSprite2D.play("frozen")
+			get_parent().speed /= 4
 			specialCondition = true
 			$specialCondition.start()
+			emit_signal("freeze")
 		special:
-			$CollisionShape2D.disabled
 			specialCondition = true
 			$specialCondition.start()
-			$AnimatedSprite2D.play("special")
+			emit_signal("special_s")

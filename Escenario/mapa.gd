@@ -20,7 +20,7 @@ var path2d_node
 @onready var path_follow = $Path
 
 func _ready():
-	
+	enemy_scene = enemies.normal
 	# Buscar el nodo Path2D en el mapa
 	# path2d_node = get_node("Path2D")
 	pass
@@ -51,6 +51,5 @@ func spawn_enemy():
 	var new_enemy = new_enemy_instance as Area2D
 	var new_pointer = pointer.instantiate() # Agregar un nuevo path follow
 	path_follow.add_child(new_pointer) 
-	
 	new_pointer.add_child(new_enemy)# Agregar el nuevo enemigo como hijo del PathFollow2D
 

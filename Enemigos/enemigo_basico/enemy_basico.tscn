@@ -54,4 +54,3 @@ position = Vector2(-3, -1)
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_g7fmv")
-animation = &"frozen"

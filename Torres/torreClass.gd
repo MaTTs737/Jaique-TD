@@ -2,13 +2,13 @@ extends Node2D
 
 var damage : int = 50
 var type : String
-var waitingTime : int = 0.5
+var waitingTime : float = 0.3
 var target : Object
 var enemies_in_range = []
 var enemyIn = Callable(self,"_on_DetectionArea_area_entered")
 var enemyOut = Callable(self,"_on_DetectionArea_area_exited")
-var projectil
-var animationShoot
+var projectil = preload("res://Torres/Projectiles/projectil_normal.tscn")
+@onready var anim = $AnimationPlayer
 var can_shoot = true
 
 
@@ -16,11 +16,11 @@ func shoot():
 	var disparo = projectil.instantiate()
 	disparo.target = target
 	disparo.damage = damage
-	#disparo.type
+	disparo.type = type
 	add_child(disparo)
 	can_shoot = false
 	$shootTimer.start(waitingTime)
-	$AnimationPlayer.play("shoot")
+	anim.play("shoot")
 	
 
 	# Called when the node enters the scene tree for the first time.
@@ -30,7 +30,7 @@ func _ready():
 	#$DetectionArea.connect("area_exited", enemyOut)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if enemies_in_range.size() > 0:
 		target = enemies_in_range[0]
 	

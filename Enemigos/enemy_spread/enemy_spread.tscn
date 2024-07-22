@@ -41,7 +41,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_4d158")
 }],
 "loop": true,
-"name": &"idlke",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -49,5 +49,3 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_6grly")
-animation = &"idlke"
-autoplay = "idlke"

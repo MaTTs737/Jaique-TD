@@ -1,12 +1,16 @@
-extends PathFollow2D
+extends Area2D
 
-var speed
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	progress += speed * delta
-	if get_child_count() == 0:
-		queue_free()
+func _process(_delta):
+	pass
+
+
+func _on_area_entered(area):
+	if area.is_in_group("enemies"):
+		area.arrived()

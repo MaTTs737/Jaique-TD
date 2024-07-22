@@ -1,18 +1,100 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm8auta1a3luv"]
+[gd_scene load_steps=15 format=3 uid="uid://dm8auta1a3luv"]
 
 [ext_resource type="Script" path="res://Torres/Projectiles/projectilClass.gd" id="1_82qlg"]
+[ext_resource type="Texture2D" uid="uid://bu4ruemslfg15" path="res://Torres/Projectiles/baston_shot_sheet.png" id="2_rs50n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
-radius = 3.0
+radius = 8.0
 
-[node name="ProjectilClass" type="Area2D"]
-collision_mask = 2
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8t1m"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(0, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aihn"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(201, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkc6p"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(402, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxtwq"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(603, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkunn"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(804, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vqll"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(1005, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7xce"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(1206, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhqbv"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(1407, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oaqgc"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(1608, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3e4d"]
+atlas = ExtResource("2_rs50n")
+region = Rect2(1809, 0, 201, 203)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bjv68"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8t1m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aihn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkc6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxtwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkunn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vqll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7xce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhqbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oaqgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3e4d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ProjectilClass" type="Area2D" groups=["ammo"]]
+collision_layer = 2
 script = ExtResource("1_82qlg")
+metadata/_edit_vertical_guides_ = [-5.0, 5.0]
+metadata/_edit_horizontal_guides_ = [-5.0, 5.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r1v10")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4.76837e-07, -4.76837e-07)
-scale = Vector2(0.0765703, 0.0710438)
-animation = &"new_animation"
+position = Vector2(0, 9.53674e-07)
+scale = Vector2(0.127837, 0.11434)
+sprite_frames = SubResource("SpriteFrames_bjv68")
+autoplay = "default"

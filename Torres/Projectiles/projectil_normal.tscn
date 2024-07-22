@@ -83,7 +83,7 @@ animations = [{
 
 [node name="projectil_normal" instance=ExtResource("1_ubdrw")]
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="1" groups=["ammo"]]
 sprite_frames = SubResource("SpriteFrames_tq4qb")
 animation = &"default"
 autoplay = "default"

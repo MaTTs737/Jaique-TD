@@ -6,7 +6,3 @@
 position = Vector2(22, 351)
 rotation = -0.00624992
 script = ExtResource("1_3jrxv")
-
-[node name="_Timer_21830" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true

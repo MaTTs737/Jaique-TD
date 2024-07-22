@@ -5,11 +5,13 @@ var broken_2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	super._ready()
 	healthPoints *= 3
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	super._process(delta)
 	if healthPoints<201 and broken_1 == false:
 		broken_1 = true
 		transition_to(idle)
@@ -27,7 +29,7 @@ func transition_to(new_state):
 				$AnimatedSprite2D.play("broken_1")
 			else : $AnimatedSprite2D.play("broken_2")
 			
-			speed = initialSpeed
+			get_parent().speed = initialSpeed
 		frozen:
 			if healthPoints>200:
 				$AnimatedSprite2D.play("frozen")
@@ -35,7 +37,7 @@ func transition_to(new_state):
 				$AnimatedSprite2D.play("broken_1_f")
 			else : $AnimatedSprite2D.play("broken_2_f")
 			
-			speed /= 2
+			get_parent().speed /= 2
 			specialCondition = true
 			$specialCondition.start()
 		special:

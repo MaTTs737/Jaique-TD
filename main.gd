@@ -3,6 +3,7 @@ extends Node
 var towerSelected = false
 var selectedTower
 var selectedSprite
+var life_points = 5
 
 var torres = {
 		"normal" = preload("res://Torres/Torre Normal/torre_normal.tscn"),
@@ -23,7 +24,7 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func selectTower(type):  # Selecciona torre y coloca sprite sobre el cursor
@@ -66,4 +67,8 @@ func _on_tower_button_bomb_pressed():
 func _on_next_wave_button_pressed():
 	pass
 
-
+func enemy_arrived():
+	life_points -= 1
+	if life_points == 0:
+		print("perdiste")
+		

@@ -1,13 +1,15 @@
 extends Area2D
 
+signal freeze
+signal special_s
+signal back_to_normal
 
 enum {idle, frozen, special}
 
-var healthPoints: int = 100
+var healthPoints: int = 200
 var type: String
 @export var initialSpeed : int
 var speed : int
-var damage : int = 1
 var reward : int = 10
 var specialCondition = false
 @onready var state = idle
@@ -18,17 +20,18 @@ func transition_to(new_state):
 	state = new_state
 	match state:
 		idle:
-			anim.play("idle")
-			speed = initialSpeed
+			emit_signal("back_to_normal")
+			get_parent().speed = initialSpeed
+			
 		frozen:
-			speed /= 2
-			anim.play("frozen")
+			get_parent().speed /= 4
 			specialCondition = true
 			$specialCondition.start()
+			emit_signal("freeze")
 		special:
 			specialCondition = true
 			$specialCondition.start()
-			anim.play("special")
+			emit_signal("special_s")
 
 
 
@@ -43,12 +46,12 @@ func die():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	speed = initialSpeed
+	get_parent().speed = initialSpeed
 	 #path_follow = self.get_parent() // devuelve que no se puede asignar un valor de tipo nodo a un objeto pathfollow.
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 		
 	if healthPoints <= 0:
 		die()
@@ -58,10 +61,20 @@ func _process(delta):
 	#else:
 	#print("no hay")
 
+func get_hit(damage):
+	healthPoints -= damage
 
 func _on_special_condition_timeout():
 	specialCondition = false
 	transition_to(idle)
 
-#func get_hit():
-#	healthPoints -= 1
+
+func _on_area_entered(area):
+	if area.is_in_group("ammo"):
+		get_hit(area.damage)
+		if (area.type == "ice") and (state != frozen):
+			transition_to(frozen)
+
+func arrived():
+	get_tree().get_current_scene().enemy_arrived()
+	queue_free()

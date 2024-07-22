@@ -61,7 +61,7 @@ animations = [{
 
 [node name="enemy_invi" instance=ExtResource("1_uc7jo")]
 script = ExtResource("2_k8xyw")
+initialSpeed = 0
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_p282m")
-autoplay = "idle"
