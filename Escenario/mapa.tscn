@@ -17,9 +17,9 @@ size = Vector2(27, 90)
 script = ExtResource("1_x4le8")
 
 [node name="FondoVersion1" type="Sprite2D" parent="."]
-position = Vector2(586.277, 318.723)
+position = Vector2(577.685, 322.607)
 rotation = -1.57652
-scale = Vector2(1.93488, 1.75297)
+scale = Vector2(1.83841, 1.67921)
 texture = ExtResource("1_wo77a")
 
 [node name="Path" type="Path2D" parent="."]

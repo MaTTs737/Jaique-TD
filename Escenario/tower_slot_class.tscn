@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctgawr3olqt0f"]
+
+[ext_resource type="Script" path="res://towerSlotClass.gd" id="1_rtqnm"]
+[ext_resource type="Texture2D" uid="uid://bujkyly2xwfns" path="res://Torres/assets/pngs botones/boton_torre_n.png" id="2_4oj4m"]
+[ext_resource type="Texture2D" uid="uid://bbxoraxm85bu" path="res://Torres/assets/pngs botones/boton_torre_p.png" id="3_4qoal"]
+[ext_resource type="Texture2D" uid="uid://cy5a8xow3u4n6" path="res://Torres/assets/pngs botones/boton_torre_h.png" id="4_rwscb"]
+[ext_resource type="Texture2D" uid="uid://6pjbuigkdq21" path="res://Torres/assets/pngs botones/boton_torre_d.png" id="5_bo0c7"]
+
+[node name="towerSlotClass" type="Area2D"]
+script = ExtResource("1_rtqnm")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -28.0
+offset_top = -30.0
+offset_right = 28.0
+offset_bottom = 27.0
+texture_normal = ExtResource("2_4oj4m")
+texture_pressed = ExtResource("3_4qoal")
+texture_hover = ExtResource("4_rwscb")
+texture_disabled = ExtResource("5_bo0c7")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

@@ -7,6 +7,7 @@ var spawn_timer = 0
 var turno = 1 # Para probar
 const pointer = preload("res://Escenario/pointer.tscn")
 
+
 const enemies = { # Diccionario de escenas de enemigos
 	normal = preload("res://Enemigos/enemigo_basico/enemy_basico.tscn"),
 	acc = preload("res://Enemigos/enemigo_acc/enemy_acc.tscn"),
@@ -52,4 +53,3 @@ func spawn_enemy():
 	var new_pointer = pointer.instantiate() # Agregar un nuevo path follow
 	path_follow.add_child(new_pointer) 
 	new_pointer.add_child(new_enemy)# Agregar el nuevo enemigo como hijo del PathFollow2D
-
