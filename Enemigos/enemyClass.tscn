@@ -33,6 +33,7 @@ initialSpeed = 200
 shape = SubResource("RectangleShape2D_5qc8v")
 
 [node name="specialCondition" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.178, 0.164)

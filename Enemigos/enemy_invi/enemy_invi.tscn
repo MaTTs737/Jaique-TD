@@ -61,7 +61,15 @@ animations = [{
 
 [node name="enemy_invi" instance=ExtResource("1_uc7jo")]
 script = ExtResource("2_k8xyw")
-initialSpeed = 0
+
+[node name="specialCondition" parent="." index="1"]
+wait_time = 3.0
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_p282m")
+animation = &"special"
+
+[node name="invi_timer" type="Timer" parent="." index="3"]
+wait_time = 4.0
+
+[connection signal="timeout" from="invi_timer" to="." method="_on_invi_timer_timeout"]

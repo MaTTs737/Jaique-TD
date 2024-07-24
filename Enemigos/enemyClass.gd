@@ -22,7 +22,7 @@ func transition_to(new_state):
 		idle:
 			emit_signal("back_to_normal")
 			get_parent().speed = initialSpeed
-			
+			specialCondition = false
 		frozen:
 			get_parent().speed /= 4
 			specialCondition = true

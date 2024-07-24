@@ -70,5 +70,8 @@ script = ExtResource("2_21w8y")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_drq8h")
-animation = &"idle"
-autoplay = "frozen"
+
+[node name="acc_timer" type="Timer" parent="." index="3"]
+wait_time = 4.0
+
+[connection signal="timeout" from="acc_timer" to="." method="_on_acc_timer_timeout"]
