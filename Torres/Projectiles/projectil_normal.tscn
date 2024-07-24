@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://b50c8v5qat0ki"]
+
+[ext_resource type="PackedScene" uid="uid://dm8auta1a3luv" path="res://Torres/Projectiles/projectilClass.tscn" id="1_ubdrw"]
+[ext_resource type="Texture2D" uid="uid://bu4ruemslfg15" path="res://Torres/Projectiles/baston_shot_sheet.png" id="2_cvxsg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5aeg"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(0, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asmgb"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(201, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8yvd"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(402, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgctb"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(603, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vythf"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(804, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7bhq"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(1005, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7pjn"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(1206, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3woe2"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(1407, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wgvm"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(1608, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky104"]
+atlas = ExtResource("2_cvxsg")
+region = Rect2(1809, 0, 201, 203)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tq4qb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5aeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asmgb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8yvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgctb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vythf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7bhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7pjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3woe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wgvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky104")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="projectil_normal" instance=ExtResource("1_ubdrw")]
+
+[node name="AnimatedSprite2D" parent="." index="1" groups=["ammo"]]
+sprite_frames = SubResource("SpriteFrames_tq4qb")
+animation = &"default"
+autoplay = "default"

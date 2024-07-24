@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://k0bac3prnfh7"]
+
+[ext_resource type="Script" path="res://Torres/Projectiles/projectilClass.gd" id="1_1r7ny"]
+[ext_resource type="Texture2D" uid="uid://dqe23fl6vxvkv" path="res://Torres/Projectiles/bolsa_hielo_sheet.png" id="2_iaj8u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lsld"]
+atlas = ExtResource("2_iaj8u")
+region = Rect2(0, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01kfh"]
+atlas = ExtResource("2_iaj8u")
+region = Rect2(201, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3f31"]
+atlas = ExtResource("2_iaj8u")
+region = Rect2(402, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etcse"]
+atlas = ExtResource("2_iaj8u")
+region = Rect2(603, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11py1"]
+atlas = ExtResource("2_iaj8u")
+region = Rect2(804, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mugv"]
+atlas = ExtResource("2_iaj8u")
+region = Rect2(1005, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s8mn"]
+atlas = ExtResource("2_iaj8u")
+region = Rect2(1206, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65t8d"]
+atlas = ExtResource("2_iaj8u")
+region = Rect2(1407, 0, 201, 203)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3m3qn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lsld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01kfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3f31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etcse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11py1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mugv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s8mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65t8d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="projectil_ice" type="Area2D" groups=["ammo"]]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_1r7ny")
+metadata/_edit_vertical_guides_ = [-5.0, 5.0]
+metadata/_edit_horizontal_guides_ = [-5.0, 5.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r1v10")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["ammo"]]
+scale = Vector2(0.128731, 0.124384)
+sprite_frames = SubResource("SpriteFrames_3m3qn")
+autoplay = "default"

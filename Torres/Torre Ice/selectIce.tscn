@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsfi66thdhwfg"]
+
+[ext_resource type="Texture2D" uid="uid://vb0d74211byp" path="res://Torres/assets/towerSelectSprite/torre_hielo_sheet.png" id="1_yqapp"]
+[ext_resource type="Script" path="res://Torres/Torre Normal/selectedTower.gd" id="2_47wxj"]
+
+[node name="SelectIce" type="Sprite2D"]
+scale = Vector2(0.178, 0.164)
+texture = ExtResource("1_yqapp")
+hframes = 3
+script = ExtResource("2_47wxj")

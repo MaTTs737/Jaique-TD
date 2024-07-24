@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b434cgocys3tj"
-path="res://.godot/imported/jaique_policia_sheet.png-2478c32c31bab72bfad5916d2bce3503.ctex"
+uid="uid://vb0d74211byp"
+path="res://.godot/imported/torre_hielo_sheet.png-a16810444e9f55045e66e59e5fb48935.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Torres/assets/jaique_policia_sheet.png"
-dest_files=["res://.godot/imported/jaique_policia_sheet.png-2478c32c31bab72bfad5916d2bce3503.ctex"]
+source_file="res://Torres/assets/towerSelectSprite/torre_hielo_sheet.png"
+dest_files=["res://.godot/imported/torre_hielo_sheet.png-a16810444e9f55045e66e59e5fb48935.ctex"]
 
 [params]
 

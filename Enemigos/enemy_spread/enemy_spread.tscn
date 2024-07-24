@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://djshs4rlnsls8"]
+
+[ext_resource type="PackedScene" uid="uid://b7ga7w5ckfte5" path="res://Enemigos/enemyClass.tscn" id="1_bftia"]
+[ext_resource type="Texture2D" uid="uid://crjrir2qyokog" path="res://Enemigos/assets/sprites/jaique_enemy_little_f.png" id="2_at3u0"]
+[ext_resource type="Texture2D" uid="uid://cg48qiqd63v8n" path="res://Enemigos/assets/sprites/jaique_enemy_little_n.png" id="3_nvevt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1ca2"]
+atlas = ExtResource("2_at3u0")
+region = Rect2(0, 0, 144, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkumu"]
+atlas = ExtResource("2_at3u0")
+region = Rect2(144, 0, 144, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fvij"]
+atlas = ExtResource("3_nvevt")
+region = Rect2(0, 0, 143, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d158"]
+atlas = ExtResource("3_nvevt")
+region = Rect2(143, 0, 143, 223)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6grly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1ca2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkumu")
+}],
+"loop": true,
+"name": &"frozen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fvij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d158")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="enemy_spread" instance=ExtResource("1_bftia")]
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_6grly")

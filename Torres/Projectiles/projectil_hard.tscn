@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://cq0d3cwaod77b"]
+
+[ext_resource type="Script" path="res://Torres/Projectiles/projectilClass.gd" id="1_4vcre"]
+[ext_resource type="Texture2D" uid="uid://ulqns7iga1ku" path="res://Torres/Projectiles/pistola_sheet.png" id="2_56er0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nxvu"]
+atlas = ExtResource("2_56er0")
+region = Rect2(0, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f78r8"]
+atlas = ExtResource("2_56er0")
+region = Rect2(201, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xn2bo"]
+atlas = ExtResource("2_56er0")
+region = Rect2(402, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3651v"]
+atlas = ExtResource("2_56er0")
+region = Rect2(603, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw16y"]
+atlas = ExtResource("2_56er0")
+region = Rect2(804, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xyxg"]
+atlas = ExtResource("2_56er0")
+region = Rect2(1005, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cu65"]
+atlas = ExtResource("2_56er0")
+region = Rect2(1206, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4rmr"]
+atlas = ExtResource("2_56er0")
+region = Rect2(1407, 0, 201, 203)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d8w78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nxvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f78r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xn2bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3651v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw16y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xyxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cu65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4rmr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="projectil_hard" type="Area2D" groups=["ammo"]]
+collision_mask = 2
+script = ExtResource("1_4vcre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r1v10")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(4.76837e-07, -7.15256e-07)
+scale = Vector2(0.0945274, 0.0935961)
+sprite_frames = SubResource("SpriteFrames_d8w78")
+frame_progress = 0.244398

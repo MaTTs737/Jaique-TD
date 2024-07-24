@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://btkrvdlm18f7c"]
+
+[ext_resource type="Script" path="res://Torres/Projectiles/projectilClass.gd" id="1_ciba0"]
+[ext_resource type="Texture2D" uid="uid://cx76prel3ap8u" path="res://Torres/Projectiles/granada_sheet.png" id="2_2w0cp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucbwv"]
+atlas = ExtResource("2_2w0cp")
+region = Rect2(0, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yd4n"]
+atlas = ExtResource("2_2w0cp")
+region = Rect2(201, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mgse"]
+atlas = ExtResource("2_2w0cp")
+region = Rect2(402, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xofi8"]
+atlas = ExtResource("2_2w0cp")
+region = Rect2(603, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngqvy"]
+atlas = ExtResource("2_2w0cp")
+region = Rect2(804, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3rt7"]
+atlas = ExtResource("2_2w0cp")
+region = Rect2(1005, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vc72"]
+atlas = ExtResource("2_2w0cp")
+region = Rect2(1206, 0, 201, 203)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7oqx"]
+atlas = ExtResource("2_2w0cp")
+region = Rect2(1407, 0, 201, 203)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cwj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucbwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yd4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mgse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xofi8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngqvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3rt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vc72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7oqx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="projectil_bomb" type="Area2D" groups=["ammo"]]
+collision_mask = 2
+script = ExtResource("1_ciba0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r1v10")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0845771, 0.0788177)
+sprite_frames = SubResource("SpriteFrames_7cwj6")
