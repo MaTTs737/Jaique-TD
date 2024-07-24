@@ -2,7 +2,6 @@ extends Node2D
 
 var damage : int = 50
 var type : String
-var waitingTime : float = 0.3
 var target : Object
 var enemies_in_range = []
 var enemyIn = Callable(self,"_on_DetectionArea_area_entered")
@@ -19,7 +18,7 @@ func shoot():
 	disparo.type = type
 	add_child(disparo)
 	can_shoot = false
-	$shootTimer.start(waitingTime)
+	$shootTimer.start()
 	anim.play("shoot")
 	
 
@@ -39,6 +38,10 @@ func _process(_delta):
 func _on_DetectionArea_area_exited(area):
 	if area.is_in_group("enemies"):
 		enemies_in_range.erase(area)
+		if target == area:
+			if enemies_in_range:
+				target = enemies_in_range[0]
+			else : target = null
 
 func _on_shoot_timer_timeout():
 	can_shoot = true

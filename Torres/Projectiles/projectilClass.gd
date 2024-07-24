@@ -15,8 +15,8 @@ func _ready():
 func _process(delta):
 	if target:
 		follow_target(delta)
-		if (target.global_position - global_position).length() < 5:  # Check if close enough to hit
-			hit()
+		#if (target.global_position - global_position).length() < 2:  # Check if close enough to hit
+		#	hit()
 	else:
 		queue_free()
 
@@ -27,3 +27,6 @@ func follow_target(delta):
 func hit():
 	queue_free()
 	
+func _on_area_entered(area):
+	if area.is_in_group("enemies"):
+		hit()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqe23fl6vxvkv"
-path="res://.godot/imported/bolsa_hielo_sheet.png-d8660f89195589fe2a3735a8a38cc369.ctex"
+uid="uid://bu4ruemslfg15"
+path="res://.godot/imported/baston_shot_sheet.png-1397ed240dac4a078fce4b86d1d7a625.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Torres/Projectiles/bolsa_hielo_sheet.png"
-dest_files=["res://.godot/imported/bolsa_hielo_sheet.png-d8660f89195589fe2a3735a8a38cc369.ctex"]
+source_file="res://Torres/Projectiles/assets/baston_shot_sheet.png"
+dest_files=["res://.godot/imported/baston_shot_sheet.png-1397ed240dac4a078fce4b86d1d7a625.ctex"]
 
 [params]
 

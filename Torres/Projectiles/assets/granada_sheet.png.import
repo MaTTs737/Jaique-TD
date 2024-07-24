@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu4ruemslfg15"
-path="res://.godot/imported/baston_shot_sheet.png-9800d240d074a5823713d06061d89e23.ctex"
+uid="uid://cx76prel3ap8u"
+path="res://.godot/imported/granada_sheet.png-32f57cb0e3b0622db84d89c254212f44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Torres/Projectiles/baston_shot_sheet.png"
-dest_files=["res://.godot/imported/baston_shot_sheet.png-9800d240d074a5823713d06061d89e23.ctex"]
+source_file="res://Torres/Projectiles/assets/granada_sheet.png"
+dest_files=["res://.godot/imported/granada_sheet.png-32f57cb0e3b0622db84d89c254212f44.ctex"]
 
 [params]
 

@@ -49,6 +49,9 @@ scale = Vector2(0.178, 0.164)
 texture = ExtResource("2_n50le")
 hframes = 3
 
+[node name="shootTimer" parent="." index="2"]
+wait_time = 3.0
+
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_duwnd")
