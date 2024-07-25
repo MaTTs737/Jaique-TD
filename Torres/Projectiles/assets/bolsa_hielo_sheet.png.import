@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cx76prel3ap8u"
-path="res://.godot/imported/granada_sheet.png-b712a168b2d251d6e6b15d366d2ad96e.ctex"
+uid="uid://dqe23fl6vxvkv"
+path="res://.godot/imported/bolsa_hielo_sheet.png-837b7772ae89ac96985e9bf75078151f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Torres/Projectiles/granada_sheet.png"
-dest_files=["res://.godot/imported/granada_sheet.png-b712a168b2d251d6e6b15d366d2ad96e.ctex"]
+source_file="res://Torres/Projectiles/assets/bolsa_hielo_sheet.png"
+dest_files=["res://.godot/imported/bolsa_hielo_sheet.png-837b7772ae89ac96985e9bf75078151f.ctex"]
 
 [params]
 

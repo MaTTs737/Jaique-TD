@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ulqns7iga1ku"
-path="res://.godot/imported/pistola_sheet.png-ea5f5bb7472ba6adc3ab6189c56fff00.ctex"
+path="res://.godot/imported/pistola_sheet.png-e8b780756b4ff5d32089d2942a31607e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Torres/Projectiles/pistola_sheet.png"
-dest_files=["res://.godot/imported/pistola_sheet.png-ea5f5bb7472ba6adc3ab6189c56fff00.ctex"]
+source_file="res://Torres/Projectiles/assets/pistola_sheet.png"
+dest_files=["res://.godot/imported/pistola_sheet.png-e8b780756b4ff5d32089d2942a31607e.ctex"]
 
 [params]
 

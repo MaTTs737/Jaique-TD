@@ -132,3 +132,4 @@ script = ExtResource("2_ajoje")
 [node name="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(3, -1)
 sprite_frames = SubResource("SpriteFrames_oyojb")
+animation = &"frozen"

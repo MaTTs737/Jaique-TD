@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://cq0d3cwaod77b"]
 
 [ext_resource type="Script" path="res://Torres/Projectiles/projectilClass.gd" id="1_4vcre"]
-[ext_resource type="Texture2D" uid="uid://ulqns7iga1ku" path="res://Torres/Projectiles/pistola_sheet.png" id="2_56er0"]
+[ext_resource type="Texture2D" uid="uid://ulqns7iga1ku" path="res://Torres/Projectiles/assets/pistola_sheet.png" id="2_56er0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
-radius = 3.0
+radius = 10.0499
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8nxvu"]
 atlas = ExtResource("2_56er0")
@@ -71,14 +71,15 @@ animations = [{
 }]
 
 [node name="projectil_hard" type="Area2D" groups=["ammo"]]
-collision_mask = 2
+collision_layer = 2
 script = ExtResource("1_4vcre")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r1v10")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4.76837e-07, -7.15256e-07)
-scale = Vector2(0.0945274, 0.0935961)
+scale = Vector2(0.191542, 0.189655)
 sprite_frames = SubResource("SpriteFrames_d8w78")
 frame_progress = 0.244398
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

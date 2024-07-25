@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://b50c8v5qat0ki"]
 
 [ext_resource type="PackedScene" uid="uid://dm8auta1a3luv" path="res://Torres/Projectiles/projectilClass.tscn" id="1_ubdrw"]
-[ext_resource type="Texture2D" uid="uid://bu4ruemslfg15" path="res://Torres/Projectiles/baston_shot_sheet.png" id="2_cvxsg"]
+[ext_resource type="Texture2D" uid="uid://bu4ruemslfg15" path="res://Torres/Projectiles/assets/baston_shot_sheet.png" id="2_cvxsg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5aeg"]
 atlas = ExtResource("2_cvxsg")
@@ -85,5 +85,5 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="1" groups=["ammo"]]
 sprite_frames = SubResource("SpriteFrames_tq4qb")
-animation = &"default"
-autoplay = "default"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
