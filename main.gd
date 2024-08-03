@@ -65,6 +65,7 @@ func place_tower():# Example function to place a tower at the clicked position
 	#selectedTower.position = position
 	var new_tower = selectedTower.instantiate()
 	current_tower_slot.add_child(new_tower)
+	current_tower_slot.textureButton.disabled = true
 	#towerSelected = false
 	#selectedSprite.queue_free()
 	disable_tower_buttons()
