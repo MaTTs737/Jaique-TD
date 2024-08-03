@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b7oo4wr7nfyvh"]
+[gd_scene load_steps=26 format=3 uid="uid://b7oo4wr7nfyvh"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0wtpu"]
 [ext_resource type="PackedScene" uid="uid://dyk00xro5fje3" path="res://Escenario/mapa.tscn" id="1_qomae"]
@@ -23,12 +23,14 @@
 [ext_resource type="Texture2D" uid="uid://cc0pv2a0kb52o" path="res://Torres/assets/pngs botones/boton_nextWave_h.png" id="21_h02rm"]
 [ext_resource type="Texture2D" uid="uid://cn6cll10imtr7" path="res://Torres/assets/pngs botones/boton_nextWave_d.png" id="22_p54cn"]
 [ext_resource type="PackedScene" uid="uid://fwhu1sfaumvb" path="res://Escenario/tower_slots.tscn" id="23_sdt4q"]
+[ext_resource type="PackedScene" uid="uid://ck8vm4q205we2" path="res://Escenario/coin_sprite.tscn" id="24_3ekwo"]
+[ext_resource type="PackedScene" uid="uid://cn3pvm6kc0tw8" path="res://Escenario/life_sprite.tscn" id="25_vxa5f"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0wtpu")
 
 [node name="map" parent="." instance=ExtResource("1_qomae")]
-position = Vector2(1, 2)
+position = Vector2(6, 4)
 
 [node name="tower_button_normal" type="TextureButton" parent="."]
 offset_left = 30.0
@@ -85,6 +87,12 @@ texture_disabled = ExtResource("22_p54cn")
 
 [node name="towerSlots" parent="." instance=ExtResource("23_sdt4q")]
 position = Vector2(26, 35)
+
+[node name="coin_sprite" parent="." instance=ExtResource("24_3ekwo")]
+position = Vector2(96, 551)
+
+[node name="life_sprite" parent="." instance=ExtResource("25_vxa5f")]
+position = Vector2(1056, 62)
 
 [connection signal="pressed" from="tower_button_normal" to="." method="_on_new_tower_button_pressed"]
 [connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]

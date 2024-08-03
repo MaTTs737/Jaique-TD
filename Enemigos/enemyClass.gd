@@ -16,6 +16,8 @@ var specialCondition = false
 @onready var anim = $AnimatedSprite2D
 var path_follow : PathFollow2D
 
+const efectoMuerte = preload("res://Enemigos/efectoMuerte.tscn")
+
 func transition_to(new_state):
 	state = new_state
 	match state:
@@ -42,6 +44,10 @@ func transition_to(new_state):
 	
 	
 func die():
+	var efecto = efectoMuerte.instantiate()
+	efecto.global_position = global_position
+	get_tree().current_scene.add_child(efecto)
+	get_tree().current_scene.coins += reward
 	queue_free()
 
 # Called when the node enters the scene tree for the first time.

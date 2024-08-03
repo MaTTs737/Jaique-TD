@@ -2,7 +2,7 @@ extends Node2D
 
 # Variables para el generador de enemigos
 var enemy_scene # = preload ("res://Enemigos/enemigo_basico/enemy_basico.tscn")  Escena del enemigo
-var spawn_interval = 0.2 # Intervalo de tiempo entre la generación de enemigos
+var spawn_interval = 0.5 # Intervalo de tiempo entre la generación de enemigos
 var spawn_timer = 0
 var turno = 1 # Para probar
 const pointer = preload("res://Escenario/pointer.tscn")

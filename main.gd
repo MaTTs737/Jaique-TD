@@ -4,6 +4,7 @@ var towerSelected = false
 var selectedTower
 var selectedSprite
 var life_points = 5
+var coins = 0
 var current_tower_slot
 @onready var tower_normal = $tower_button_normal
 @onready var tower_ice = $tower_button_ice
