@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b7ga7w5ckfte5" path="res://Enemigos/enemyClass.tscn" id="1_etbyi"]
 [ext_resource type="Script" path="res://Enemigos/enemigo_basico/enemy_basico.gd" id="2_e157m"]
-[ext_resource type="Texture2D" uid="uid://p86g4lfc8fcv" path="res://Enemigos/enemigo_basico/jaique_enemy_sheet_normal_n.png" id="3_m0hw6"]
 [ext_resource type="Texture2D" uid="uid://c1fmrheb80hy5" path="res://Enemigos/assets/sprites/jaique_acc_sheet_f.png" id="3_s515w"]
+[ext_resource type="Texture2D" uid="uid://dexoyper2ymbo" path="res://Enemigos/assets/sprites/jaique_enemy_sheet_normal_n.png" id="4_wmehy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uloit"]
 atlas = ExtResource("3_s515w")
@@ -13,12 +13,12 @@ region = Rect2(0, 0, 218, 292)
 atlas = ExtResource("3_s515w")
 region = Rect2(218, 0, 218, 292)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hkbcv"]
-atlas = ExtResource("3_m0hw6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mohi"]
+atlas = ExtResource("4_wmehy")
 region = Rect2(0, 0, 183, 287)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhiph"]
-atlas = ExtResource("3_m0hw6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu2jb"]
+atlas = ExtResource("4_wmehy")
 region = Rect2(183, 0, 183, 287)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g7fmv"]
@@ -36,10 +36,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hkbcv")
+"texture": SubResource("AtlasTexture_8mohi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rhiph")
+"texture": SubResource("AtlasTexture_iu2jb")
 }],
 "loop": true,
 "name": &"idle",
@@ -50,7 +50,9 @@ animations = [{
 script = ExtResource("2_e157m")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(-3, -1)
+position = Vector2(-1, -1.5)
 
 [node name="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(1, -2)
+scale = Vector2(0.162568, 0.167247)
 sprite_frames = SubResource("SpriteFrames_g7fmv")

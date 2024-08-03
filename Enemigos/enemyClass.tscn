@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Enemigos/AnimatedSprite2D.gd" id="2_uuoi5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qc8v"]
-size = Vector2(10, 20)
+size = Vector2(11, 37)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_86auw"]
 animations = [{

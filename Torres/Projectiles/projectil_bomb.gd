@@ -14,11 +14,12 @@ func _process(delta):
 
 func explode():
 	$AnimatedSprite2D.visible = false
-	set_process(false)
 	var new_explosion = explosion.instantiate()
 	new_explosion.connect("tree_exited",hit_enemies)
-	add_child(new_explosion)
-
+	new_explosion.global_position = global_position
+	get_tree().get_current_scene().add_child(new_explosion)
+	queue_free()
+	
 func hit():
 	explode()
 

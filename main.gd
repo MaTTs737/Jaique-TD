@@ -33,6 +33,8 @@ var towerSprites = {
 }
 
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
+const pantallaVictoria = preload("res://Sistema/pantallaVictoria.tscn")
+const pantallaDerrota = preload("res://Sistema/pantallaDerrota.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	disable_tower_buttons()
@@ -42,9 +44,9 @@ func _process(_delta):
 	if slotSelected:
 		enable_tower_buttons()
 	if Input.is_action_just_pressed("pausa"):
-		get_tree().paused = true
 		var pausaScreen = pantallaPausa.instantiate()
 		add_child(pausaScreen)
+		get_tree().paused = true
 		
 		#get_tree().change_scene_to_file("res://Sistema/pantallaPausa.tscn")
 # func selectTower(type):  # Selecciona torre y coloca sprite sobre el cursor3	selectedTower = torres[type].instantiate()
@@ -105,7 +107,7 @@ func _on_next_wave_button_pressed():
 func enemy_arrived():
 	life_points -= 1
 	if life_points == 0:
-		print("perdiste")
+		lose()
 
 func disable_tower_buttons():
 	tower_normal.disabled = true
@@ -120,8 +122,17 @@ func enable_tower_buttons():
 	tower_bomb.disabled = false
 
 #func update_tower(new_tower):
-	var old_tower = slotSelected.find_tower()
-	var upgrade_tower = torres.normal.instantiate()
-	old_tower.queue_free()
-	slotSelected.add_child(upgrade_tower)
+#	var old_tower = slotSelected.find_tower()
+#	var upgrade_tower = torres.normal.instantiate()
+#	old_tower.queue_free()
+#	slotSelected.add_child(upgrade_tower)
 
+func win():
+	get_tree().paused = true
+	var vic = pantallaVictoria.instantiate()
+	add_child(vic)
+	
+func lose():
+	get_tree().paused = true
+	var lose = pantallaDerrota.instantiate()
+	add_child(lose)

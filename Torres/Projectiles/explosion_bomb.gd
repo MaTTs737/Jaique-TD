@@ -1,11 +1,10 @@
 extends Area2D
 
-var damage
+var damage = 500
 var type = "bomb"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("explosion")
-	damage = get_parent().damage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

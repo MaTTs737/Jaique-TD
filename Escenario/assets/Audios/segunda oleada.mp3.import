@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dalxmt2qbltx"
+path="res://.godot/imported/segunda oleada.mp3-d15ca4ea4a9daadeabc0df9bc443444d.mp3str"
+
+[deps]
+
+source_file="res://Escenario/assets/Audios/segunda oleada.mp3"
+dest_files=["res://.godot/imported/segunda oleada.mp3-d15ca4ea4a9daadeabc0df9bc443444d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

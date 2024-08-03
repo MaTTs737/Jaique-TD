@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkof6p5t4dvwj"]
+[gd_scene load_steps=3 format=3 uid="uid://dkof6p5t4dvwj"]
 
 [ext_resource type="Texture2D" uid="uid://dnl5aeutbhr7b" path="res://Sistema/fondoPausa.jpg" id="1_kd4e3"]
+[ext_resource type="Script" path="res://Sistema/pantallaVictoria.gd" id="1_q5k1v"]
 
 [node name="PantallaVictoria" type="Control"]
 layout_mode = 3
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_q5k1v")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -23,7 +25,7 @@ offset_right = 32.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Perdiste"
+text = "Ganaste"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -43,3 +45,37 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_kd4e3")
 expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 352.0
+offset_top = -65.0
+offset_right = -355.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="volverAJugar" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Volver a jugar
+"
+
+[node name="salirAlMenu" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Salir al menu"
+
+[node name="salirDelJuego" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Salir del Juego
+"
+
+[connection signal="pressed" from="HBoxContainer/volverAJugar" to="." method="_on_volver_a_jugar_pressed"]
+[connection signal="pressed" from="HBoxContainer/salirAlMenu" to="." method="_on_salir_al_menu_pressed"]
+[connection signal="pressed" from="HBoxContainer/salirDelJuego" to="." method="_on_salir_del_juego_pressed"]
