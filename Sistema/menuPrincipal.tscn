@@ -1,3 +1,72 @@
-[gd_scene format=3 uid="uid://4ygiw8t7hvvm"]
+[gd_scene load_steps=4 format=3 uid="uid://cxkypykysuf2k"]
 
-[node name="MenuPrincipal" type="Node"]
+[ext_resource type="Script" path="res://Sistema/menuPrincipal.gd" id="1_v4kdg"]
+[ext_resource type="Texture2D" uid="uid://d0dfnjfkvj7fa" path="res://Sistema/Sin título.png" id="2_y7j58"]
+
+[sub_resource type="SystemFont" id="SystemFont_h8jgi"]
+
+[node name="MenuPrincipal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v4kdg")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y7j58")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -230.0
+offset_right = 118.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+metadata/_edit_group_ = true
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.782409, 0.8063, 0.138154, 1)
+theme_override_colors/font_hover_color = Color(0.784314, 0.807843, 0.137255, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_h8jgi")
+theme_override_font_sizes/font_size = 50
+text = "Jugar"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.690343, 0.751626, 0.0329438, 1)
+theme_override_font_sizes/font_size = 50
+text = "Salir"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -88.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

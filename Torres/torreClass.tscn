@@ -43,7 +43,7 @@ _data = {
 "shoot": SubResource("Animation_64fkv")
 }
 
-[node name="torreClass" type="Node2D"]
+[node name="torreClass" type="Node2D" groups=["towers"]]
 script = ExtResource("1_ppisq")
 
 [node name="DetectionArea" type="Area2D" parent="."]
