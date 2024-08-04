@@ -137,3 +137,5 @@ func lose():
 	get_tree().paused = true
 	var lose = pantallaDerrota.instantiate()
 	add_child(lose)
+
+
