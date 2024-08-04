@@ -3,8 +3,13 @@ extends Node
 var towerSelected = false
 var selectedTower
 var selectedSprite
+<<<<<<< HEAD
 var life_points = 10
 var coins : int = 100
+=======
+var life_points = 1
+var coins = 0
+>>>>>>> bcfc1385412f77eb8951e7d97c21c2e4ca21d75f
 var current_tower_slot
 @onready var tower_normal = $tower_button_normal
 @onready var tower_ice = $tower_button_ice
@@ -152,6 +157,7 @@ func win():
 	
 func lose():
 	get_tree().paused = true
+<<<<<<< HEAD
 	var lose = pantallaDerrota.instantiate()
 	add_child(lose)
 
@@ -161,3 +167,7 @@ func updateTowerCost(tower):
 			towerCost[tower] *= 1.05
 			towerCost[tower]=int(towerCost[tower])
 			print (towerCost[tower])
+=======
+	var loseScreen = pantallaDerrota.instantiate()
+	add_child(loseScreen)
+>>>>>>> bcfc1385412f77eb8951e7d97c21c2e4ca21d75f
