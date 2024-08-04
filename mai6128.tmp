@@ -1,0 +1,105 @@
+[gd_scene load_steps=26 format=3 uid="uid://b7oo4wr7nfyvh"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_0wtpu"]
+[ext_resource type="PackedScene" uid="uid://dyk00xro5fje3" path="res://Escenario/mapa.tscn" id="1_qomae"]
+[ext_resource type="Texture2D" uid="uid://cmsa4qjdr61d8" path="res://Torres/assets/pngs botones/boton_torre_normal_n.png" id="2_f43k7"]
+[ext_resource type="Texture2D" uid="uid://cl05p41tqgohq" path="res://Torres/assets/pngs botones/boton_torre_normal_p.png" id="3_bd2mq"]
+[ext_resource type="Texture2D" uid="uid://clstr200gmndt" path="res://Torres/assets/pngs botones/boton_torre_normal_h.png" id="4_61dfj"]
+[ext_resource type="Texture2D" uid="uid://dxc3rcvn44xw" path="res://Torres/assets/pngs botones/boton_torre_normal_d.png" id="5_6bmr7"]
+[ext_resource type="Texture2D" uid="uid://b5belwmfwt0sp" path="res://Torres/assets/pngs botones/boton_torre_ice_n.png" id="7_pq78p"]
+[ext_resource type="Texture2D" uid="uid://b5fu414vww57o" path="res://Torres/assets/pngs botones/boton_torre_ice_p.png" id="8_sfgyd"]
+[ext_resource type="Texture2D" uid="uid://cfpcljicvi46w" path="res://Torres/assets/pngs botones/boton_torre_ice_h.png" id="9_4wuiv"]
+[ext_resource type="Texture2D" uid="uid://dict4b371qxu1" path="res://Torres/assets/pngs botones/boton_torre_ice_d.png" id="10_ndjv4"]
+[ext_resource type="Texture2D" uid="uid://1f4v57sa1uco" path="res://Torres/assets/pngs botones/boton_torre_hard_n.png" id="11_s2u77"]
+[ext_resource type="Texture2D" uid="uid://b7hxqg21iv0kt" path="res://Torres/assets/pngs botones/boton_torre_hard_p.png" id="12_xu1ks"]
+[ext_resource type="Texture2D" uid="uid://bb555usosmaaf" path="res://Torres/assets/pngs botones/boton_torre_hard_h.png" id="13_n5i4y"]
+[ext_resource type="Texture2D" uid="uid://buk0b6vowbqjm" path="res://Torres/assets/pngs botones/boton_torre_hard_d.png" id="14_8tv8y"]
+[ext_resource type="Texture2D" uid="uid://b64748n1gcbeq" path="res://Torres/assets/pngs botones/boton_torre_bomb_n.png" id="15_davkb"]
+[ext_resource type="Texture2D" uid="uid://c5ue175fsgqah" path="res://Torres/assets/pngs botones/boton_torre_bomb_p.png" id="16_jwixc"]
+[ext_resource type="Texture2D" uid="uid://dkwyhnay38e4o" path="res://Torres/assets/pngs botones/boton_torre_bomb_h.png" id="17_kqw5x"]
+[ext_resource type="Texture2D" uid="uid://cfhfbpemjrtrr" path="res://Torres/assets/pngs botones/boton_torre_bomb_d.png" id="18_avwuc"]
+[ext_resource type="Texture2D" uid="uid://b2s3pfe62snk2" path="res://Torres/assets/pngs botones/boton_nextWave_n.png" id="19_eapeg"]
+[ext_resource type="Texture2D" uid="uid://c5wrt8dbt41ux" path="res://Torres/assets/pngs botones/boton_nextWave_p.png" id="20_g8pje"]
+[ext_resource type="Texture2D" uid="uid://cc0pv2a0kb52o" path="res://Torres/assets/pngs botones/boton_nextWave_h.png" id="21_h02rm"]
+[ext_resource type="Texture2D" uid="uid://cn6cll10imtr7" path="res://Torres/assets/pngs botones/boton_nextWave_d.png" id="22_p54cn"]
+[ext_resource type="PackedScene" uid="uid://fwhu1sfaumvb" path="res://Escenario/tower_slots.tscn" id="23_sdt4q"]
+[ext_resource type="PackedScene" uid="uid://ck8vm4q205we2" path="res://Escenario/coin_sprite.tscn" id="24_3ekwo"]
+[ext_resource type="PackedScene" uid="uid://cn3pvm6kc0tw8" path="res://Escenario/life_sprite.tscn" id="25_vxa5f"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0wtpu")
+
+[node name="map" parent="." instance=ExtResource("1_qomae")]
+position = Vector2(6, 4)
+
+[node name="tower_button_normal" type="TextureButton" parent="."]
+offset_left = 30.0
+offset_top = 587.0
+offset_right = 86.0
+offset_bottom = 644.0
+texture_normal = ExtResource("2_f43k7")
+texture_pressed = ExtResource("3_bd2mq")
+texture_hover = ExtResource("4_61dfj")
+texture_disabled = ExtResource("5_6bmr7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(593, 334)
+
+[node name="tower_button_ice" type="TextureButton" parent="."]
+offset_left = 109.0
+offset_top = 587.0
+offset_right = 165.0
+offset_bottom = 644.0
+texture_normal = ExtResource("7_pq78p")
+texture_pressed = ExtResource("8_sfgyd")
+texture_hover = ExtResource("9_4wuiv")
+texture_disabled = ExtResource("10_ndjv4")
+
+[node name="tower_button_hard" type="TextureButton" parent="."]
+offset_left = 188.0
+offset_top = 586.0
+offset_right = 244.0
+offset_bottom = 643.0
+texture_normal = ExtResource("11_s2u77")
+texture_pressed = ExtResource("12_xu1ks")
+texture_hover = ExtResource("13_n5i4y")
+texture_disabled = ExtResource("14_8tv8y")
+
+[node name="tower_button_bomb" type="TextureButton" parent="."]
+offset_left = 270.0
+offset_top = 584.0
+offset_right = 326.0
+offset_bottom = 641.0
+texture_normal = ExtResource("15_davkb")
+texture_pressed = ExtResource("16_jwixc")
+texture_hover = ExtResource("17_kqw5x")
+texture_disabled = ExtResource("18_avwuc")
+
+[node name="nextWave_button" type="TextureButton" parent="."]
+offset_left = 1076.0
+offset_top = 578.0
+offset_right = 1132.0
+offset_bottom = 634.0
+texture_normal = ExtResource("19_eapeg")
+texture_pressed = ExtResource("20_g8pje")
+texture_hover = ExtResource("21_h02rm")
+texture_disabled = ExtResource("22_p54cn")
+
+[node name="towerSlots" parent="." instance=ExtResource("23_sdt4q")]
+position = Vector2(26, 35)
+
+[node name="coin_sprite" parent="." instance=ExtResource("24_3ekwo")]
+position = Vector2(96, 551)
+
+[node name="life_sprite" parent="." instance=ExtResource("25_vxa5f")]
+position = Vector2(1056, 62)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="tower_button_normal" to="." method="_on_new_tower_button_pressed"]
+[connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]
+[connection signal="pressed" from="tower_button_hard" to="." method="_on_tower_button_hard_pressed"]
+[connection signal="pressed" from="tower_button_bomb" to="." method="_on_tower_button_bomb_pressed"]
+[connection signal="pressed" from="nextWave_button" to="." method="_on_next_wave_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="map" method="_on_timer_timeout"]
