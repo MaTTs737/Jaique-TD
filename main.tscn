@@ -86,13 +86,15 @@ texture_hover = ExtResource("21_h02rm")
 texture_disabled = ExtResource("22_p54cn")
 
 [node name="towerSlots" parent="." instance=ExtResource("23_sdt4q")]
-position = Vector2(26, 35)
+position = Vector2(32, 26)
 
 [node name="coin_sprite" parent="." instance=ExtResource("24_3ekwo")]
 position = Vector2(96, 551)
 
 [node name="life_sprite" parent="." instance=ExtResource("25_vxa5f")]
 position = Vector2(1056, 62)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="pressed" from="tower_button_normal" to="." method="_on_new_tower_button_pressed"]
 [connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]

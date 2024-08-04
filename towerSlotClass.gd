@@ -1,17 +1,18 @@
 extends Area2D
 
+@onready var textureButton = $TextureButton
 var has_tower = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _process(_delta):
+	if has_tower:
+		$TextureButton.disabled = true
 
 func _on_texture_button_pressed():
 	if !has_tower:   # chequea si ya tiene una torre
-		has_tower = true
 		get_tree().get_current_scene().current_tower_slot = self # devuelve el slot al main
 		get_tree().get_current_scene().slotSelected = true
 	
