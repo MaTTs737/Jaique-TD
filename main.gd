@@ -3,7 +3,7 @@ extends Node
 var towerSelected = false
 var selectedTower
 var selectedSprite
-var life_points = 100
+var life_points = 1
 var coins = 0
 var current_tower_slot
 @onready var tower_normal = $tower_button_normal
@@ -140,12 +140,5 @@ func win():
 	
 func lose():
 	get_tree().paused = true
-<<<<<<< HEAD
 	var loseScreen = pantallaDerrota.instantiate()
 	add_child(loseScreen)
-=======
-	var lose = pantallaDerrota.instantiate()
-	add_child(lose)
-
-
->>>>>>> 030947c9b617ed67877063d0bb35cbeeb47cd018
