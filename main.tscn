@@ -8,26 +8,26 @@
 [ext_resource type="Texture2D" uid="uid://clstr200gmndt" path="res://Torres/assets/pngs botones/boton_torre_normal_h.png" id="4_61dfj"]
 [ext_resource type="Texture2D" uid="uid://dxc3rcvn44xw" path="res://Torres/assets/pngs botones/boton_torre_normal_d.png" id="5_6bmr7"]
 [ext_resource type="Texture2D" uid="uid://b5belwmfwt0sp" path="res://Torres/assets/pngs botones/boton_torre_ice_n.png" id="7_pq78p"]
-[ext_resource type="Script" path="res://Torres/tower_button_normall.gd" id="8_5wq3v"]
+[ext_resource type="Script" path="res://Torres/tower_button_normal.gd" id="8_5wq3v"]
 [ext_resource type="Texture2D" uid="uid://b5fu414vww57o" path="res://Torres/assets/pngs botones/boton_torre_ice_p.png" id="8_sfgyd"]
 [ext_resource type="Texture2D" uid="uid://cfpcljicvi46w" path="res://Torres/assets/pngs botones/boton_torre_ice_h.png" id="9_4wuiv"]
 [ext_resource type="Texture2D" uid="uid://dict4b371qxu1" path="res://Torres/assets/pngs botones/boton_torre_ice_d.png" id="10_ndjv4"]
-[ext_resource type="Script" path="res://tower_button_ice.gd" id="11_j1rom"]
 [ext_resource type="Texture2D" uid="uid://1f4v57sa1uco" path="res://Torres/assets/pngs botones/boton_torre_hard_n.png" id="11_s2u77"]
 [ext_resource type="Texture2D" uid="uid://b7hxqg21iv0kt" path="res://Torres/assets/pngs botones/boton_torre_hard_p.png" id="12_xu1ks"]
 [ext_resource type="Texture2D" uid="uid://bb555usosmaaf" path="res://Torres/assets/pngs botones/boton_torre_hard_h.png" id="13_n5i4y"]
+[ext_resource type="Script" path="res://Torres/tower_button_ice.gd" id="13_nps3w"]
 [ext_resource type="Texture2D" uid="uid://buk0b6vowbqjm" path="res://Torres/assets/pngs botones/boton_torre_hard_d.png" id="14_8tv8y"]
 [ext_resource type="Texture2D" uid="uid://b64748n1gcbeq" path="res://Torres/assets/pngs botones/boton_torre_bomb_n.png" id="15_davkb"]
-[ext_resource type="Script" path="res://tower_button_hard.gd" id="16_2x185"]
 [ext_resource type="Texture2D" uid="uid://c5ue175fsgqah" path="res://Torres/assets/pngs botones/boton_torre_bomb_p.png" id="16_jwixc"]
 [ext_resource type="Texture2D" uid="uid://dkwyhnay38e4o" path="res://Torres/assets/pngs botones/boton_torre_bomb_h.png" id="17_kqw5x"]
 [ext_resource type="Texture2D" uid="uid://cfhfbpemjrtrr" path="res://Torres/assets/pngs botones/boton_torre_bomb_d.png" id="18_avwuc"]
+[ext_resource type="Script" path="res://Torres/tower_button_hard.gd" id="18_wodke"]
 [ext_resource type="Texture2D" uid="uid://b2s3pfe62snk2" path="res://Torres/assets/pngs botones/boton_nextWave_n.png" id="19_eapeg"]
 [ext_resource type="Texture2D" uid="uid://c5wrt8dbt41ux" path="res://Torres/assets/pngs botones/boton_nextWave_p.png" id="20_g8pje"]
 [ext_resource type="Texture2D" uid="uid://cc0pv2a0kb52o" path="res://Torres/assets/pngs botones/boton_nextWave_h.png" id="21_h02rm"]
-[ext_resource type="Script" path="res://tower_button_bomb.gd" id="21_rjbfm"]
 [ext_resource type="Texture2D" uid="uid://cn6cll10imtr7" path="res://Torres/assets/pngs botones/boton_nextWave_d.png" id="22_p54cn"]
 [ext_resource type="PackedScene" uid="uid://fwhu1sfaumvb" path="res://Escenario/tower_slots.tscn" id="23_sdt4q"]
+[ext_resource type="Script" path="res://Torres/tower_button_bomb.gd" id="23_vb4hr"]
 [ext_resource type="PackedScene" uid="uid://ck8vm4q205we2" path="res://Escenario/coin_sprite.tscn" id="24_3ekwo"]
 [ext_resource type="PackedScene" uid="uid://cn3pvm6kc0tw8" path="res://Escenario/life_sprite.tscn" id="25_vxa5f"]
 
@@ -51,38 +51,38 @@ texture_hover = ExtResource("4_61dfj")
 texture_disabled = ExtResource("5_6bmr7")
 script = ExtResource("8_5wq3v")
 
-[node name="tower_button_ice" type="TextureButton" parent="."]
-offset_left = 114.0
-offset_top = 582.0
-offset_right = 170.0
-offset_bottom = 639.0
+[node name="tower_button_ice" parent="." instance=ExtResource("3_1yxke")]
+offset_left = 128.0
+offset_top = 581.0
+offset_right = 184.0
+offset_bottom = 638.0
 texture_normal = ExtResource("7_pq78p")
 texture_pressed = ExtResource("8_sfgyd")
 texture_hover = ExtResource("9_4wuiv")
 texture_disabled = ExtResource("10_ndjv4")
-script = ExtResource("11_j1rom")
+script = ExtResource("13_nps3w")
 
-[node name="tower_button_hard" type="TextureButton" parent="."]
-offset_left = 191.0
-offset_top = 582.0
-offset_right = 247.0
-offset_bottom = 639.0
+[node name="tower_button_hard" parent="." instance=ExtResource("3_1yxke")]
+offset_left = 210.0
+offset_top = 581.0
+offset_right = 266.0
+offset_bottom = 638.0
 texture_normal = ExtResource("11_s2u77")
 texture_pressed = ExtResource("12_xu1ks")
 texture_hover = ExtResource("13_n5i4y")
 texture_disabled = ExtResource("14_8tv8y")
-script = ExtResource("16_2x185")
+script = ExtResource("18_wodke")
 
-[node name="tower_button_bomb" type="TextureButton" parent="."]
-offset_left = 266.0
-offset_top = 582.0
-offset_right = 322.0
-offset_bottom = 639.0
+[node name="tower_button_bomb" parent="." instance=ExtResource("3_1yxke")]
+offset_left = 289.0
+offset_top = 581.0
+offset_right = 345.0
+offset_bottom = 638.0
 texture_normal = ExtResource("15_davkb")
 texture_pressed = ExtResource("16_jwixc")
 texture_hover = ExtResource("17_kqw5x")
 texture_disabled = ExtResource("18_avwuc")
-script = ExtResource("21_rjbfm")
+script = ExtResource("23_vb4hr")
 
 [node name="nextWave_button" type="TextureButton" parent="."]
 offset_left = 1076.0
