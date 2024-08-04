@@ -3,8 +3,8 @@ extends Node
 var towerSelected = false
 var selectedTower
 var selectedSprite
-var life_points = 100
-var coins = 0
+var life_points = 10
+var coins : int = 100
 var current_tower_slot
 @onready var tower_normal = $tower_button_normal
 @onready var tower_ice = $tower_button_ice
@@ -32,6 +32,14 @@ var towerSprites = {
 	"hard"=preload("res://Torres/Torre Hard/selectHard.tscn"),
 	"bomb"=preload("res://Torres/Torre Bomb/selectBomb.tscn")
 }
+
+var towerCost = {
+	normal = 50,
+	hard = 50,
+	ice = 50,
+	bomb = 50,
+}
+
 
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
 const pantallaVictoria = preload("res://Sistema/pantallaVictoria.tscn")
@@ -69,12 +77,16 @@ func place_tower():# Example function to place a tower at the clicked position
 	#selectedTower.position = position
 	var new_tower = selectedTower.instantiate()
 	current_tower_slot.add_child(new_tower)
+	coins -= towerCost[new_tower.type]
+	updateTowerCost(new_tower.type)
 	current_tower_slot.textureButton.disabled = true
-	#towerSelected = false
+	current_tower_slot.selected = false
+	towerSelected = false
 	#selectedSprite.queue_free()
 	disable_tower_buttons()
 	current_tower_slot = null
 	slotSelected = false
+	
 
 # Funciones al apretar boton de nueva torre
 func _on_new_tower_button_pressed():
@@ -140,12 +152,12 @@ func win():
 	
 func lose():
 	get_tree().paused = true
-<<<<<<< HEAD
-	var loseScreen = pantallaDerrota.instantiate()
-	add_child(loseScreen)
-=======
 	var lose = pantallaDerrota.instantiate()
 	add_child(lose)
 
-
->>>>>>> 030947c9b617ed67877063d0bb35cbeeb47cd018
+func updateTowerCost(tower):
+	for i in torres:
+		if tower == i:
+			towerCost[tower] *= 1.05
+			towerCost[tower]=int(towerCost[tower])
+			print (towerCost[tower])

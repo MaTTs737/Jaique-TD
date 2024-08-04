@@ -9,11 +9,10 @@ scale = Vector2(3.95001, 4.86364)
 texture = ExtResource("1_mwd25")
 
 [node name="life_count" type="Label" parent="."]
-offset_left = 6.0759
-offset_top = -12.1308
-offset_right = 27.0759
-offset_bottom = 10.8692
+offset_left = 12.405
+offset_top = -11.3084
+offset_right = 26.405
+offset_bottom = 10.6916
+theme_override_font_sizes/font_size = 15
 text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
 script = ExtResource("2_ph715")

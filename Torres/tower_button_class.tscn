@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3vv6nyrtvwbv"]
+
+[ext_resource type="Texture2D" uid="uid://bujkyly2xwfns" path="res://Torres/assets/pngs botones/boton_torre_n.png" id="1_iru83"]
+[ext_resource type="Texture2D" uid="uid://bbxoraxm85bu" path="res://Torres/assets/pngs botones/boton_torre_p.png" id="2_vlcxm"]
+[ext_resource type="Texture2D" uid="uid://cy5a8xow3u4n6" path="res://Torres/assets/pngs botones/boton_torre_h.png" id="3_y2dbo"]
+[ext_resource type="Texture2D" uid="uid://6pjbuigkdq21" path="res://Torres/assets/pngs botones/boton_torre_d.png" id="4_eydoi"]
+[ext_resource type="Script" path="res://Torres/tower_button_class.gd" id="5_jbbdg"]
+[ext_resource type="Texture2D" uid="uid://qdwfs1uifm0w" path="res://Escenario/assets/images/coin_sheet.png" id="6_gnmer"]
+
+[node name="tower_button" type="TextureButton"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 57.0
+offset_bottom = 58.0
+texture_normal = ExtResource("1_iru83")
+texture_pressed = ExtResource("2_vlcxm")
+texture_hover = ExtResource("3_y2dbo")
+texture_disabled = ExtResource("4_eydoi")
+script = ExtResource("5_jbbdg")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -23.0
+offset_right = 51.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, -11)
+scale = Vector2(0.369565, 0.380952)
+texture = ExtResource("6_gnmer")
+hframes = 5
