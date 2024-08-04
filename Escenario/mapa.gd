@@ -4,9 +4,9 @@ extends Node2D
 var enemy_scene # = preload ("res://Enemigos/enemigo_basico/enemy_basico.tscn")  Escena del enemigo
 var spawn_interval = 3 # Intervalo de tiempo entre la generación de enemigos
 var spawn_timer = 0
-var wave = 0 # Para probar - numero de oleada
+var wave = 1 # Para probar - numero de oleada
 const pointer = preload("res://Escenario/pointer.tscn")
-const base_enemies= 25
+const base_enemies : float = 5
 @onready var rng = RandomNumberGenerator.new()
 @onready var enemy_timer=$Timer
 
@@ -18,10 +18,10 @@ const enemies = { # Diccionario de escenas de enemigos
 	acor = preload("res://Enemigos/enemy_acor/enemy_acor.tscn")
 }
 var enemyProbabilities = {
-	normal = 0, 
+	normal = 1, 
 	acc = 0,     
 	spread = 0,  
-	invi = 1,    
+	invi = 0,    
 	acor = 0     
 }
 
@@ -69,25 +69,25 @@ func spawn_enemy(enemy_key: String):
 #ajusta la posibilidad de que un enemigo aparezca
 func set_enemy_chance(wave:int):
 	match wave:
-		1: 
+		2: 
 			enemyProbabilities.normal=0.6
 			enemyProbabilities.acc=0.2
 			enemyProbabilities.invi=0.0
 			enemyProbabilities.acor=0.2
 			enemyProbabilities.spread=0.0
-		2:
+		4:
 			enemyProbabilities.normal=0.6
 			enemyProbabilities.acc=0.15
 			enemyProbabilities.invi=0.1
 			enemyProbabilities.acor=0.15
 			enemyProbabilities.spread=0
-		3:
+		6:
 			enemyProbabilities.normal=0.5
 			enemyProbabilities.acc=0.2
 			enemyProbabilities.invi=0.1
 			enemyProbabilities.acor=0.2
 			enemyProbabilities.spread=0.1
-		4:  
+		8:  
 			enemyProbabilities.normal=0.5
 			enemyProbabilities.acc=0.2
 			enemyProbabilities.invi=0.1
@@ -101,8 +101,8 @@ func set_wave(wave:int) -> int:
 	print("Cantidad de enemigos Base: ",base_enemies)
 	
 	# Incrementa total_enemies en funcion de numero de oleada
-	var total_enemies=base_enemies*(1+0.1*wave) # En la 1 incrementa 10%,en la 2 20%,etc
-	print ("Incremento por oleada ",wave*10,"% =", total_enemies)
+	var total_enemies=  base_enemies* pow(1.15, wave - 1) # E(n)=E(1)⋅(1+r)^n-1 donde n es el numero de oleada y r es el incremento
+	print ("Incremento por oleada ","15% de la anterior =", total_enemies)
 	
 	# Vuelve a incrementar total_enemies en funcion de daño recibido
 	var increment= 1+0.01*(100-get_parent().life_points) # si se recibio 3 de daño aumenta 3%,etc

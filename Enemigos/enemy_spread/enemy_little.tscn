@@ -50,5 +50,3 @@ animations = [{
 [node name="AnimatedSprite2D" parent="." index="2"]
 scale = Vector2(0.05, 0.04)
 sprite_frames = SubResource("SpriteFrames_pq1mg")
-animation = &"idle"
-autoplay = "idle"

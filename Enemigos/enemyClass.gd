@@ -53,6 +53,7 @@ func die():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_parent().speed = initialSpeed
+	reward = 1
 	 #path_follow = self.get_parent() // devuelve que no se puede asignar un valor de tipo nodo a un objeto pathfollow.
 	
 

@@ -43,6 +43,7 @@ func _on_DetectionArea_area_exited(area):
 				target = enemies_in_range[0]
 			else : target = null
 
+
 func _on_shoot_timer_timeout():
 	can_shoot = true
 

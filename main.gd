@@ -3,8 +3,8 @@ extends Node
 var towerSelected = false
 var selectedTower
 var selectedSprite
-var life_points = 10
-var coins : int = 100
+var life_points = 100
+var coins : int = 30
 var current_tower_slot
 @onready var tower_normal = $tower_button_normal
 @onready var tower_ice = $tower_button_ice
@@ -34,10 +34,10 @@ var towerSprites = {
 }
 
 var towerCost = {
-	normal = 50,
+	normal = 10,
 	hard = 50,
-	ice = 50,
-	bomb = 50,
+	ice = 30,
+	bomb = 100,
 }
 
 

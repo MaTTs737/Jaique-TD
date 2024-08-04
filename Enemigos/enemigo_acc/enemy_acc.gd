@@ -5,6 +5,7 @@ extends "res://Enemigos/enemyClass.gd"
 func _ready():
 	super._ready()
 	$acc_timer.start()
+	reward = 3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

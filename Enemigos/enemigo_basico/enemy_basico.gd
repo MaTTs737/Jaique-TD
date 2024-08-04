@@ -3,7 +3,7 @@ extends "res://Enemigos/enemyClass.gd"
 
 func _init():
 	type = "normal"
-	reward = 10
+	reward = 2
 	anim = $AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.
 func _ready():

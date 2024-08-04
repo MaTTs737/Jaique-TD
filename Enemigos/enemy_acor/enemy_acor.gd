@@ -5,6 +5,7 @@ extends "res://Enemigos/enemyClass.gd"
 func _ready():
 	super._ready()
 	healthPoints *= 3
+	reward = 5
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
