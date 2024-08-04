@@ -44,12 +44,16 @@ func _ready():
 func _process(_delta):
 	if slotSelected:
 		enable_tower_buttons()
+	if coins > 1000:
+		win()
 	if Input.is_action_just_pressed("pausa"):
 		var pausaScreen = pantallaPausa.instantiate()
 		add_child(pausaScreen)
 		get_tree().paused = true
 		
 		#get_tree().change_scene_to_file("res://Sistema/pantallaPausa.tscn")
+
+
 # func selectTower(type):  # Selecciona torre y coloca sprite sobre el cursor3	selectedTower = torres[type].instantiate()
 #	selectedSprite = towerSprites[type].instantiate()
 #	add_child(selectedSprite)
@@ -136,5 +140,5 @@ func win():
 	
 func lose():
 	get_tree().paused = true
-	var lose = pantallaDerrota.instantiate()
-	add_child(lose)
+	var loseScreen = pantallaDerrota.instantiate()
+	add_child(loseScreen)
