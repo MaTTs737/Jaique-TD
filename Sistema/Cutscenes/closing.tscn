@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca6sb68rfvnju"]
+
+[ext_resource type="VideoStream" path="res://Sistema/Cutscenes/cierre.ogv" id="1_6ird4"]
+[ext_resource type="Script" path="res://cutscene_cierre.gd" id="2_xd16u"]
+
+[node name="cutscene_cierre" type="VideoStreamPlayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("1_6ird4")
+autoplay = true
+script = ExtResource("2_xd16u")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

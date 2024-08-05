@@ -3,7 +3,7 @@ extends Node
 var towerSelected = false
 var selectedTower
 var selectedSprite
-var life_points = 100
+var life_points = 5
 var coins : int = 30
 var current_tower_slot
 @onready var tower_normal = $tower_button_normal
@@ -146,10 +146,10 @@ func win():
 	add_child(vic)
 	
 func lose():
-	get_tree().paused = true
-	var lose = pantallaDerrota.instantiate()
-	add_child(lose)
-
+	#get_tree().paused = true
+	#var lose = pantallaDerrota.instantiate()
+	#add_child(lose)
+	get_tree().change_scene_to_file("res://Sistema/Cutscenes/closing.tscn")
 func updateTowerCost(tower):
 	for i in torres:
 		if tower == i:

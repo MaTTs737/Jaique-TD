@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnfxal8u5njhd"]
+
+[ext_resource type="VideoStream" path="res://Sistema/Cutscenes/presentacion.ogv" id="1_kv6ra"]
+[ext_resource type="Script" path="res://Sistema/Cutscenes/presentation.gd" id="2_w02r4"]
+
+[node name="cutscene_presentation" type="VideoStreamPlayer"]
+stream = ExtResource("1_kv6ra")
+autoplay = true
+script = ExtResource("2_w02r4")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
