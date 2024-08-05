@@ -18,7 +18,7 @@ func _process(delta):
 		follow_target(delta)
 		#if (target.global_position - global_position).length() < 2:  # Check if close enough to hit
 		#	hit()
-		if target.type == "invi" and target.state == "special":
+		if target.type == "invi" and target.state == target.enemyState.special:
 			queue_free()
 	else:
 		queue_free()

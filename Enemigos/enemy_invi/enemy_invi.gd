@@ -12,27 +12,27 @@ func _process(delta):
 	super._process(delta)
 
 
-func transition_to(new_state):
+func transition_to(new_state:enemyState):
 	state = new_state
 	match state:
-		idle:
+		enemyState.idle:
 			emit_signal("back_to_normal")
 			get_parent().speed = initialSpeed
 			invi_timer.start()
 			$CollisionShape2D.disabled = false
-		frozen:
+		enemyState.frozen:
 			get_parent().speed /= 4
 			specialCondition = true
 			$specialCondition.start()
 			emit_signal("freeze")
-		special:
+		enemyState.special:
 			specialCondition = true
 			$CollisionShape2D.disabled = true
 			$specialCondition.start()
 			emit_signal("special_s")
 
 func go_invi():
-	transition_to(special)
+	transition_to(enemyState.special)
 	
 
 

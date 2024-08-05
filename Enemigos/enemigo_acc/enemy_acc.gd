@@ -11,19 +11,19 @@ func _ready():
 func _process(delta):
 	super._process(delta)
 
-func transition_to(new_state):
+func transition_to(new_state:enemyState):
 	state = new_state
 	match state:
-		idle:
+		enemyState.idle:
 			emit_signal("back_to_normal")
 			get_parent().speed = initialSpeed
 			$acc_timer.start()
-		frozen:
+		enemyState.frozen:
 			get_parent().speed /= 4
 			specialCondition = true
 			$specialCondition.start()
 			emit_signal("freeze")
-		special:
+		enemyState.special:
 			get_parent().speed *= 2
 			specialCondition = true
 			$specialCondition.start()
@@ -31,4 +31,4 @@ func transition_to(new_state):
 
 
 func _on_acc_timer_timeout():
-	transition_to(special)
+	transition_to(enemyState.special)
