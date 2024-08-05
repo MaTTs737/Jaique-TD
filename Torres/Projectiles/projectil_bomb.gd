@@ -4,7 +4,8 @@ extends "res://Torres/Projectiles/projectilClass.gd"
 const explosion = preload("res://Torres/Projectiles/explosion_bomb.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	super ._ready() # Replace with function body.
+	type = "bomb"
+	super ._ready() 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

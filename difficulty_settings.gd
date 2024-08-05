@@ -20,6 +20,15 @@ var towerAttackInterval = {
 	bomb = 0.5,
 }
 
+#Variables de los proyectiles de las torres
+var projectileSpeed = {
+	normal = 600,
+	hard = 500,
+	ice = 200,
+	bomb = 100,
+}
+
+
 #Variables de los enemigos
 var enemyHP= {
 	normal = 10,
@@ -50,6 +59,7 @@ var enemySpeed= {
 var spawn_interval = 1
 var wave_interval = 10
 
+#Variables de los proyectiles
 
 func _ready():
 	pass 
