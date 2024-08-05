@@ -27,6 +27,7 @@ var enemyHP= {
 	acor = 10,
 	invi = 10,
 	spread = 10,
+	minion = 5
 }
 var enemyReward= {
 	normal = 10,
@@ -34,6 +35,7 @@ var enemyReward= {
 	acor = 10,
 	invi = 10,
 	spread = 10,
+	minion = 1
 }
 var enemySpeed= {
 	normal = 100,
@@ -41,6 +43,7 @@ var enemySpeed= {
 	acor = 50,
 	invi = 200,
 	spread = 200,
+	minion = 200
 }
 
 #Variables de las oleadas

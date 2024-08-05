@@ -18,9 +18,9 @@ const enemies = { # Diccionario de escenas de enemigos
 	acor = preload("res://Enemigos/enemy_acor/enemy_acor.tscn")
 }
 var enemyProbabilities = {
-	normal = 1, 
+	normal = 0, 
 	acc = 0,     
-	spread = 0,  
+	spread = 1,  
 	invi = 0,    
 	acor = 0     
 }
@@ -109,7 +109,7 @@ func set_wave(wave:int) -> int:
 	total_enemies=total_enemies*increment
 	print ("Incremento por daño ",100-get_parent().life_points,"% =", total_enemies)
 	
-	set_enemy_chance(wave)
+	#set_enemy_chance(wave)
 	
 	return total_enemies
 
