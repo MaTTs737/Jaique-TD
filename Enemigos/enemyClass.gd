@@ -52,8 +52,10 @@ func die():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	healthPoints=DifficultySettings.enemyHP[type]
+	reward=DifficultySettings.enemyReward[type]
+	initialSpeed=DifficultySettings.enemySpeed[type]
 	get_parent().speed = initialSpeed
-	reward = 1
 	 #path_follow = self.get_parent() // devuelve que no se puede asignar un valor de tipo nodo a un objeto pathfollow.
 	
 

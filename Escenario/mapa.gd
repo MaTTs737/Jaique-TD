@@ -6,7 +6,7 @@ var spawn_interval = 3 # Intervalo de tiempo entre la generación de enemigos
 var spawn_timer = 0
 var wave = 1 # Para probar - numero de oleada
 const pointer = preload("res://Escenario/pointer.tscn")
-const base_enemies : float = 5
+const base_enemies = 5
 @onready var rng = RandomNumberGenerator.new()
 @onready var enemy_timer=$Timer
 
@@ -116,7 +116,7 @@ func set_wave(wave:int) -> int:
 func launch_wave():
 	var total_enemies=set_wave(wave)
 	for i in range(total_enemies):
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(DifficultySettings.spawn_interval).timeout
 		var enemy_type = select_enemy_based_on_probability()
 		spawn_enemy(enemy_type)
 	print ("Fin de Oleada ", wave)
@@ -126,4 +126,4 @@ func launch_wave():
 func _on_timer_timeout():
 	await launch_wave()
 	print ("Empieza Timer para siguiente oleada ")
-	timer.start(5)
+	timer.start(DifficultySettings.wave_interval)

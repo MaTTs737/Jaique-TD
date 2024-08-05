@@ -5,8 +5,8 @@ const pointer = preload("res://Escenario/pointer.tscn")
 const minion = preload("res://Enemigos/enemy_spread/enemy_little.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	type = "spread"
 	super._ready()
-	reward = 5
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

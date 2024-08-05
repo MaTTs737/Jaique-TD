@@ -1,6 +1,8 @@
 extends Node2D
 
-var damage : int = 50
+var damage : int
+var speed : int
+var cost : int
 var type : String
 var target : Object
 var enemies_in_range = []
@@ -24,7 +26,15 @@ func shoot():
 
 	# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	damage = DifficultySettings.towerDamage[type]
+	speed = DifficultySettings.towerAttackInterval[type]
+	cost = DifficultySettings.towerCost[type]
+	$shootTimer.wait_time= DifficultySettings.towerAttackInterval[type]
+	$shootTimer.start()
+	print ("Tipo: ", type)
+	print ("daño: ", damage)
+	print ("velocidad de tiro: ", speed)
+	print ("costo: ", cost)
 	#$DetectionArea.connect("area_entered", enemyIn)
 	#$DetectionArea.connect("area_exited", enemyOut)
 

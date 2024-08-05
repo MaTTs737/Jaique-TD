@@ -33,12 +33,7 @@ var towerSprites = {
 	"bomb"=preload("res://Torres/Torre Bomb/selectBomb.tscn")
 }
 
-var towerCost = {
-	normal = 10,
-	hard = 50,
-	ice = 30,
-	bomb = 100,
-}
+var towerCost = DifficultySettings.towerCost
 
 
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
@@ -78,7 +73,7 @@ func place_tower():# Example function to place a tower at the clicked position
 	var new_tower = selectedTower.instantiate()
 	current_tower_slot.add_child(new_tower)
 	coins -= towerCost[new_tower.type]
-	updateTowerCost(new_tower.type)
+	#updateTowerCost(new_tower.type)
 	current_tower_slot.textureButton.disabled = true
 	current_tower_slot.selected = false
 	towerSelected = false
