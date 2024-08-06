@@ -7,6 +7,7 @@ signal back_to_normal
 enum enemyState{idle, frozen, special}
 
 var healthPoints: int = 200
+var damage:int
 var type: String
 @export var initialSpeed : int
 var speed : int
@@ -55,6 +56,7 @@ func _ready():
 	healthPoints=DifficultySettings.enemyHP[type]
 	reward=DifficultySettings.enemyReward[type]
 	initialSpeed=DifficultySettings.enemySpeed[type]
+	damage=DifficultySettings.enemyDamage[type]
 	get_parent().speed = initialSpeed
 	 #path_follow = self.get_parent() // devuelve que no se puede asignar un valor de tipo nodo a un objeto pathfollow.
 	
@@ -85,5 +87,5 @@ func _on_area_entered(area):
 			transition_to(enemyState.frozen)
 
 func arrived():
-	get_tree().get_current_scene().enemy_arrived()
+	get_tree().get_current_scene().enemy_arrived(damage)
 	queue_free()

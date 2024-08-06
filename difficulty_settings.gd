@@ -38,6 +38,14 @@ var enemyHP= {
 	spread = 20,
 	minion = 5
 }
+var enemyDamage= {
+	normal = 5,
+	acc = 5,
+	acor = 15,
+	invi = 25,
+	spread = 30,
+	minion = 1
+}
 var enemyReward= {
 	normal = 5,
 	acc = 5,

@@ -117,9 +117,9 @@ func _on_tower_button_bomb_pressed():
 func _on_next_wave_button_pressed():
 	pass
 
-func enemy_arrived():
-	life_points -= 1
-	if life_points == 0:
+func enemy_arrived(damage:int):
+	life_points -= damage
+	if life_points <= 0:
 		lose()
 
 func disable_tower_buttons():
