@@ -52,6 +52,9 @@ func _on_DetectionArea_area_exited(area):
 			if enemies_in_range:
 				target = enemies_in_range[0]
 			else : target = null
+	if area.is_in_group("ammo") and area.get_parent() == self:
+		area.queue_free()
+	
 
 
 func _on_shoot_timer_timeout():
