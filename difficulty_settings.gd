@@ -22,10 +22,10 @@ var towerAttackInterval = {
 
 #Variables de los proyectiles de las torres
 var projectileSpeed = {
-	normal = 600,
-	hard = 600,
+	normal = 500,
+	hard = 500,
 	ice = 400,
-	bomb = 200,
+	bomb = 300,
 }
 
 
@@ -50,22 +50,22 @@ var enemyReward= {
 	normal = 5,
 	acc = 5,
 	acor = 15,
-	invi = 5,
-	spread = 5,
+	invi = 25,
+	spread = 25,
 	minion = 1
 }
 var enemySpeed= {
-	normal = 100,
+	normal = 200,
 	acc = 400,
-	acor = 50,
-	invi = 150,
-	spread = 100,
-	minion = 100
+	acor = 100,
+	invi = 200,
+	spread = 200,
+	minion = 200
 }
 
 #Variables de las oleadas
 var spawn_interval = 1
-var wave_interval = 5
+var wave_interval = 10
 
 
 func _ready():

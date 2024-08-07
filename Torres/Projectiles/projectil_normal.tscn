@@ -83,6 +83,7 @@ animations = [{
 }]
 
 [node name="projectil_normal" instance=ExtResource("1_ubdrw")]
+collision_layer = 3
 script = ExtResource("2_bueq7")
 
 [node name="AnimatedSprite2D" parent="." index="1" groups=["ammo"]]

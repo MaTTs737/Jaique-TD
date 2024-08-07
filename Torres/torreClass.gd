@@ -53,6 +53,7 @@ func _on_DetectionArea_area_exited(area):
 				target = enemies_in_range[0]
 			else : target = null
 	if area.is_in_group("ammo") and area.get_parent() == self:
+		print("salio")
 		area.queue_free()
 	
 

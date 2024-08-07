@@ -47,7 +47,7 @@ func _ready():
 func _process(_delta):
 	if slotSelected:
 		enable_tower_buttons()
-	if coins > 1000:
+	if $map.wave>20:
 		win()
 	if Input.is_action_just_pressed("pausa"):
 		var pausaScreen = pantallaPausa.instantiate()
