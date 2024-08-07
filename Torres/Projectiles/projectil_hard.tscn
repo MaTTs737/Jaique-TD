@@ -71,7 +71,7 @@ animations = [{
 }]
 
 [node name="projectil_hard" type="Area2D" groups=["ammo"]]
-collision_layer = 2
+collision_layer = 3
 script = ExtResource("1_1ooam")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

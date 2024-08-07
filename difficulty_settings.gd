@@ -8,15 +8,15 @@ var towerCost = {
 	bomb = 100,
 }
 var towerDamage = {
-	normal = 5,
-	hard = 15,
-	ice = 2,
-	bomb = 5,
+	normal = 2,
+	hard = 10,
+	ice = 1,
+	bomb = 1,
 }
 var towerAttackInterval = {
-	normal = 0.5,
+	normal = 0.25,
 	hard = 0.5,
-	ice = 0.5,
+	ice = 1,
 	bomb = 0.5,
 }
 
@@ -32,10 +32,10 @@ var projectileSpeed = {
 #Variables de los enemigos
 var enemyHP= {
 	normal = 10,
-	acc = 15,
-	acor = 40,
+	acc = 10,
+	acor = 60,
 	invi = 10,
-	spread = 20,
+	spread = 40,
 	minion = 5
 }
 var enemyDamage= {
@@ -43,15 +43,15 @@ var enemyDamage= {
 	acc = 5,
 	acor = 15,
 	invi = 25,
-	spread = 30,
+	spread = 50,
 	minion = 1
 }
 var enemyReward= {
 	normal = 5,
 	acc = 5,
-	acor = 15,
-	invi = 25,
-	spread = 25,
+	acor = 5,
+	invi = 10,
+	spread = 10,
 	minion = 1
 }
 var enemySpeed= {
@@ -64,7 +64,7 @@ var enemySpeed= {
 }
 
 #Variables de las oleadas
-var spawn_interval = 1
+var spawn_interval = 0.5
 var wave_interval = 10
 
 
