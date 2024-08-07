@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://b50c8v5qat0ki"]
+[gd_scene load_steps=15 format=3 uid="uid://b50c8v5qat0ki"]
 
 [ext_resource type="PackedScene" uid="uid://dm8auta1a3luv" path="res://Torres/Projectiles/projectilClass.tscn" id="1_ubdrw"]
+[ext_resource type="Script" path="res://Torres/Projectiles/projectil_normal.gd" id="2_bueq7"]
 [ext_resource type="Texture2D" uid="uid://bu4ruemslfg15" path="res://Torres/Projectiles/assets/baston_shot_sheet.png" id="2_cvxsg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q5aeg"]
@@ -82,6 +83,8 @@ animations = [{
 }]
 
 [node name="projectil_normal" instance=ExtResource("1_ubdrw")]
+collision_layer = 3
+script = ExtResource("2_bueq7")
 
 [node name="AnimatedSprite2D" parent="." index="1" groups=["ammo"]]
 sprite_frames = SubResource("SpriteFrames_tq4qb")

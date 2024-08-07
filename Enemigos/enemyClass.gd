@@ -4,33 +4,34 @@ signal freeze
 signal special_s
 signal back_to_normal
 
-enum {idle, frozen, special}
+enum enemyState{idle, frozen, special}
 
 var healthPoints: int = 200
+var damage:int
 var type: String
 @export var initialSpeed : int
 var speed : int
 var reward : int = 10
 var specialCondition = false
-@onready var state = idle
+@onready var state = enemyState.idle
 @onready var anim = $AnimatedSprite2D
 var path_follow : PathFollow2D
 
 const efectoMuerte = preload("res://Enemigos/efectoMuerte.tscn")
 
-func transition_to(new_state):
+func transition_to(new_state:enemyState):
 	state = new_state
 	match state:
-		idle:
+		enemyState.idle:
 			emit_signal("back_to_normal")
 			get_parent().speed = initialSpeed
 			specialCondition = false
-		frozen:
+		enemyState.frozen:
 			get_parent().speed /= 4
 			specialCondition = true
 			$specialCondition.start()
 			emit_signal("freeze")
-		special:
+		enemyState.special:
 			specialCondition = true
 			$specialCondition.start()
 			emit_signal("special_s")
@@ -55,6 +56,7 @@ func _ready():
 	healthPoints=DifficultySettings.enemyHP[type]
 	reward=DifficultySettings.enemyReward[type]
 	initialSpeed=DifficultySettings.enemySpeed[type]
+	damage=DifficultySettings.enemyDamage[type]
 	get_parent().speed = initialSpeed
 	 #path_follow = self.get_parent() // devuelve que no se puede asignar un valor de tipo nodo a un objeto pathfollow.
 	
@@ -75,15 +77,15 @@ func get_hit(damage):
 
 func _on_special_condition_timeout():
 	specialCondition = false
-	transition_to(idle)
+	transition_to(enemyState.idle)
 
 
 func _on_area_entered(area):
 	if area.is_in_group("ammo"):
 		get_hit(area.damage)
-		if (area.type == "ice") and (state != frozen):
-			transition_to(frozen)
+		if (area.type == "ice") and (state != enemyState.frozen):
+			transition_to(enemyState.frozen)
 
 func arrived():
-	get_tree().get_current_scene().enemy_arrived()
+	get_tree().get_current_scene().enemy_arrived(damage)
 	queue_free()

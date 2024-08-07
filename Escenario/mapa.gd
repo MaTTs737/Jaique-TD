@@ -109,7 +109,7 @@ func set_wave(wave:int) -> int:
 	total_enemies=total_enemies*increment
 	print ("Incremento por daño ",100-get_parent().life_points,"% =", total_enemies)
 	
-	#set_enemy_chance(wave)
+	set_enemy_chance(wave)
 	
 	return total_enemies
 

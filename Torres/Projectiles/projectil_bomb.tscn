@@ -71,7 +71,7 @@ animations = [{
 }]
 
 [node name="projectil_bomb" type="Area2D"]
-collision_layer = 0
+collision_layer = 3
 script = ExtResource("1_h1d40")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

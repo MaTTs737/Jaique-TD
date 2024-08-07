@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cq0d3cwaod77b"]
 
-[ext_resource type="Script" path="res://Torres/Projectiles/projectilClass.gd" id="1_4vcre"]
+[ext_resource type="Script" path="res://Torres/Projectiles/projectil_hard.gd" id="1_1ooam"]
 [ext_resource type="Texture2D" uid="uid://ulqns7iga1ku" path="res://Torres/Projectiles/assets/pistola_sheet.png" id="2_56er0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
@@ -71,8 +71,8 @@ animations = [{
 }]
 
 [node name="projectil_hard" type="Area2D" groups=["ammo"]]
-collision_layer = 2
-script = ExtResource("1_4vcre")
+collision_layer = 3
+script = ExtResource("1_1ooam")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r1v10")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cngi0axo5vpxn"]
 
 [ext_resource type="PackedScene" uid="uid://c2n8qqufu3gyv" path="res://Torres/torreClass.tscn" id="1_ep6qm"]
-[ext_resource type="Script" path="res://torre_normal.gd" id="2_j36ft"]
+[ext_resource type="Script" path="res://Torres/Torre Normal/torre_normal.gd" id="2_j36ft"]
 
 [sub_resource type="Animation" id="Animation_rgdd6"]
 length = 0.001

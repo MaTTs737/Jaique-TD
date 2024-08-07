@@ -47,7 +47,7 @@ func _ready():
 func _process(_delta):
 	if slotSelected:
 		enable_tower_buttons()
-	if coins > 1000:
+	if $map.wave>20:
 		win()
 	if Input.is_action_just_pressed("pausa"):
 		var pausaScreen = pantallaPausa.instantiate()
@@ -117,9 +117,9 @@ func _on_tower_button_bomb_pressed():
 func _on_next_wave_button_pressed():
 	pass
 
-func enemy_arrived():
-	life_points -= 1
-	if life_points == 0:
+func enemy_arrived(damage:int):
+	life_points -= damage
+	if life_points <= 0:
 		lose()
 
 func disable_tower_buttons():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://k0bac3prnfh7"]
 
-[ext_resource type="Script" path="res://Torres/Projectiles/projectilClass.gd" id="1_1r7ny"]
+[ext_resource type="Script" path="res://Torres/Projectiles/projectil_ice.gd" id="1_aam1k"]
 [ext_resource type="Texture2D" uid="uid://dqe23fl6vxvkv" path="res://Torres/Projectiles/assets/bolsa_hielo_sheet.png" id="2_iaj8u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
@@ -71,8 +71,8 @@ animations = [{
 }]
 
 [node name="projectil_ice" type="Area2D" groups=["ammo"]]
-collision_layer = 2
-script = ExtResource("1_1r7ny")
+collision_layer = 3
+script = ExtResource("1_aam1k")
 metadata/_edit_vertical_guides_ = [-5.0, 5.0]
 metadata/_edit_horizontal_guides_ = [-5.0, 5.0]
 
