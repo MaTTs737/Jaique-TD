@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyk00xro5fje3"]
+[gd_scene load_steps=7 format=3 uid="uid://dyk00xro5fje3"]
 
 [ext_resource type="Texture2D" uid="uid://diersvy6p2ohe" path="res://Escenario/fondo_version1.png" id="1_wo77a"]
 [ext_resource type="Script" path="res://Escenario/mapa.gd" id="1_x4le8"]
 [ext_resource type="Script" path="res://Escenario/end.gd" id="3_4fej1"]
+[ext_resource type="FontFile" uid="uid://e1lkj0lym6xc" path="res://Assets Generales/fonts/IHATCS__.TTF" id="4_xorqk"]
 
 [sub_resource type="Curve2D" id="Curve2D_kiw76"]
 _data = {
@@ -17,9 +18,9 @@ size = Vector2(27, 90)
 script = ExtResource("1_x4le8")
 
 [node name="FondoVersion1" type="Sprite2D" parent="."]
-position = Vector2(577.685, 322.607)
+position = Vector2(581.881, 329.13)
 rotation = -1.57652
-scale = Vector2(1.83841, 1.67921)
+scale = Vector2(1.87551, 1.69125)
 texture = ExtResource("1_wo77a")
 
 [node name="Path" type="Path2D" parent="."]
@@ -35,6 +36,17 @@ metadata/_edit_group_ = true
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 15.0
+offset_top = 24.0
+offset_right = 128.0
+offset_bottom = 141.0
+theme_override_fonts/font = ExtResource("4_xorqk")
+theme_override_font_sizes/font_size = 100
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="end" to="end" method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

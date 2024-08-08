@@ -3,8 +3,8 @@ extends Node
 var towerSelected = false
 var selectedTower
 var selectedSprite
-var life_points = 5
-var coins : int = 30
+var life_points = 100
+var coins : int = 200
 var current_tower_slot
 @onready var tower_normal = $tower_button_normal
 @onready var tower_ice = $tower_button_ice
@@ -112,10 +112,6 @@ func _on_tower_button_bomb_pressed():
 	#selectTower("bomb")
 	#towerSelected = true
 
-# Llama siguiente oleada prematuramente
-
-func _on_next_wave_button_pressed():
-	pass
 
 func enemy_arrived(damage:int):
 	life_points -= damage

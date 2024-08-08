@@ -2,22 +2,22 @@ extends Node
 
 #Variables de las torres
 var towerCost = {
-	normal = 15,
-	hard = 50,
-	ice = 30,
-	bomb = 100,
+	normal = 30,
+	hard = 100,
+	ice = 50,
+	bomb = 300,
 }
 var towerDamage = {
-	normal = 2,
+	normal = 5,
 	hard = 10,
-	ice = 1,
+	ice = 2,
 	bomb = 1,
 }
 var towerAttackInterval = {
-	normal = 0.25,
-	hard = 0.5,
+	normal = 1,
+	hard = 1,
 	ice = 1,
-	bomb = 0.5,
+	bomb = 3,
 }
 
 #Variables de los proyectiles de las torres
@@ -47,25 +47,25 @@ var enemyDamage= {
 	minion = 1
 }
 var enemyReward= {
-	normal = 5,
+	normal = 1,
 	acc = 5,
 	acor = 5,
 	invi = 10,
 	spread = 10,
-	minion = 1
+	minion = 0
 }
 var enemySpeed= {
-	normal = 200,
-	acc = 400,
-	acor = 100,
-	invi = 200,
-	spread = 200,
-	minion = 200
+	normal = 100,
+	acc = 300,
+	acor = 75,
+	invi = 100,
+	spread = 100,
+	minion = 100
 }
 
 #Variables de las oleadas
 var spawn_interval = 0.5
-var wave_interval = 10
+var wave_interval = 30
 
 
 func _ready():

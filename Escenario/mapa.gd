@@ -7,8 +7,8 @@ var spawn_timer = 0
 var wave = 1 # Para probar - numero de oleada
 const pointer = preload("res://Escenario/pointer.tscn")
 const base_enemies = 5
-@onready var rng = RandomNumberGenerator.new()
 @onready var enemy_timer=$Timer
+@onready var time_left = $Label
 
 const enemies = { # Diccionario de escenas de enemigos
 	normal = preload("res://Enemigos/enemigo_basico/enemy_basico.tscn"),
@@ -33,6 +33,7 @@ var path2d_node
 
 @onready var timer = $Timer
 func _ready():
+	randomize()
 	enemy_scene = enemies.normal
 	timer.start(3)
 	# Buscar el nodo Path2D en el mapa
@@ -42,20 +43,20 @@ func _ready():
 	# path_follow = path2d_node.get_child(0)
 
 func _process(delta):
-	pass
+	update_time_left()
 	
 	
 # Método para generar un enemigo
 func select_enemy_based_on_probability() -> String:
-	var random_value = randf() # Genera un número aleatorio entre 0 y 1
+	var random_value = randf() 
 	var cumulative_probability = 0.0
 	
 	for key in enemyProbabilities.keys():
 		cumulative_probability += enemyProbabilities[key]
 		if random_value <= cumulative_probability:
-			return key  # Retorna la clave del diccionario que corresponde al enemigo seleccionado
+			return key  
 	
-	return ""  # Valor de respaldo en caso de error
+	return "" 
 
 func spawn_enemy(enemy_key: String):
 	var enemy_scene = enemies.get(enemy_key, null)
@@ -123,7 +124,14 @@ func launch_wave():
 	wave+=1
 		
 
+func update_time_left():
+	time_left.text = str(ceil(timer.time_left))
+
 func _on_timer_timeout():
 	await launch_wave()
 	print ("Empieza Timer para siguiente oleada ")
 	timer.start(DifficultySettings.wave_interval)
+
+
+func _on_next_wave_button_pressed():
+	_on_timer_timeout()

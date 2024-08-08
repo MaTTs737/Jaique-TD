@@ -15,6 +15,7 @@ func _process(delta):
 
 
 func die():
+	#Hijo de puta usa un bucle for
 	var pointer1 = pointer.instantiate()
 	var pointer2 = pointer.instantiate()
 	var pointer3 = pointer.instantiate()
@@ -54,5 +55,5 @@ func die():
 	get_parent().get_parent().add_child(pointer7)
 	pointer7.add_child(new_minion7)
 	
-	
+	get_tree().current_scene.coins += reward
 	queue_free()

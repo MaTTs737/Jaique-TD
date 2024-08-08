@@ -110,4 +110,4 @@ scale = Vector2(3.97501, 4.97727)
 [connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]
 [connection signal="pressed" from="tower_button_hard" to="." method="_on_tower_button_hard_pressed"]
 [connection signal="pressed" from="tower_button_bomb" to="." method="_on_tower_button_bomb_pressed"]
-[connection signal="pressed" from="nextWave_button" to="." method="_on_next_wave_button_pressed"]
+[connection signal="pressed" from="nextWave_button" to="map" method="_on_next_wave_button_pressed"]
