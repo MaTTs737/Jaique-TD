@@ -64,4 +64,7 @@ func _on_shoot_timer_timeout():
 
 func _on_detection_area_entered(area):
 	if area.is_in_group("enemies"):
-		enemies_in_range.append(area)
+		if not area.has_method("get_visibility") :
+			enemies_in_range.append(area)
+		elif area.get_visibility() == true:
+			enemies_in_range.append(area)

@@ -1,7 +1,7 @@
 extends "res://Enemigos/enemyClass.gd"
 
 @onready var invi_timer = $invi_timer
-var is_visible
+var is_visible : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	type = "invi"
@@ -19,7 +19,6 @@ func transition_to(new_state:enemyState):
 		enemyState.idle:
 			emit_signal("back_to_normal")
 			get_parent().speed = initialSpeed
-			$CollisionShape2D.disabled = false
 		enemyState.frozen:
 			get_parent().speed /= 4
 			specialCondition = true
@@ -27,7 +26,6 @@ func transition_to(new_state:enemyState):
 			emit_signal("freeze")
 		enemyState.special:
 			specialCondition = true
-			$CollisionShape2D.disabled = true
 			#$specialCondition.start() No se que hacen estas lineas pero interfieren
 			emit_signal("special_s")
 
@@ -43,6 +41,8 @@ func go_visible():
 	transition_to(enemyState.idle)
 	invi_timer.start(2)
 
+func get_visibility()->bool:
+	return is_visible
 
 func _on_invi_timer_timeout():
 	if (is_visible):

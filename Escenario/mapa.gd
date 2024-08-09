@@ -18,10 +18,10 @@ const enemies = { # Diccionario de escenas de enemigos
 	acor = preload("res://Enemigos/enemy_acor/enemy_acor.tscn")
 }
 var enemyProbabilities = {
-	normal = 1, 
+	normal = 0, 
 	acc = 0,     
 	spread = 0,  
-	invi = 0,    
+	invi = 1,    
 	acor = 0     
 }
 
