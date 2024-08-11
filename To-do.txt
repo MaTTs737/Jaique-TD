@@ -1,0 +1,2 @@
+- Ajustar el escenario final para que tenga gracia
+- algunos proyectiles no desaparecen al salir de rango

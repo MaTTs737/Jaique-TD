@@ -94,6 +94,12 @@ func set_enemy_chance(wave:int):
 			enemyProbabilities.invi=0.1
 			enemyProbabilities.acor=0.1
 			enemyProbabilities.spread=0.1
+		20:  
+			enemyProbabilities.normal=0.0
+			enemyProbabilities.acc=0.3
+			enemyProbabilities.invi=0.2
+			enemyProbabilities.acor=0.2
+			enemyProbabilities.spread=0.3
 	pass
 
 
@@ -124,13 +130,30 @@ func launch_wave():
 	wave+=1
 		
 
+func final_wave_protocol ():
+	time_left.text = ("GANASTE")
+	set_enemy_chance(wave)
+	for key in DifficultySettings.enemySpeed:
+		DifficultySettings.enemySpeed[key] = DifficultySettings.enemySpeed[key]*1.5
+	for key in DifficultySettings.enemyHP:
+		DifficultySettings.enemyHP[key] = DifficultySettings.enemySpeed[key]*2
+
+	while (true):
+		DifficultySettings.spawn_interval = 0.1
+		await get_tree().create_timer(DifficultySettings.spawn_interval).timeout
+		var enemy_type = select_enemy_based_on_probability()
+		spawn_enemy(enemy_type)
+
 func update_time_left():
 	time_left.text = str(ceil(timer.time_left))
 
 func _on_timer_timeout():
-	await launch_wave()
-	print ("Empieza Timer para siguiente oleada ")
-	timer.start(DifficultySettings.wave_interval)
+	if (wave < DifficultySettings.final_wave):
+		await launch_wave()
+		print ("Empieza Timer para siguiente oleada ")
+		timer.start(DifficultySettings.wave_interval)
+	else:
+		final_wave_protocol()
 
 
 func _on_next_wave_button_pressed():
