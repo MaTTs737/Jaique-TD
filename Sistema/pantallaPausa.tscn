@@ -57,6 +57,10 @@ text = "Volver al menu"
 layout_mode = 2
 text = "Salir del juego"
 
+[node name="boton_reiniciar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Reiniciar"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 522.0
@@ -68,3 +72,4 @@ text = "Juego en pausa"
 [connection signal="pressed" from="VBoxContainer/boton_volver" to="." method="_on_boton_volver_pressed"]
 [connection signal="pressed" from="VBoxContainer/boton_menu" to="." method="_on_boton_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/boton_salir" to="." method="_on_boton_salir_pressed"]
+[connection signal="pressed" from="VBoxContainer/boton_reiniciar" to="." method="_on_boton_reiniciar_pressed"]

@@ -34,7 +34,7 @@ var enemyHP= {
 	normal = 10,
 	acc = 10,
 	acor = 60,
-	invi = 10,
+	invi = 5,
 	spread = 40,
 	minion = 5
 }

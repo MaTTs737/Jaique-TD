@@ -42,7 +42,6 @@ func _ready():
 func _process(_delta):
 	if enemies_in_range.size() > 0:
 		target = enemies_in_range[0]
-	
 	if target and can_shoot: shoot()
 
 func _on_DetectionArea_area_exited(area):
@@ -52,9 +51,13 @@ func _on_DetectionArea_area_exited(area):
 			if enemies_in_range:
 				target = enemies_in_range[0]
 			else : target = null
+		if area.has_method("get_visibility"):
+			area.disconnect("became_invisible", Callable(self, "_on_enemy_became_invisible"))
+			area.disconnect("became_visible", Callable(self, "_on_enemy_became_visible"))
 	if area.is_in_group("ammo") and area.get_parent() == self:
 		print("salio")
 		area.queue_free()
+	
 	
 
 
@@ -66,5 +69,23 @@ func _on_detection_area_entered(area):
 	if area.is_in_group("enemies"):
 		if not area.has_method("get_visibility") :
 			enemies_in_range.append(area)
-		elif area.get_visibility() == true:
-			enemies_in_range.append(area)
+		else :
+			area.connect("became_invisible", Callable(self, "_on_enemy_became_invisible"))
+			area.connect("became_visible", Callable(self, "_on_enemy_became_visible"))
+			if area.get_visibility() == true:
+				enemies_in_range.append(area)
+
+# Elimina al enemigo de la lista de objetivos cuando se vuelve invisible
+func _on_enemy_became_invisible(enemy):
+	if enemy in enemies_in_range:
+		enemies_in_range.erase(enemy)
+	if target == enemy:
+		if enemies_in_range.size() > 0:
+			target = enemies_in_range[0]
+		else:
+			target = null
+
+# Vuelve a agregar al enemigo cuando se haga visible si sigue en su rango
+func _on_enemy_became_visible(enemy):
+	if enemy not in enemies_in_range:
+		enemies_in_range.append(enemy)

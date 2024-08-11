@@ -1,5 +1,8 @@
 extends "res://Enemigos/enemyClass.gd"
 
+signal became_invisible
+signal became_visible
+
 @onready var invi_timer = $invi_timer
 var is_visible : bool = true
 # Called when the node enters the scene tree for the first time.
@@ -35,11 +38,13 @@ func go_invi():
 	is_visible=false
 	transition_to(enemyState.special)
 	invi_timer.start(randi() % 6 + 10)
+	emit_signal("became_invisible", self)
 	
 func go_visible():
 	is_visible=true
 	transition_to(enemyState.idle)
 	invi_timer.start(2)
+	emit_signal("became_visible", self)
 
 func get_visibility()->bool:
 	return is_visible
