@@ -19,7 +19,7 @@ const enemies = { # Diccionario de escenas de enemigos
 }
 var enemyProbabilities = {
 	normal = 0, 
-	acc = 1,     
+	acc = 0,     
 	spread = 0,  
 	invi = 0,    
 	acor = 0     
