@@ -70,7 +70,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="projectil_bomb" type="Area2D"]
+[node name="projectil_bomb" type="Area2D" groups=["ammo"]]
 collision_layer = 3
 script = ExtResource("1_h1d40")
 

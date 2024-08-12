@@ -10,6 +10,7 @@ var enemyIn = Callable(self,"_on_DetectionArea_area_entered")
 var enemyOut = Callable(self,"_on_DetectionArea_area_exited")
 var projectil = preload("res://Torres/Projectiles/projectil_normal.tscn")
 @onready var anim = $AnimationPlayer
+@onready var collision_shape = $DetectionArea/colision
 var can_shoot = true
 
 
@@ -40,9 +41,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Input.is_key_pressed(KEY_ALT):
+		queue_redraw()
+	else:
+		queue_redraw()
 	if enemies_in_range.size() > 0:
 		target = enemies_in_range[0]
 	if target and can_shoot: shoot()
+
+func _draw():
+	if Input.is_key_pressed(KEY_ALT):
+		draw_circle(Vector2.ZERO, collision_shape.shape.radius, Color(184, 20, 20, 0.3))
 
 func _on_DetectionArea_area_exited(area):
 	if area.is_in_group("enemies"):

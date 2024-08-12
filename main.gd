@@ -47,8 +47,6 @@ func _ready():
 func _process(_delta):
 	if slotSelected:
 		enable_tower_buttons()
-	if $map.wave>20:
-		win()
 	if Input.is_action_just_pressed("pausa"):
 		var pausaScreen = pantallaPausa.instantiate()
 		add_child(pausaScreen)
