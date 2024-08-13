@@ -18,6 +18,8 @@ var specialCondition = false
 var path_follow : PathFollow2D
 
 const efectoMuerte = preload("res://Enemigos/efectoMuerte.tscn")
+const hitEffect = preload("res://Enemigos/Hit_effect.tscn")
+const arriveEffect = preload("res://Enemigos/arrive_effect.tscn")
 
 func transition_to(new_state:enemyState):
 	state = new_state
@@ -45,10 +47,10 @@ func transition_to(new_state:enemyState):
 	
 	
 func die():
-	var efecto = efectoMuerte.instantiate()
-	efecto.global_position = global_position
-	get_tree().current_scene.add_child(efecto)
-	get_tree().current_scene.coins += reward
+	var efecto = efectoMuerte.instantiate() # Instancia escena con efecto de muerte
+	efecto.global_position = global_position 
+	get_tree().current_scene.add_child(efecto) # Lo agrega a la escena main
+	get_tree().current_scene.coins += reward # Entrega recompensa
 	queue_free()
 
 # Called when the node enters the scene tree for the first time.
@@ -73,6 +75,9 @@ func _process(_delta):
 	#print("no hay")
 
 func get_hit(damage):
+	var efecto = hitEffect.instantiate()  # Instancia escena de efecto grafico de golpe
+	efecto.global_position = global_position
+	get_tree().current_scene.add_child(efecto)
 	healthPoints -= damage
 
 func _on_special_condition_timeout():
@@ -88,4 +93,7 @@ func _on_area_entered(area):
 
 func arrived():
 	get_tree().get_current_scene().enemy_arrived(damage)
+	var efecto = arriveEffect.instantiate()
+	efecto.global_position = global_position
+	get_tree().current_scene.add_child(efecto)
 	queue_free()

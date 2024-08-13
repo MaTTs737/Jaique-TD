@@ -5,6 +5,8 @@ extends "res://Enemigos/enemyClass.gd"
 func _ready():
 	type = "normal"
 	super._ready()
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
