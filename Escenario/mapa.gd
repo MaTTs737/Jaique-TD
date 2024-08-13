@@ -18,7 +18,7 @@ const enemies = { # Diccionario de escenas de enemigos
 	acor = preload("res://Enemigos/enemy_acor/enemy_acor.tscn")
 }
 var enemyProbabilities = {
-	normal = 0, 
+	normal = 1, 
 	acc = 0,     
 	spread = 0,  
 	invi = 0,    
@@ -55,7 +55,6 @@ func select_enemy_based_on_probability() -> String:
 		cumulative_probability += enemyProbabilities[key]
 		if random_value <= cumulative_probability:
 			return key  
-	
 	return "" 
 
 func spawn_enemy(enemy_key: String):
@@ -104,18 +103,10 @@ func set_enemy_chance(wave:int):
 
 
 func set_wave(wave:int) -> int:
-	print("Oleada:", wave)
-	print("Cantidad de enemigos Base: ",base_enemies)
-	
-	# Incrementa total_enemies en funcion de numero de oleada
 	var total_enemies=  base_enemies* pow(1.15, wave - 1) # E(n)=E(1)⋅(1+r)^n-1 donde n es el numero de oleada y r es el incremento
-	print ("Incremento por oleada ","15% de la anterior =", total_enemies)
-	
 	# Vuelve a incrementar total_enemies en funcion de daño recibido
 	var increment= 1+0.01*(100-get_parent().life_points) # si se recibio 3 de daño aumenta 3%,etc
 	total_enemies=total_enemies*increment
-	print ("Incremento por daño ",100-get_parent().life_points,"% =", total_enemies)
-	
 	set_enemy_chance(wave)
 	
 	return total_enemies
@@ -126,7 +117,6 @@ func launch_wave():
 		await get_tree().create_timer(DifficultySettings.spawn_interval).timeout
 		var enemy_type = select_enemy_based_on_probability()
 		spawn_enemy(enemy_type)
-	print ("Fin de Oleada ", wave)
 	wave+=1
 		
 
@@ -150,7 +140,6 @@ func update_time_left():
 func _on_timer_timeout():
 	if (wave < DifficultySettings.final_wave):
 		await launch_wave()
-		print ("Empieza Timer para siguiente oleada ")
 		timer.start(DifficultySettings.wave_interval)
 	else:
 		final_wave_protocol()
