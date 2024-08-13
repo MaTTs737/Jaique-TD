@@ -4,11 +4,12 @@ extends Node2D
 var enemy_scene # = preload ("res://Enemigos/enemigo_basico/enemy_basico.tscn")  Escena del enemigo
 var spawn_interval = 3 # Intervalo de tiempo entre la generación de enemigos
 var spawn_timer = 0
-var wave = 1 # Para probar - numero de oleada
+var wave = 0 # Para probar - numero de oleada
 const pointer = preload("res://Escenario/pointer.tscn")
 const base_enemies = 5
 @onready var enemy_timer=$Timer
-@onready var time_left = $Label
+@onready var time_left = $Control/timerLaber
+@onready var winLabel = $Control/winLabel
 
 const enemies = { # Diccionario de escenas de enemigos
 	normal = preload("res://Enemigos/enemigo_basico/enemy_basico.tscn"),
@@ -117,11 +118,11 @@ func launch_wave():
 		await get_tree().create_timer(DifficultySettings.spawn_interval).timeout
 		var enemy_type = select_enemy_based_on_probability()
 		spawn_enemy(enemy_type)
-	wave+=1
 		
 
 func final_wave_protocol ():
-	time_left.text = ("GANASTE")
+	print ("OLEADA FINAL")
+	winLabel.visible = true
 	set_enemy_chance(wave)
 	for key in DifficultySettings.enemySpeed:
 		DifficultySettings.enemySpeed[key] = DifficultySettings.enemySpeed[key]*1.5
@@ -138,6 +139,8 @@ func update_time_left():
 	time_left.text = str(ceil(timer.time_left))
 
 func _on_timer_timeout():
+	wave+=1
+	print ("NUEVA OLEADA: ", wave)
 	if (wave < DifficultySettings.final_wave):
 		await launch_wave()
 		timer.start(DifficultySettings.wave_interval)

@@ -92,8 +92,8 @@ func _on_area_entered(area):
 			transition_to(enemyState.frozen)
 
 func arrived():
-	get_tree().get_current_scene().enemy_arrived(damage)
 	var efecto = arriveEffect.instantiate()
 	efecto.global_position = global_position
 	get_tree().current_scene.add_child(efecto)
 	queue_free()
+	get_tree().get_current_scene().enemy_arrived(damage)
