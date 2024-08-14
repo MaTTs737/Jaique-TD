@@ -101,5 +101,12 @@ func _on_area_entered(area):
 			
 
 func arrived():
+<<<<<<< HEAD
 	emit_signal("arrived_signal",damage)
+=======
+	var efecto = arriveEffect.instantiate()
+	efecto.global_position = global_position
+	get_tree().current_scene.add_child(efecto)
+>>>>>>> cd9012e0a3ffacb5c4f1639e73464d13c7cd105d
 	queue_free()
+	get_tree().get_current_scene().enemy_arrived(damage)

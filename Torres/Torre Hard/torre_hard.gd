@@ -5,6 +5,7 @@ extends "res://Torres/torreClass.gd"
 func _ready():
 	type = "hard"
 	projectil = preload("res://Torres/Projectiles/projectil_hard.tscn")
+	radiusColor = Color(255 / 255.0, 0 / 255.0, 0 / 255.0, 0.3)
 	super ._ready()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

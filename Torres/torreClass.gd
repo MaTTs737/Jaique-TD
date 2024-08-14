@@ -4,6 +4,7 @@ var damage : int
 var speed : int
 var cost : int
 var type : String
+var radiusColor : Color
 var target : Object
 var enemies_in_range = []
 var enemyIn = Callable(self,"_on_DetectionArea_area_entered")
@@ -51,7 +52,7 @@ func _process(_delta):
 
 func _draw():
 	if Input.is_key_pressed(KEY_ALT):
-		draw_circle(Vector2.ZERO, collision_shape.shape.radius, Color(184, 20, 20, 0.3))
+		draw_circle(Vector2.ZERO, collision_shape.shape.radius, radiusColor)
 
 func _on_DetectionArea_area_exited(area):
 	if area.is_in_group("enemies"):

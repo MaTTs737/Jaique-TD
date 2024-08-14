@@ -4,6 +4,7 @@ extends "res://Torres/torreClass.gd"
 func _ready():
 	type = "ice"
 	projectil = preload("res://Torres/Projectiles/projectil_ice.tscn")
+	radiusColor = Color(153 / 255.0, 204 / 255.0, 255 / 255.0, 0.3)
 	super ._ready()
 	
 

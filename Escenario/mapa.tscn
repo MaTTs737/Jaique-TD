@@ -17,6 +17,8 @@ size = Vector2(27, 90)
 
 [node name="map" type="Node2D"]
 script = ExtResource("1_x4le8")
+metadata/_edit_horizontal_guides_ = [-103.0]
+metadata/_edit_vertical_guides_ = [562.0]
 
 [node name="FondoVersion1" type="Sprite2D" parent="."]
 position = Vector2(581.881, 329.13)
@@ -38,11 +40,30 @@ metadata/_edit_group_ = true
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Label" type="Label" parent="."]
-offset_left = 15.0
-offset_top = 24.0
-offset_right = 128.0
-offset_bottom = 141.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1155.0
+offset_bottom = 650.0
+
+[node name="winLabel" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -306.0
+offset_right = 306.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_xorqk")
+theme_override_font_sizes/font_size = 50
+text = "¡SOBREVIVE LO MAS QUE PUEDAS!"
+
+[node name="timerLaber" type="Label" parent="Control"]
+layout_mode = 1
+offset_right = 134.0
+offset_bottom = 147.0
 theme_override_fonts/font = ExtResource("4_xorqk")
 theme_override_font_sizes/font_size = 100
 text = "10"
