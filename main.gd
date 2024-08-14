@@ -7,6 +7,7 @@ var life_points = 100
 var max_life_points = 100
 var coins : int = 300
 var current_tower_slot
+
 @onready var tower_normal = $tower_button_normal
 @onready var tower_ice = $tower_button_ice
 @onready var tower_hard = $tower_button_hard
@@ -60,6 +61,7 @@ const arriveEffect = preload("res://Enemigos/arrive_effect.tscn")
 func _ready():
 	disable_tower_buttons()
 	$audio_background.stream.loop = true
+	Global.player_won = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if slotSelected:
@@ -150,9 +152,7 @@ func win():
 	add_child(vic)
 	
 func lose():
-	#get_tree().paused = true
-	#var lose = pantallaDerrota.instantiate()
-	#add_child(lose)
+	Global.playerScore.timeSurvived=$map.timeSurvived
 	get_tree().change_scene_to_file("res://Sistema/Cutscenes/closing.tscn")
 
 func updateTowerCost(tower):

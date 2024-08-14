@@ -7,6 +7,8 @@ var spawn_timer = 0
 var wave = 0 # Para probar - numero de oleada
 const pointer = preload("res://Escenario/pointer.tscn")
 const base_enemies = 5
+var countingTime = false
+var timeSurvived=0.0
 @onready var enemy_timer=$Timer
 @onready var audio_hdp = $audio_hdp
 @onready var time_left = $Control/timerLabel
@@ -45,7 +47,11 @@ func _ready():
 	# path_follow = path2d_node.get_child(0)
 
 func _process(delta):
-	update_time_left()
+	if countingTime:
+		timeSurvived+=delta
+		update_time_left()
+	else:
+		update_time_left()
 	
 # Método para generar un enemigo
 func select_enemy_based_on_probability() -> String:
@@ -95,11 +101,11 @@ func set_enemy_chance(wave:int):
 			enemyProbabilities.acor=0.1
 			enemyProbabilities.spread=0.1
 		20:  
-			enemyProbabilities.normal=0.0
-			enemyProbabilities.acc=0.3
+			enemyProbabilities.normal=0.2
+			enemyProbabilities.acc=0.2
 			enemyProbabilities.invi=0.2
 			enemyProbabilities.acor=0.2
-			enemyProbabilities.spread=0.3
+			enemyProbabilities.spread=0.2
 	pass
 
 
@@ -123,26 +129,28 @@ func launch_wave():
 		
 
 func final_wave_protocol ():
-	print ("OLEADA FINAL")
+	Global.player_won = true
+	Global.playerScore.coinsLeft=self.get_parent().coins
+	Global.playerScore.lifeLeft=self.get_parent().life_points
 	winLabel.visible = true
 	set_enemy_chance(wave)
-	for key in DifficultySettings.enemySpeed:
-		DifficultySettings.enemySpeed[key] = DifficultySettings.enemySpeed[key]*1.5
-	for key in DifficultySettings.enemyHP:
-		DifficultySettings.enemyHP[key] = DifficultySettings.enemySpeed[key]*2
-
+	time_left.visible=false
+	await get_tree().create_timer(3).timeout
+	countingTime=true
+	time_left.visible=true
 	while (true):
-		DifficultySettings.spawn_interval = 0.1
 		await get_tree().create_timer(DifficultySettings.spawn_interval).timeout
 		var enemy_type = select_enemy_based_on_probability()
 		spawn_enemy(enemy_type)
 
 func update_time_left():
-	time_left.text = str(ceil(timer.time_left))
+	if not countingTime:
+		time_left.text = str(ceil(timer.time_left))
+	else:
+		time_left.text = str(ceil(timeSurvived))
 
 func _on_timer_timeout():
 	wave+=1
-	print ("NUEVA OLEADA: ", wave)
 	if (wave < DifficultySettings.final_wave):
 		await launch_wave()
 		timer.start(DifficultySettings.wave_interval)

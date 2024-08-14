@@ -67,9 +67,3 @@ var enemySpeed= {
 var spawn_interval = 0.5
 var wave_interval = 30
 const final_wave = 20
-
-func _ready():
-	pass 
-
-func _process(delta):
-	pass
