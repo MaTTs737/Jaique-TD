@@ -60,7 +60,7 @@ theme_override_fonts/font = ExtResource("4_xorqk")
 theme_override_font_sizes/font_size = 50
 text = "¡SOBREVIVE LO MAS QUE PUEDAS!"
 
-[node name="timerLaber" type="Label" parent="Control"]
+[node name="timerLabel" type="Label" parent="Control"]
 layout_mode = 1
 offset_right = 134.0
 offset_bottom = 147.0

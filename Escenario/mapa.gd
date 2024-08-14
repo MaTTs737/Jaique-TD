@@ -8,13 +8,9 @@ var wave = 0 # Para probar - numero de oleada
 const pointer = preload("res://Escenario/pointer.tscn")
 const base_enemies = 5
 @onready var enemy_timer=$Timer
-<<<<<<< HEAD
-@onready var time_left = $Label
 @onready var audio_hdp = $audio_hdp
-=======
-@onready var time_left = $Control/timerLaber
+@onready var time_left = $Control/timerLabel
 @onready var winLabel = $Control/winLabel
->>>>>>> cd9012e0a3ffacb5c4f1639e73464d13c7cd105d
 
 const enemies = { # Diccionario de escenas de enemigos
 	normal = preload("res://Enemigos/enemigo_basico/enemy_basico.tscn"),
@@ -24,9 +20,9 @@ const enemies = { # Diccionario de escenas de enemigos
 	acor = preload("res://Enemigos/enemy_acor/enemy_acor.tscn")
 }
 var enemyProbabilities = {
-	normal = 1, 
-	acc = 0,     
-	spread = 0,  
+	normal = 0, 
+	acc = 0.5,     
+	spread = 0.5,  
 	invi = 0,    
 	acor = 0     
 }

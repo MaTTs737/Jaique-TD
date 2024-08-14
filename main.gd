@@ -41,14 +41,14 @@ var towerSprites = {
 var towerCost = DifficultySettings.towerCost
 
 var arrival : Callable = func enemy_arrived(damage:int):
-	life_points -= damage
 	#update_fog_intensity()
 	audio_arrival.stream = arrival_sound
 	audio_arrival.volume_db = -10
 	audio_arrival.play()
 	var arrive_effect = arriveEffect.instantiate()
-	arrive_effect.global_position = $map/end.global_position
+	arrive_effect.global_position = $map/end/CollisionShape2D.global_position
 	add_child(arrive_effect)
+	life_points -= damage
 
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
 const pantallaVictoria = preload("res://Sistema/pantallaVictoria.tscn")
