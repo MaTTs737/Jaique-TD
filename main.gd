@@ -49,6 +49,8 @@ var arrival : Callable = func enemy_arrived(damage:int):
 	arrive_effect.global_position = $map/end/CollisionShape2D.global_position
 	add_child(arrive_effect)
 	life_points -= damage
+	if life_points <= 0:
+		lose()
 
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
 const pantallaVictoria = preload("res://Sistema/pantallaVictoria.tscn")
@@ -66,11 +68,7 @@ func _process(_delta):
 		var pausaScreen = pantallaPausa.instantiate()
 		add_child(pausaScreen)
 		get_tree().paused = true
-	if coins < 100 : win()
 		#get_tree().change_scene_to_file("res://Sistema/pantallaPausa.tscn")
-	
-	if life_points <= 0:
-		lose()
 
 # func selectTower(type):  # Selecciona torre y coloca sprite sobre el cursor3	selectedTower = torres[type].instantiate()
 #	selectedSprite = towerSprites[type].instantiate()
