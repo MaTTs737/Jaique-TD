@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2i5pc2x6ja36"
+path="res://.godot/imported/slash-21834.mp3-7712638ea96ed683ab5ce5992f979674.mp3str"
+
+[deps]
+
+source_file="res://Assets Generales/Audios/slash-21834.mp3"
+dest_files=["res://.godot/imported/slash-21834.mp3-7712638ea96ed683ab5ce5992f979674.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

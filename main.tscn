@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b7oo4wr7nfyvh"]
+[gd_scene load_steps=32 format=3 uid="uid://b7oo4wr7nfyvh"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0wtpu"]
 [ext_resource type="PackedScene" uid="uid://dyk00xro5fje3" path="res://Escenario/mapa.tscn" id="1_qomae"]
@@ -30,15 +30,19 @@
 [ext_resource type="Script" path="res://Torres/tower_button_bomb.gd" id="23_vb4hr"]
 [ext_resource type="PackedScene" uid="uid://ck8vm4q205we2" path="res://Escenario/coin_sprite.tscn" id="24_3ekwo"]
 [ext_resource type="PackedScene" uid="uid://cn3pvm6kc0tw8" path="res://Escenario/life_sprite.tscn" id="25_vxa5f"]
+[ext_resource type="AudioStream" uid="uid://buw1lj472e7nl" path="res://Assets Generales/Audios/freemusicbg.com-Royal Banana.mp3" id="31_ugqw3"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_0wtpu")
 
-[node name="map" parent="." instance=ExtResource("1_qomae")]
-position = Vector2(6, 4)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(593, 334)
+
+[node name="map" parent="." instance=ExtResource("1_qomae")]
+position = Vector2(20, 10)
+
+[node name="towerSlots" parent="." instance=ExtResource("23_sdt4q")]
+position = Vector2(47, 39)
 
 [node name="tower_button_normal" parent="." instance=ExtResource("3_1yxke")]
 offset_left = 46.0
@@ -94,9 +98,6 @@ texture_pressed = ExtResource("20_g8pje")
 texture_hover = ExtResource("21_h02rm")
 texture_disabled = ExtResource("22_p54cn")
 
-[node name="towerSlots" parent="." instance=ExtResource("23_sdt4q")]
-position = Vector2(32, 26)
-
 [node name="coin_sprite" parent="." instance=ExtResource("24_3ekwo")]
 position = Vector2(896, 608)
 
@@ -104,7 +105,11 @@ position = Vector2(896, 608)
 position = Vector2(1035.19, 50.375)
 scale = Vector2(3.97501, 4.97727)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="audio_arrival" type="AudioStreamPlayer2D" parent="."]
+
+[node name="audio_background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_ugqw3")
+autoplay = true
 
 [connection signal="pressed" from="tower_button_normal" to="." method="_on_new_tower_button_pressed"]
 [connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]

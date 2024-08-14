@@ -9,6 +9,7 @@ const pointer = preload("res://Escenario/pointer.tscn")
 const base_enemies = 5
 @onready var enemy_timer=$Timer
 @onready var time_left = $Label
+@onready var audio_hdp = $audio_hdp
 
 const enemies = { # Diccionario de escenas de enemigos
 	normal = preload("res://Enemigos/enemigo_basico/enemy_basico.tscn"),
@@ -44,7 +45,6 @@ func _ready():
 
 func _process(delta):
 	update_time_left()
-	
 	
 # Método para generar un enemigo
 func select_enemy_based_on_probability() -> String:
@@ -112,6 +112,8 @@ func set_wave(wave:int) -> int:
 	return total_enemies
 
 func launch_wave():
+	if wave == 1 :
+		audio_hdp.play()
 	var total_enemies=set_wave(wave)
 	for i in range(total_enemies):
 		await get_tree().create_timer(DifficultySettings.spawn_interval).timeout

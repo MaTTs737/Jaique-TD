@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://hub46yh85coj"]
+[gd_scene load_steps=6 format=3 uid="uid://hub46yh85coj"]
 
 [ext_resource type="Texture2D" uid="uid://besax8lyu4jvv" path="res://Assets Generales/png/EnemyDeathEffect.png" id="1_f0yep"]
+[ext_resource type="AudioStream" uid="uid://cd0vyknn7cv8c" path="res://Assets Generales/Audios/bigboom-42826 (mp3cut.net).mp3" id="2_xc2kr"]
 
 [sub_resource type="Animation" id="Animation_fsnom"]
 length = 0.001
@@ -65,3 +66,8 @@ libraries = {
 "": SubResource("AnimationLibrary_h77uw")
 }
 autoplay = "muerte"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_xc2kr")
+volume_db = -20.0
+autoplay = true

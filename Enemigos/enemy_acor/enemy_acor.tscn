@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cp642tvdd0clr"]
+[gd_scene load_steps=23 format=3 uid="uid://cp642tvdd0clr"]
 
 [ext_resource type="PackedScene" uid="uid://b7ga7w5ckfte5" path="res://Enemigos/enemyClass.tscn" id="1_t1c7g"]
 [ext_resource type="Script" path="res://Enemigos/enemy_acor/enemy_acor.gd" id="2_ajoje"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bchnkv5vcwpxb" path="res://Enemigos/assets/sprites/jaique_enemy_acor_1_n.png" id="4_6vyqw"]
 [ext_resource type="Texture2D" uid="uid://bp6nqu5gk5m77" path="res://Enemigos/assets/sprites/jaique_enemy_acor_3_f.png" id="5_ldu5e"]
 [ext_resource type="Texture2D" uid="uid://8gyf1myoo76r" path="res://Enemigos/assets/sprites/jaique_enemy_acor_1_f.png" id="6_qabw7"]
+[ext_resource type="AudioStream" uid="uid://bsj2lul8ntf72" path="res://Assets Generales/Audios/metal-whoosh-hit-10-202176.mp3" id="9_gdw2p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d23eg"]
 atlas = ExtResource("2_ggjid")
@@ -133,3 +134,7 @@ script = ExtResource("2_ajoje")
 position = Vector2(3, -1)
 sprite_frames = SubResource("SpriteFrames_oyojb")
 animation = &"frozen"
+
+[node name="audio_hit" type="AudioStreamPlayer2D" parent="." index="4"]
+stream = ExtResource("9_gdw2p")
+volume_db = -15.0

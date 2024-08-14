@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkof6p5t4dvwj"]
+[gd_scene load_steps=4 format=3 uid="uid://dkof6p5t4dvwj"]
 
 [ext_resource type="Texture2D" uid="uid://dnl5aeutbhr7b" path="res://Sistema/fondoPausa.jpg" id="1_kd4e3"]
 [ext_resource type="Script" path="res://Sistema/pantallaVictoria.gd" id="1_q5k1v"]
+[ext_resource type="AudioStream" uid="uid://bu62ajsrei2h1" path="res://Assets Generales/Audios/you-win-sequence-2-183949.mp3" id="3_jgd1j"]
 
 [node name="PantallaVictoria" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,6 +77,10 @@ text = "Salir al menu"
 layout_mode = 2
 text = "Salir del Juego
 "
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jgd1j")
+autoplay = true
 
 [connection signal="pressed" from="HBoxContainer/volverAJugar" to="." method="_on_volver_a_jugar_pressed"]
 [connection signal="pressed" from="HBoxContainer/salirAlMenu" to="." method="_on_salir_al_menu_pressed"]

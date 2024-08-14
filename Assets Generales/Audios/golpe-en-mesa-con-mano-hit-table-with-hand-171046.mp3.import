@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xq435h6ymi2a"
+path="res://.godot/imported/golpe-en-mesa-con-mano-hit-table-with-hand-171046.mp3-4147c454b46636f4a64eb4ef32e8e694.mp3str"
+
+[deps]
+
+source_file="res://Assets Generales/Audios/golpe-en-mesa-con-mano-hit-table-with-hand-171046.mp3"
+dest_files=["res://.godot/imported/golpe-en-mesa-con-mano-hit-table-with-hand-171046.mp3-4147c454b46636f4a64eb4ef32e8e694.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

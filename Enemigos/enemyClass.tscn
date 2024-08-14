@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7ga7w5ckfte5"]
+[gd_scene load_steps=6 format=3 uid="uid://b7ga7w5ckfte5"]
 
 [ext_resource type="Script" path="res://Enemigos/enemyClass.gd" id="1_awxay"]
 [ext_resource type="Script" path="res://Enemigos/AnimatedSprite2D.gd" id="2_uuoi5"]
+[ext_resource type="AudioStream" uid="uid://r54dylprrf13" path="res://Assets Generales/Audios/breaking-ice-98676.mp3" id="3_ptk3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qc8v"]
 size = Vector2(11, 37)
@@ -41,6 +42,10 @@ sprite_frames = SubResource("SpriteFrames_86auw")
 animation = &"idle"
 autoplay = "idle"
 script = ExtResource("2_uuoi5")
+
+[node name="audio_freeze" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ptk3i")
+volume_db = -10.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="back_to_normal" from="." to="AnimatedSprite2D" method="_on_enemy_class_back_to_normal"]

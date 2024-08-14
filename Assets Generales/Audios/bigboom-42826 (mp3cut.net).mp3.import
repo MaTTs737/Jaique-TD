@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cd0vyknn7cv8c"
+path="res://.godot/imported/bigboom-42826 (mp3cut.net).mp3-ed1ecc15cb335afc2ff45076493623eb.mp3str"
+
+[deps]
+
+source_file="res://Assets Generales/Audios/bigboom-42826 (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/bigboom-42826 (mp3cut.net).mp3-ed1ecc15cb335afc2ff45076493623eb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

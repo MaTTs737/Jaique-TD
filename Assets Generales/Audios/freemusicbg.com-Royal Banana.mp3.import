@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://buw1lj472e7nl"
+path="res://.godot/imported/freemusicbg.com-Royal Banana.mp3-3989d91bf75bbf3249e1edbaea8db16b.mp3str"
+
+[deps]
+
+source_file="res://Assets Generales/Audios/freemusicbg.com-Royal Banana.mp3"
+dest_files=["res://.godot/imported/freemusicbg.com-Royal Banana.mp3-3989d91bf75bbf3249e1edbaea8db16b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

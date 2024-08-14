@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c0kkl2onbnqr2"
+path="res://.godot/imported/hijo_de_puta.mp3-8e54a00bcd82c2b5739140edf716f315.mp3str"
+
+[deps]
+
+source_file="res://Assets Generales/Audios/hijo_de_puta.mp3"
+dest_files=["res://.godot/imported/hijo_de_puta.mp3-8e54a00bcd82c2b5739140edf716f315.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,14 +2,19 @@ extends Node
 
 var towerSelected = false
 var selectedTower
-var selectedSprite
+var selectedSprite 
 var life_points = 100
+var max_life_points = 100
 var coins : int = 300
 var current_tower_slot
 @onready var tower_normal = $tower_button_normal
 @onready var tower_ice = $tower_button_ice
 @onready var tower_hard = $tower_button_hard
 @onready var tower_bomb = $tower_button_bomb
+#@onready var fog_material = $"map/CanvasLayer/ColorRect".material
+@onready var audio_arrival = $audio_arrival
+@onready var arrival_sound = load("res://Assets Generales/Audios/splash-death-splash-46048.mp3")
+
 var slotSelected = false
 
 var tower_buttons = [
@@ -35,14 +40,24 @@ var towerSprites = {
 
 var towerCost = DifficultySettings.towerCost
 
+var arrival : Callable = func enemy_arrived(damage:int):
+	life_points -= damage
+	#update_fog_intensity()
+	audio_arrival.stream = arrival_sound
+	audio_arrival.volume_db = -10
+	audio_arrival.play()
+	var arrive_effect = arriveEffect.instantiate()
+	arrive_effect.global_position = $map/end.global_position
+	add_child(arrive_effect)
 
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
 const pantallaVictoria = preload("res://Sistema/pantallaVictoria.tscn")
 const pantallaDerrota = preload("res://Sistema/pantallaDerrota.tscn")
-# Called when the node enters the scene tree for the first time.
+const arriveEffect = preload("res://Enemigos/arrive_effect.tscn")
+
 func _ready():
 	disable_tower_buttons()
-
+	$audio_background.stream.loop = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if slotSelected:
@@ -51,9 +66,11 @@ func _process(_delta):
 		var pausaScreen = pantallaPausa.instantiate()
 		add_child(pausaScreen)
 		get_tree().paused = true
-		
+	if coins < 100 : win()
 		#get_tree().change_scene_to_file("res://Sistema/pantallaPausa.tscn")
-
+	
+	if life_points <= 0:
+		lose()
 
 # func selectTower(type):  # Selecciona torre y coloca sprite sobre el cursor3	selectedTower = torres[type].instantiate()
 #	selectedSprite = towerSprites[type].instantiate()
@@ -111,11 +128,6 @@ func _on_tower_button_bomb_pressed():
 	#towerSelected = true
 
 
-func enemy_arrived(damage:int):
-	life_points -= damage
-	if life_points <= 0:
-		lose()
-
 func disable_tower_buttons():
 	tower_normal.disabled = true
 	tower_ice.disabled = true
@@ -144,9 +156,14 @@ func lose():
 	#var lose = pantallaDerrota.instantiate()
 	#add_child(lose)
 	get_tree().change_scene_to_file("res://Sistema/Cutscenes/closing.tscn")
+
 func updateTowerCost(tower):
 	for i in torres:
 		if tower == i:
 			towerCost[tower] *= 1.05
 			towerCost[tower]=int(towerCost[tower])
 			print (towerCost[tower])
+
+#func update_fog_intensity():
+#	var fog_intensity = 1.0 - float(life_points)/float(max_life_points)
+#	fog_material.set_shader_parameter("fog_intensity",fog_intensity)

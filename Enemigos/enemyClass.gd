@@ -3,6 +3,7 @@ extends Area2D
 signal freeze
 signal special_s
 signal back_to_normal
+signal arrived_signal(dmg)
 
 enum enemyState{idle, frozen, special}
 
@@ -15,11 +16,15 @@ var reward : int = 10
 var specialCondition = false
 @onready var state = enemyState.idle
 @onready var anim = $AnimatedSprite2D
+@onready var audio_freeze = $audio_freeze
+
 var path_follow : PathFollow2D
+var proyectil # Almacena el tipo de proyectil que golpea
 
 const efectoMuerte = preload("res://Enemigos/efectoMuerte.tscn")
 const hitEffect = preload("res://Enemigos/Hit_effect.tscn")
-const arriveEffect = preload("res://Enemigos/arrive_effect.tscn")
+
+@onready var sonido_freeze = load("res://Assets Generales/Audios/breaking-ice-98676.mp3")
 
 func transition_to(new_state:enemyState):
 	state = new_state
@@ -29,6 +34,7 @@ func transition_to(new_state:enemyState):
 			get_parent().speed = initialSpeed
 			specialCondition = false
 		enemyState.frozen:
+			audio_freeze.play()
 			get_parent().speed /= 4
 			specialCondition = true
 			$specialCondition.start()
@@ -48,7 +54,7 @@ func transition_to(new_state:enemyState):
 	
 func die():
 	var efecto = efectoMuerte.instantiate() # Instancia escena con efecto de muerte
-	efecto.global_position = global_position 
+	efecto.global_position = global_position
 	get_tree().current_scene.add_child(efecto) # Lo agrega a la escena main
 	get_tree().current_scene.coins += reward # Entrega recompensa
 	queue_free()
@@ -61,7 +67,7 @@ func _ready():
 	damage=DifficultySettings.enemyDamage[type]
 	get_parent().speed = initialSpeed
 	 #path_follow = self.get_parent() // devuelve que no se puede asignar un valor de tipo nodo a un objeto pathfollow.
-	
+	connect("arrived_signal",get_tree().current_scene.arrival)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -74,11 +80,12 @@ func _process(_delta):
 	#else:
 	#print("no hay")
 
-func get_hit(damage):
+func get_hit(damage,type):
 	var efecto = hitEffect.instantiate()  # Instancia escena de efecto grafico de golpe
 	efecto.global_position = global_position
 	get_tree().current_scene.add_child(efecto)
 	healthPoints -= damage
+	
 
 func _on_special_condition_timeout():
 	specialCondition = false
@@ -87,13 +94,12 @@ func _on_special_condition_timeout():
 
 func _on_area_entered(area):
 	if area.is_in_group("ammo"):
-		get_hit(area.damage)
+		get_hit(area.damage,area.type)
+		proyectil = area.type  # Identifica el tipo de proyectil para definir sonido
 		if (area.type == "ice") and (state != enemyState.frozen):
 			transition_to(enemyState.frozen)
+			
 
 func arrived():
-	get_tree().get_current_scene().enemy_arrived(damage)
-	var efecto = arriveEffect.instantiate()
-	efecto.global_position = global_position
-	get_tree().current_scene.add_child(efecto)
+	emit_signal("arrived_signal",damage)
 	queue_free()
