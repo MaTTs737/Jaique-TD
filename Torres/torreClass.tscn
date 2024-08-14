@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2n8qqufu3gyv"]
+[gd_scene load_steps=8 format=3 uid="uid://c2n8qqufu3gyv"]
 
 [ext_resource type="Script" path="res://Torres/torreClass.gd" id="1_ppisq"]
 [ext_resource type="Texture2D" uid="uid://b434cgocys3tj" path="res://Torres/assets/towerSelectSprite/jaique_policia_sheet.png" id="2_b11vq"]
+[ext_resource type="AudioStream" uid="uid://c2i5pc2x6ja36" path="res://Assets Generales/Audios/slash-21834.mp3" id="3_pn2qq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3iqc"]
 radius = 133.015
@@ -62,6 +63,10 @@ hframes = 4
 libraries = {
 "": SubResource("AnimationLibrary_l05t2")
 }
+
+[node name="audio_player_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pn2qq")
+volume_db = -5.0
 
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_DetectionArea_area_exited"]

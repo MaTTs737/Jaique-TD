@@ -87,6 +87,7 @@ func place_tower():# Example function to place a tower at the clicked position
 	#selectedTower.position = position
 	var new_tower = selectedTower.instantiate()
 	current_tower_slot.add_child(new_tower)
+	$audio_place_tower.play()
 	coins -= towerCost[new_tower.type]
 	#updateTowerCost(new_tower.type)
 	current_tower_slot.textureButton.disabled = true

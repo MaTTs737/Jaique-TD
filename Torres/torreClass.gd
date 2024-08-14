@@ -21,6 +21,7 @@ func shoot():
 	disparo.damage = damage
 	disparo.type = type
 	add_child(disparo)
+	$audio_player_shoot.play()
 	can_shoot = false
 	$shootTimer.start()
 	anim.play("shoot")
