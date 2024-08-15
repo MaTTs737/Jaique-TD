@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dqe23fl6vxvkv" path="res://Torres/Projectiles/assets/bolsa_hielo_sheet.png" id="2_iaj8u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
-radius = 13.0384
+radius = 4.12311
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lsld"]
 atlas = ExtResource("2_iaj8u")
@@ -80,7 +80,8 @@ metadata/_edit_horizontal_guides_ = [-5.0, 5.0]
 shape = SubResource("CircleShape2D_r1v10")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["ammo"]]
-scale = Vector2(0.223569, 0.214901)
+position = Vector2(-0.132829, 0.296888)
+scale = Vector2(0.108131, 0.115302)
 sprite_frames = SubResource("SpriteFrames_3m3qn")
 autoplay = "default"
 

@@ -94,7 +94,7 @@ metadata/_edit_horizontal_guides_ = [-5.0, 5.0]
 shape = SubResource("CircleShape2D_r1v10")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 9.53674e-07)
-scale = Vector2(0.127837, 0.11434)
+position = Vector2(3.27826e-07, 6.01332e-07)
+scale = Vector2(0.079602, 0.0788177)
 sprite_frames = SubResource("SpriteFrames_bjv68")
 autoplay = "default"

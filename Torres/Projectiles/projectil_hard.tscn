@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ulqns7iga1ku" path="res://Torres/Projectiles/assets/pistola_sheet.png" id="2_56er0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r1v10"]
-radius = 10.0499
+radius = 2.23607
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8nxvu"]
 atlas = ExtResource("2_56er0")
@@ -73,12 +73,15 @@ animations = [{
 [node name="projectil_hard" type="Area2D" groups=["ammo"]]
 collision_layer = 3
 script = ExtResource("1_1ooam")
+metadata/_edit_horizontal_guides_ = [-5.0]
+metadata/_edit_vertical_guides_ = [-5.0]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r1v10")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.191542, 0.189655)
+position = Vector2(-1.19209e-06, -2.38419e-07)
+scale = Vector2(0.159204, 0.167488)
 sprite_frames = SubResource("SpriteFrames_d8w78")
 frame_progress = 0.244398
 

@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://r54dylprrf13" path="res://Assets Generales/Audios/breaking-ice-98676.mp3" id="3_ptk3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qc8v"]
-size = Vector2(11, 37)
+size = Vector2(6, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_86auw"]
 animations = [{
