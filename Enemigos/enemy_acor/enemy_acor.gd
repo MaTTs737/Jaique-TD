@@ -6,7 +6,8 @@ extends "res://Enemigos/enemyClass.gd"
 func _ready():
 	type = "acor"
 	super._ready()
-
+	healthPoints = 400
+	transition_to(enemyState.idle)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
