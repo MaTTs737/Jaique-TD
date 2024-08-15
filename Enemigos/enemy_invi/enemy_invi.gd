@@ -54,4 +54,3 @@ func _on_invi_timer_timeout():
 		go_invi()
 	else:
 		go_visible()
-

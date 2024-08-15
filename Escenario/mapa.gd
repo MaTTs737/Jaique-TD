@@ -37,7 +37,7 @@ var path2d_node
 
 @onready var timer = $Timer
 func _ready():
-	
+	DifficultySettings.spawn_interval=0.5
 	randomize()
 	enemy_scene = enemies.normal
 	timer.start(3)
@@ -47,12 +47,24 @@ func _ready():
 	# Obtener el nodo PathFollow2D del nodo Path2D
 	# path_follow = path2d_node.get_child(0)
 
+
+var lastCheck = 0
+var checkInterval=10
 func _process(delta):
 	if countingTime:
 		timeSurvived+=delta
 		update_time_left()
+		if int(timeSurvived) >= lastCheck + checkInterval:
+			increaseDifficulty()
+			lastCheck += checkInterval
+		
 	else:
 		update_time_left()
+
+
+func increaseDifficulty():
+	if DifficultySettings.spawn_interval>0:
+		DifficultySettings.spawn_interval-=0.1
 	
 # Método para generar un enemigo
 func select_enemy_based_on_probability() -> String:
@@ -153,8 +165,8 @@ func update_time_left():
 func _on_timer_timeout():
 	wave+=1
 	if (wave < DifficultySettings.final_wave):
-		await launch_wave()
 		timer.start(DifficultySettings.wave_interval)
+		launch_wave()
 	else:
 		final_wave_protocol()
 
