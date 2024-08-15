@@ -3,8 +3,12 @@
 [ext_resource type="Script" path="res://Sistema/pantallaPausa.gd" id="1_lbn4p"]
 [ext_resource type="Texture2D" uid="uid://dnl5aeutbhr7b" path="res://Sistema/fondoPausa.jpg" id="2_aq3wt"]
 
-[node name="PantallaPausa" type="Control"]
+[node name="PantallaPausa" type="CanvasLayer"]
+layer = 2
+
+[node name="Control" type="Control" parent="."]
 process_mode = 3
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lbn4p")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Control"]
 modulate = Color(1, 1, 1, 0.345098)
 layout_mode = 1
 anchors_preset = 8
@@ -30,7 +34,7 @@ grow_vertical = 2
 texture = ExtResource("2_aq3wt")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -45,23 +49,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 
-[node name="boton_volver" type="Button" parent="VBoxContainer"]
+[node name="boton_volver" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "Volver a Jugar"
 
-[node name="boton_menu" type="Button" parent="VBoxContainer"]
+[node name="boton_menu" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "Volver al menu"
 
-[node name="boton_salir" type="Button" parent="VBoxContainer"]
+[node name="boton_salir" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "Salir del juego"
 
-[node name="boton_reiniciar" type="Button" parent="VBoxContainer"]
+[node name="boton_reiniciar" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
 text = "Reiniciar"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 522.0
 offset_top = 94.0
@@ -69,7 +73,7 @@ offset_right = 640.0
 offset_bottom = 117.0
 text = "Juego en pausa"
 
-[connection signal="pressed" from="VBoxContainer/boton_volver" to="." method="_on_boton_volver_pressed"]
-[connection signal="pressed" from="VBoxContainer/boton_menu" to="." method="_on_boton_menu_pressed"]
-[connection signal="pressed" from="VBoxContainer/boton_salir" to="." method="_on_boton_salir_pressed"]
-[connection signal="pressed" from="VBoxContainer/boton_reiniciar" to="." method="_on_boton_reiniciar_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/boton_volver" to="Control" method="_on_boton_volver_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/boton_menu" to="Control" method="_on_boton_menu_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/boton_salir" to="Control" method="_on_boton_salir_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/boton_reiniciar" to="Control" method="_on_boton_reiniciar_pressed"]

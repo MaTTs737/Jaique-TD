@@ -4,7 +4,10 @@
 [ext_resource type="Script" path="res://Sistema/pantallaVictoria.gd" id="1_q5k1v"]
 [ext_resource type="AudioStream" uid="uid://bu62ajsrei2h1" path="res://Assets Generales/Audios/you-win-sequence-2-183949.mp3" id="3_jgd1j"]
 
-[node name="PantallaVictoria" type="Control"]
+[node name="PantallaVictoria" type="CanvasLayer"]
+layer = 2
+
+[node name="Control" type="Control" parent="."]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -14,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q5k1v")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Control"]
 modulate = Color(1, 1, 1, 0.223529)
 layout_mode = 1
 anchors_preset = 8
@@ -31,7 +34,7 @@ grow_vertical = 2
 texture = ExtResource("1_kd4e3")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -48,7 +51,7 @@ text = "Ganaste"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 12
@@ -64,24 +67,24 @@ grow_vertical = 0
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="volverAJugar" type="Button" parent="HBoxContainer"]
+[node name="volverAJugar" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
 text = "Volver a jugar
 "
 
-[node name="salirAlMenu" type="Button" parent="HBoxContainer"]
+[node name="salirAlMenu" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
 text = "Salir al menu"
 
-[node name="salirDelJuego" type="Button" parent="HBoxContainer"]
+[node name="salirDelJuego" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
 text = "Salir del Juego
 "
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Control"]
 stream = ExtResource("3_jgd1j")
 autoplay = true
 
-[connection signal="pressed" from="HBoxContainer/volverAJugar" to="." method="_on_volver_a_jugar_pressed"]
-[connection signal="pressed" from="HBoxContainer/salirAlMenu" to="." method="_on_salir_al_menu_pressed"]
-[connection signal="pressed" from="HBoxContainer/salirDelJuego" to="." method="_on_salir_del_juego_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/volverAJugar" to="Control" method="_on_volver_a_jugar_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/salirAlMenu" to="Control" method="_on_salir_al_menu_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/salirDelJuego" to="Control" method="_on_salir_del_juego_pressed"]

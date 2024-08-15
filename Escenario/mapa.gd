@@ -22,9 +22,9 @@ const enemies = { # Diccionario de escenas de enemigos
 	acor = preload("res://Enemigos/enemy_acor/enemy_acor.tscn")
 }
 var enemyProbabilities = {
-	normal = 0, 
+	normal = 1, 
 	acc = 0,     
-	spread = 1,  
+	spread = 0,  
 	invi = 0,    
 	acor = 0     
 }
@@ -37,6 +37,7 @@ var path2d_node
 
 @onready var timer = $Timer
 func _ready():
+	
 	randomize()
 	enemy_scene = enemies.normal
 	timer.start(3)

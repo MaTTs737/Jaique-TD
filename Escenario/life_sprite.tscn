@@ -1,18 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn3pvm6kc0tw8"]
+[gd_scene load_steps=4 format=3 uid="uid://cn3pvm6kc0tw8"]
 
 [ext_resource type="Texture2D" uid="uid://884gn0uhexqc" path="res://Escenario/assets/images/HeartUIFull.png" id="1_mwd25"]
 [ext_resource type="Script" path="res://Escenario/life_count.gd" id="2_ph715"]
+[ext_resource type="FontFile" uid="uid://e1lkj0lym6xc" path="res://Assets Generales/fonts/IHATCS__.TTF" id="2_r1vb7"]
 
 [node name="life_sprite" type="Sprite2D"]
-position = Vector2(1, -5)
-scale = Vector2(3.95001, 4.86364)
+scale = Vector2(0.545173, 0.55198)
 texture = ExtResource("1_mwd25")
 
 [node name="life_count" type="Label" parent="."]
-offset_left = 12.405
-offset_top = -11.3084
-offset_right = 26.405
-offset_bottom = 10.6916
-theme_override_font_sizes/font_size = 15
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5057
+offset_top = -72.2399
+offset_right = -49.5057
+offset_bottom = -13.2399
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_r1vb7")
+theme_override_font_sizes/font_size = 50
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("2_ph715")

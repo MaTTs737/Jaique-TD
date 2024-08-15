@@ -1,26 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck8vm4q205we2"]
+[gd_scene load_steps=7 format=3 uid="uid://ck8vm4q205we2"]
 
 [ext_resource type="Texture2D" uid="uid://qdwfs1uifm0w" path="res://Escenario/assets/images/coin_sheet.png" id="1_skl1l"]
 [ext_resource type="Script" path="res://Escenario/coin_count_label.gd" id="2_bpcxm"]
+[ext_resource type="FontFile" uid="uid://e1lkj0lym6xc" path="res://Assets Generales/fonts/IHATCS__.TTF" id="2_pulk3"]
+
+[sub_resource type="Animation" id="Animation_ys06u"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_xkmw7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s6eg8"]
+_data = {
+"RESET": SubResource("Animation_xkmw7"),
+"idle": SubResource("Animation_ys06u")
+}
 
 [node name="coin_sprite" type="Sprite2D"]
-position = Vector2(-0.999992, 0.00012207)
-scale = Vector2(0.717391, 0.761905)
 texture = ExtResource("1_skl1l")
 hframes = 5
 
 [node name="coin_count_label" type="Label" parent="."]
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.478
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.478
-offset_left = 70.394
-offset_top = -55.5136
-offset_right = 111.394
-offset_bottom = 13.4864
-theme_override_font_sizes/font_size = 50
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -48.5
+offset_right = -29.5
+offset_bottom = -13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_pulk3")
+theme_override_font_sizes/font_size = 30
+text = "0
+"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 2
 script = ExtResource("2_bpcxm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s6eg8")
+}
+autoplay = "idle"

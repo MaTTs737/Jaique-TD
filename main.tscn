@@ -46,6 +46,7 @@ position = Vector2(20, 10)
 position = Vector2(47, 39)
 
 [node name="tower_button_normal" parent="." instance=ExtResource("3_1yxke")]
+z_index = 1
 offset_left = 46.0
 offset_top = 581.0
 offset_right = 102.0
@@ -57,6 +58,7 @@ texture_disabled = ExtResource("5_6bmr7")
 script = ExtResource("8_5wq3v")
 
 [node name="tower_button_ice" parent="." instance=ExtResource("3_1yxke")]
+z_index = 1
 offset_left = 128.0
 offset_top = 581.0
 offset_right = 184.0
@@ -68,6 +70,7 @@ texture_disabled = ExtResource("10_ndjv4")
 script = ExtResource("13_nps3w")
 
 [node name="tower_button_hard" parent="." instance=ExtResource("3_1yxke")]
+z_index = 1
 offset_left = 210.0
 offset_top = 581.0
 offset_right = 266.0
@@ -79,6 +82,7 @@ texture_disabled = ExtResource("14_8tv8y")
 script = ExtResource("18_wodke")
 
 [node name="tower_button_bomb" parent="." instance=ExtResource("3_1yxke")]
+z_index = 1
 offset_left = 289.0
 offset_top = 581.0
 offset_right = 345.0
@@ -90,21 +94,21 @@ texture_disabled = ExtResource("18_avwuc")
 script = ExtResource("23_vb4hr")
 
 [node name="nextWave_button" type="TextureButton" parent="."]
-offset_left = 1076.0
-offset_top = 578.0
-offset_right = 1132.0
-offset_bottom = 634.0
+z_index = 1
+offset_left = 1063.0
+offset_top = 36.0
+offset_right = 1119.0
+offset_bottom = 92.0
 texture_normal = ExtResource("19_eapeg")
 texture_pressed = ExtResource("20_g8pje")
 texture_hover = ExtResource("21_h02rm")
 texture_disabled = ExtResource("22_p54cn")
 
 [node name="coin_sprite" parent="." instance=ExtResource("24_3ekwo")]
-position = Vector2(896, 608)
+position = Vector2(970, 594)
 
 [node name="life_sprite" parent="." instance=ExtResource("25_vxa5f")]
-position = Vector2(1035.19, 50.375)
-scale = Vector2(3.97501, 4.97727)
+position = Vector2(1094, 596)
 
 [node name="audio_arrival" type="AudioStreamPlayer2D" parent="."]
 

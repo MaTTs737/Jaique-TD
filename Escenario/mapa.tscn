@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyk00xro5fje3"]
+[gd_scene load_steps=9 format=3 uid="uid://dyk00xro5fje3"]
 
 [ext_resource type="Texture2D" uid="uid://diersvy6p2ohe" path="res://Escenario/fondo_version1.png" id="1_wo77a"]
 [ext_resource type="Script" path="res://Escenario/mapa.gd" id="1_x4le8"]
 [ext_resource type="Script" path="res://Escenario/end.gd" id="3_4fej1"]
+[ext_resource type="PackedScene" uid="uid://bp76nw05mtemr" path="res://niebla_effect.tscn" id="3_b11rt"]
 [ext_resource type="FontFile" uid="uid://e1lkj0lym6xc" path="res://Assets Generales/fonts/IHATCS__.TTF" id="4_xorqk"]
 [ext_resource type="AudioStream" uid="uid://c0kkl2onbnqr2" path="res://Assets Generales/Audios/hijo_de_puta.mp3" id="5_880ts"]
 
@@ -21,10 +22,14 @@ metadata/_edit_horizontal_guides_ = [-103.0]
 metadata/_edit_vertical_guides_ = [562.0]
 
 [node name="FondoVersion1" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(581.881, 329.13)
 rotation = -1.57652
 scale = Vector2(1.87551, 1.69125)
 texture = ExtResource("1_wo77a")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_b11rt")]
+layer = 0
 
 [node name="Path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_kiw76")

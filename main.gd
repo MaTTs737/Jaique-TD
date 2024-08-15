@@ -12,7 +12,7 @@ var current_tower_slot
 @onready var tower_ice = $tower_button_ice
 @onready var tower_hard = $tower_button_hard
 @onready var tower_bomb = $tower_button_bomb
-#@onready var fog_material = $"map/CanvasLayer/ColorRect".material
+@onready var fog_material = $"map/CanvasLayer/TextureRect".material
 @onready var audio_arrival = $audio_arrival
 @onready var arrival_sound = load("res://Assets Generales/Audios/splash-death-splash-46048.mp3")
 
@@ -42,7 +42,7 @@ var towerSprites = {
 var towerCost = DifficultySettings.towerCost
 
 var arrival : Callable = func enemy_arrived(damage:int):
-	#update_fog_intensity()
+	update_fog_intensity()
 	audio_arrival.stream = arrival_sound
 	audio_arrival.volume_db = -10
 	audio_arrival.play()
@@ -59,6 +59,7 @@ const pantallaDerrota = preload("res://Sistema/pantallaDerrota.tscn")
 const arriveEffect = preload("res://Enemigos/arrive_effect.tscn")
 
 func _ready():
+	update_fog_intensity()
 	disable_tower_buttons()
 	$audio_background.stream.loop = true
 	Global.player_won = false
@@ -71,7 +72,9 @@ func _process(_delta):
 		add_child(pausaScreen)
 		get_tree().paused = true
 		#get_tree().change_scene_to_file("res://Sistema/pantallaPausa.tscn")
-
+	if Input.is_action_just_pressed("ui_down"):
+		life_points -= 5
+		update_fog_intensity()
 # func selectTower(type):  # Selecciona torre y coloca sprite sobre el cursor3	selectedTower = torres[type].instantiate()
 #	selectedSprite = towerSprites[type].instantiate()
 #	add_child(selectedSprite)
@@ -163,6 +166,6 @@ func updateTowerCost(tower):
 			towerCost[tower]=int(towerCost[tower])
 			print (towerCost[tower])
 
-#func update_fog_intensity():
-#	var fog_intensity = 1.0 - float(life_points)/float(max_life_points)
-#	fog_material.set_shader_parameter("fog_intensity",fog_intensity)
+func update_fog_intensity():
+	var fog_intensity = 1.0 - float(life_points)/float(max_life_points)
+	fog_material.set_shader_parameter("fog_intensity",fog_intensity)

@@ -5,7 +5,10 @@
 
 [sub_resource type="SystemFont" id="SystemFont_h8jgi"]
 
-[node name="MenuPrincipal" type="Control"]
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 2
+
+[node name="MenuPrincipal" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v4kdg")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="MenuPrincipal"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -23,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_y7j58")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuPrincipal"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,7 +43,7 @@ theme_override_constants/separation = 150
 alignment = 1
 metadata/_edit_group_ = true
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="MenuPrincipal/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -52,7 +55,7 @@ theme_override_font_sizes/font_size = 50
 text = "Jugar"
 flat = true
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="MenuPrincipal/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -61,7 +64,7 @@ theme_override_font_sizes/font_size = 50
 text = "Salir"
 flat = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuPrincipal"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -71,5 +74,5 @@ offset_top = -88.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MenuPrincipal/VBoxContainer/Button" to="MenuPrincipal" method="_on_button_pressed"]
+[connection signal="pressed" from="MenuPrincipal/VBoxContainer/Button2" to="MenuPrincipal" method="_on_button_2_pressed"]
