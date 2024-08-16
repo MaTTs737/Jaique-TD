@@ -4,7 +4,7 @@ signal freeze
 signal special_s
 signal back_to_normal
 signal arrived_signal(dmg)
-
+signal enemy_died
 enum enemyState{idle, frozen, special}
 
 var healthPoints: int = 200
@@ -53,6 +53,7 @@ func transition_to(new_state:enemyState):
 	
 	
 func die():
+	emit_signal("enemy_died")
 	var efecto = efectoMuerte.instantiate() # Instancia escena con efecto de muerte
 	efecto.global_position = global_position
 	get_tree().current_scene.add_child(efecto) # Lo agrega a la escena main
@@ -102,4 +103,5 @@ func _on_area_entered(area):
 
 func arrived():
 	emit_signal("arrived_signal",damage)
+	emit_signal("enemy_died")
 	queue_free()

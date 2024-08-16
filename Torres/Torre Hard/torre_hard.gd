@@ -7,7 +7,6 @@ func _ready():
 	projectil = preload("res://Torres/Projectiles/projectil_hard.tscn")
 	radiusColor = Color(255 / 255.0, 0 / 255.0, 0 / 255.0, 0.3)
 	super ._ready()
-	damage = 80
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

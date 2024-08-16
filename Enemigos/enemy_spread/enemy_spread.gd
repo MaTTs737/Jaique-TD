@@ -16,6 +16,7 @@ func _process(delta):
 
 func die():
 	#Hijo de puta usa un bucle for
+	emit_signal("enemy_died")
 	var pointer1 = pointer.instantiate()
 	var pointer2 = pointer.instantiate()
 	var pointer3 = pointer.instantiate()

@@ -66,7 +66,6 @@ func _on_DetectionArea_area_exited(area):
 			area.disconnect("became_invisible", Callable(self, "_on_enemy_became_invisible"))
 			area.disconnect("became_visible", Callable(self, "_on_enemy_became_visible"))
 	if area.is_in_group("ammo") and area.get_parent() == self:
-		print("salio")
 		area.queue_free()
 	
 	

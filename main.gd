@@ -5,7 +5,7 @@ var selectedTower
 var selectedSprite 
 var life_points = 100
 var max_life_points = 100
-var coins : int = 3000
+var coins : int = 200
 var current_tower_slot
 
 @onready var tower_normal = $tower_button_normal

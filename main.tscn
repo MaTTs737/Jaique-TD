@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b7oo4wr7nfyvh"]
+[gd_scene load_steps=29 format=3 uid="uid://b7oo4wr7nfyvh"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0wtpu"]
 [ext_resource type="PackedScene" uid="uid://dyk00xro5fje3" path="res://Escenario/mapa.tscn" id="1_qomae"]
@@ -22,10 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://dkwyhnay38e4o" path="res://Torres/assets/pngs botones/boton_torre_bomb_h.png" id="17_kqw5x"]
 [ext_resource type="Texture2D" uid="uid://cfhfbpemjrtrr" path="res://Torres/assets/pngs botones/boton_torre_bomb_d.png" id="18_avwuc"]
 [ext_resource type="Script" path="res://Torres/tower_button_hard.gd" id="18_wodke"]
-[ext_resource type="Texture2D" uid="uid://b2s3pfe62snk2" path="res://Torres/assets/pngs botones/boton_nextWave_n.png" id="19_eapeg"]
-[ext_resource type="Texture2D" uid="uid://c5wrt8dbt41ux" path="res://Torres/assets/pngs botones/boton_nextWave_p.png" id="20_g8pje"]
-[ext_resource type="Texture2D" uid="uid://cc0pv2a0kb52o" path="res://Torres/assets/pngs botones/boton_nextWave_h.png" id="21_h02rm"]
-[ext_resource type="Texture2D" uid="uid://cn6cll10imtr7" path="res://Torres/assets/pngs botones/boton_nextWave_d.png" id="22_p54cn"]
 [ext_resource type="PackedScene" uid="uid://fwhu1sfaumvb" path="res://Escenario/tower_slots.tscn" id="23_sdt4q"]
 [ext_resource type="Script" path="res://Torres/tower_button_bomb.gd" id="23_vb4hr"]
 [ext_resource type="PackedScene" uid="uid://ck8vm4q205we2" path="res://Escenario/coin_sprite.tscn" id="24_3ekwo"]
@@ -93,17 +89,6 @@ texture_hover = ExtResource("17_kqw5x")
 texture_disabled = ExtResource("18_avwuc")
 script = ExtResource("23_vb4hr")
 
-[node name="nextWave_button" type="TextureButton" parent="."]
-z_index = 1
-offset_left = 1063.0
-offset_top = 36.0
-offset_right = 1119.0
-offset_bottom = 92.0
-texture_normal = ExtResource("19_eapeg")
-texture_pressed = ExtResource("20_g8pje")
-texture_hover = ExtResource("21_h02rm")
-texture_disabled = ExtResource("22_p54cn")
-
 [node name="coin_sprite" parent="." instance=ExtResource("24_3ekwo")]
 position = Vector2(970, 594)
 
@@ -124,4 +109,3 @@ volume_db = -15.0
 [connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]
 [connection signal="pressed" from="tower_button_hard" to="." method="_on_tower_button_hard_pressed"]
 [connection signal="pressed" from="tower_button_bomb" to="." method="_on_tower_button_bomb_pressed"]
-[connection signal="pressed" from="nextWave_button" to="map" method="_on_next_wave_button_pressed"]

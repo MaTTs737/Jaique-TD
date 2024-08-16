@@ -34,7 +34,6 @@ func transition_to(new_state:enemyState):
 
 
 func go_invi():
-	print ("se hace invisible")
 	is_visible=false
 	transition_to(enemyState.special)
 	invi_timer.start(randi() % 6 + 10)

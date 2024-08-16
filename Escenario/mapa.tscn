@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyk00xro5fje3"]
+[gd_scene load_steps=13 format=3 uid="uid://dyk00xro5fje3"]
 
 [ext_resource type="Texture2D" uid="uid://diersvy6p2ohe" path="res://Escenario/fondo_version1.png" id="1_wo77a"]
 [ext_resource type="Script" path="res://Escenario/mapa.gd" id="1_x4le8"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bp76nw05mtemr" path="res://niebla_effect.tscn" id="3_b11rt"]
 [ext_resource type="FontFile" uid="uid://e1lkj0lym6xc" path="res://Assets Generales/fonts/IHATCS__.TTF" id="4_xorqk"]
 [ext_resource type="AudioStream" uid="uid://c0kkl2onbnqr2" path="res://Assets Generales/Audios/hijo_de_puta.mp3" id="5_880ts"]
+[ext_resource type="Texture2D" uid="uid://b2s3pfe62snk2" path="res://Torres/assets/pngs botones/boton_nextWave_n.png" id="7_ako7n"]
+[ext_resource type="Texture2D" uid="uid://c5wrt8dbt41ux" path="res://Torres/assets/pngs botones/boton_nextWave_p.png" id="8_78jj3"]
+[ext_resource type="Texture2D" uid="uid://cc0pv2a0kb52o" path="res://Torres/assets/pngs botones/boton_nextWave_h.png" id="9_tssdj"]
+[ext_resource type="Texture2D" uid="uid://cn6cll10imtr7" path="res://Torres/assets/pngs botones/boton_nextWave_d.png" id="10_irg4x"]
 
 [sub_resource type="Curve2D" id="Curve2D_kiw76"]
 _data = {
@@ -79,5 +83,17 @@ metadata/_edit_use_anchors_ = true
 [node name="audio_hdp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_880ts")
 
+[node name="nextWave_button" type="TextureButton" parent="."]
+z_index = 1
+offset_left = 123.0
+offset_top = 30.0
+offset_right = 179.0
+offset_bottom = 86.0
+texture_normal = ExtResource("7_ako7n")
+texture_pressed = ExtResource("8_78jj3")
+texture_hover = ExtResource("9_tssdj")
+texture_disabled = ExtResource("10_irg4x")
+
 [connection signal="area_entered" from="end" to="end" method="_on_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="nextWave_button" to="." method="_on_next_wave_button_pressed"]
