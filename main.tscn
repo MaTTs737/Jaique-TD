@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://cl05p41tqgohq" path="res://Torres/assets/pngs botones/boton_torre_normal_p.png" id="3_bd2mq"]
 [ext_resource type="Texture2D" uid="uid://clstr200gmndt" path="res://Torres/assets/pngs botones/boton_torre_normal_h.png" id="4_61dfj"]
 [ext_resource type="Texture2D" uid="uid://dxc3rcvn44xw" path="res://Torres/assets/pngs botones/boton_torre_normal_d.png" id="5_6bmr7"]
-[ext_resource type="Texture2D" uid="uid://b5belwmfwt0sp" path="res://Torres/assets/pngs botones/boton_torre_ice_n.png" id="7_pq78p"]
 [ext_resource type="Script" path="res://Torres/tower_button_normal.gd" id="8_5wq3v"]
-[ext_resource type="Texture2D" uid="uid://b5fu414vww57o" path="res://Torres/assets/pngs botones/boton_torre_ice_p.png" id="8_sfgyd"]
-[ext_resource type="Texture2D" uid="uid://cfpcljicvi46w" path="res://Torres/assets/pngs botones/boton_torre_ice_h.png" id="9_4wuiv"]
-[ext_resource type="Texture2D" uid="uid://dict4b371qxu1" path="res://Torres/assets/pngs botones/boton_torre_ice_d.png" id="10_ndjv4"]
+[ext_resource type="Texture2D" uid="uid://cc4x1m6o6kstg" path="res://Torres/assets/pngs botones/boton_manguera_n.png" id="10_q3k67"]
+[ext_resource type="Texture2D" uid="uid://obie1jnfjawh" path="res://Torres/assets/pngs botones/boton_manguera_p.png" id="11_fxje1"]
 [ext_resource type="Texture2D" uid="uid://1f4v57sa1uco" path="res://Torres/assets/pngs botones/boton_torre_hard_n.png" id="11_s2u77"]
+[ext_resource type="Texture2D" uid="uid://bhtrsnh2prero" path="res://Torres/assets/pngs botones/boton_manguera_h.png" id="12_5k2uk"]
 [ext_resource type="Texture2D" uid="uid://b7hxqg21iv0kt" path="res://Torres/assets/pngs botones/boton_torre_hard_p.png" id="12_xu1ks"]
+[ext_resource type="Texture2D" uid="uid://1g6hkffp1lbn" path="res://Torres/assets/pngs botones/boton_manguera_d.png" id="13_eh7ya"]
 [ext_resource type="Texture2D" uid="uid://bb555usosmaaf" path="res://Torres/assets/pngs botones/boton_torre_hard_h.png" id="13_n5i4y"]
 [ext_resource type="Script" path="res://Torres/tower_button_ice.gd" id="13_nps3w"]
 [ext_resource type="Texture2D" uid="uid://buk0b6vowbqjm" path="res://Torres/assets/pngs botones/boton_torre_hard_d.png" id="14_8tv8y"]
@@ -59,10 +59,10 @@ offset_left = 128.0
 offset_top = 581.0
 offset_right = 184.0
 offset_bottom = 638.0
-texture_normal = ExtResource("7_pq78p")
-texture_pressed = ExtResource("8_sfgyd")
-texture_hover = ExtResource("9_4wuiv")
-texture_disabled = ExtResource("10_ndjv4")
+texture_normal = ExtResource("10_q3k67")
+texture_pressed = ExtResource("11_fxje1")
+texture_hover = ExtResource("12_5k2uk")
+texture_disabled = ExtResource("13_eh7ya")
 script = ExtResource("13_nps3w")
 
 [node name="tower_button_hard" parent="." instance=ExtResource("3_1yxke")]

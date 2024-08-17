@@ -33,5 +33,3 @@ func hit():
 func _on_area_entered(area):
 	if area.is_in_group("enemies"):
 		hit()
-
-

@@ -47,10 +47,10 @@ metadata/_edit_group_ = true
 [node name="Button" type="Button" parent="MenuPrincipal/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.782409, 0.8063, 0.138154, 1)
-theme_override_colors/font_hover_color = Color(0.784314, 0.807843, 0.137255, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.784314, 0.807843, 0.137255, 1)
+theme_override_colors/font_pressed_color = Color(0.782409, 0.8063, 0.138154, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = SubResource("SystemFont_h8jgi")
 theme_override_font_sizes/font_size = 50
 text = "Jugar"
@@ -59,8 +59,8 @@ flat = true
 [node name="Button2" type="Button" parent="MenuPrincipal/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.690343, 0.751626, 0.0329438, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "Salir"
 flat = true

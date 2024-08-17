@@ -21,4 +21,3 @@ func explode():
 	
 func hit():
 	explode()
-

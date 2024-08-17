@@ -1,15 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8gc7nx241sqd"]
+[gd_scene load_steps=8 format=3 uid="uid://b8gc7nx241sqd"]
 
 [ext_resource type="PackedScene" uid="uid://c2n8qqufu3gyv" path="res://Torres/torreClass.tscn" id="1_80hf0"]
 [ext_resource type="Script" path="res://Torres/Torre Ice/torre_ice.gd" id="2_llt3g"]
-[ext_resource type="Texture2D" uid="uid://vb0d74211byp" path="res://Torres/assets/towerSelectSprite/torre_hielo_sheet.png" id="2_uio7i"]
+[ext_resource type="Texture2D" uid="uid://bdatgi7k26oh6" path="res://Torres/assets/towerSelectSprite/torre_con_manguera_sheet.png" id="3_xi86a"]
+[ext_resource type="Texture2D" uid="uid://c21pv0uo5yv8f" path="res://Assets Generales/png/iceTowerEffect.png" id="4_yuwr1"]
 
 [sub_resource type="Animation" id="Animation_wnbl8"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("IceTowerEffect:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -21,18 +22,31 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_d4yge"]
 resource_name = "shoot"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("IceTowerEffect:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 0.966767),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 2, 1, 0]
+"values": [1, 1, 2, 3, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 3, 2, 0, 0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.933333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"freezeEnemies"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jqt1p"]
@@ -45,12 +59,22 @@ _data = {
 script = ExtResource("2_llt3g")
 
 [node name="Sprite" parent="." index="1"]
+position = Vector2(-3.8147e-06, -0.999999)
 scale = Vector2(0.178, 0.164)
-texture = ExtResource("2_uio7i")
-hframes = 3
+texture = ExtResource("3_xi86a")
+hframes = 2
+
+[node name="shootTimer" parent="." index="2"]
+wait_time = 4.0
 
 [node name="AnimationPlayer" parent="." index="3"]
 libraries = {
 "": SubResource("AnimationLibrary_jqt1p")
 }
 autoplay = "RESET"
+
+[node name="IceTowerEffect" type="Sprite2D" parent="." index="5"]
+position = Vector2(-2.00001, 1)
+scale = Vector2(0.1277, 0.128023)
+texture = ExtResource("4_yuwr1")
+hframes = 6
