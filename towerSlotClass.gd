@@ -1,12 +1,17 @@
 extends Area2D
 
+signal delete
+
+@onready var delete_button = $delete_button
 @onready var textureButton = $TextureButton
+
 var has_tower = false
 var towerCost
 var selected = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	delete_button.disabled = true
+	connect("delete",get_tree().current_scene.delete_tower)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -30,3 +35,7 @@ func find_tower():    # Devuelve la torre que esta en este slot
 	for i in get_children():
 		if i.is_in_group("towers"):
 			return i
+
+
+func _on_delete_button_pressed() -> void:
+	emit_signal("delete",self)

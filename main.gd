@@ -52,6 +52,12 @@ var arrival : Callable = func enemy_arrived(damage:int):
 	life_points -= damage
 	if life_points <= 0:
 		lose()
+var delete_tower : Callable = func delete_tower(towerSlot):
+	for i in towerSlot.get_children():
+		if i.is_in_group("towers"):
+			i.queue_free()
+	towerSlot.has_tower = false
+	towerSlot.textureButton.disabled = false
 
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
 const pantallaVictoria = preload("res://Sistema/pantallaVictoria.tscn")
@@ -93,6 +99,7 @@ func place_tower():# Example function to place a tower at the clicked position
 	$audio_place_tower.play()
 	coins -= towerCost[new_tower.type]
 	#updateTowerCost(new_tower.type)
+	current_tower_slot.delete_button.disabled = false
 	current_tower_slot.textureButton.disabled = true
 	current_tower_slot.selected = false
 	towerSelected = false

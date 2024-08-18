@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctgawr3olqt0f"]
+[gd_scene load_steps=10 format=3 uid="uid://ctgawr3olqt0f"]
 
 [ext_resource type="Script" path="res://towerSlotClass.gd" id="1_rtqnm"]
 [ext_resource type="Texture2D" uid="uid://djyri0o4hixev" path="res://Escenario/assets/images/slot_normal.png" id="2_koffx"]
 [ext_resource type="Texture2D" uid="uid://bstk1b51y1cq6" path="res://Escenario/assets/images/slot_pressed.png" id="3_pgpge"]
 [ext_resource type="Texture2D" uid="uid://beriorrtnr4eg" path="res://Escenario/assets/images/slot_hover.png" id="4_kxxbx"]
 [ext_resource type="Texture2D" uid="uid://bi83j2h2l0hs5" path="res://Escenario/assets/images/slot_disabled.png" id="5_7ser7"]
+[ext_resource type="Texture2D" uid="uid://cbg7l3o3ehky4" path="res://Torres/assets/pngs botones/boton_delete_n.png" id="6_366ab"]
+[ext_resource type="Texture2D" uid="uid://pw6faiiutciq" path="res://Torres/assets/pngs botones/boton_delete_p.png" id="7_ye0l4"]
+[ext_resource type="Texture2D" uid="uid://drai0fwtj87ra" path="res://Torres/assets/pngs botones/boton_delete_h.png" id="8_iprs8"]
+[ext_resource type="Texture2D" uid="uid://bwf0vhcl8iyt7" path="res://Torres/assets/pngs botones/boton_delete_d.png" id="9_b3vhe"]
 
 [node name="towerSlotClass" type="Area2D"]
 script = ExtResource("1_rtqnm")
@@ -21,4 +25,17 @@ texture_disabled = ExtResource("5_7ser7")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="delete_button" type="TextureButton" parent="."]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 35.0
+offset_bottom = 36.0
+texture_normal = ExtResource("6_366ab")
+texture_pressed = ExtResource("7_ye0l4")
+texture_hover = ExtResource("8_iprs8")
+texture_disabled = ExtResource("9_b3vhe")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="delete_button" to="." method="_on_delete_button_pressed"]
