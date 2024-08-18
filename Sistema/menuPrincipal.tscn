@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxkypykysuf2k"]
 
 [ext_resource type="Script" path="res://Sistema/menuPrincipal.gd" id="1_v4kdg"]
-[ext_resource type="Texture2D" uid="uid://d0dfnjfkvj7fa" path="res://Sistema/Sin título.png" id="2_y7j58"]
+[ext_resource type="Texture2D" uid="uid://d0dfnjfkvj7fa" path="res://Sistema/pantallaInicial.png" id="2_y7j58"]
 [ext_resource type="AudioStream" uid="uid://buw1lj472e7nl" path="res://Assets Generales/Audios/freemusicbg.com-Royal Banana.mp3" id="3_0lws6"]
 
 [sub_resource type="SystemFont" id="SystemFont_h8jgi"]

@@ -16,6 +16,7 @@ func _process(_delta):
 
 func shoot():  # Tiene un shoot especifico distinto del towerClass. Ademas No hace danio, no invoca al get_hit del enemy
 	$AnimationPlayer.play("shoot")
+	$audio_player_shoot.play()
 	can_shoot = false
 	freezeEnemies()
 	$shootTimer.start(2.5)
@@ -25,3 +26,7 @@ func freezeEnemies(): # Funcion especifica para poder llamarla desde la animacio
 	for i in enemies_in_range:
 		if i.state != i.enemyState.frozen:
 			i.transition_to(i.enemyState.frozen)
+
+func stop_audio():
+	$audio_player_shoot.stop()
+	

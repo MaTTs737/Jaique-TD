@@ -1,11 +1,17 @@
 [gd_scene load_steps=4 format=3 uid="uid://dkof6p5t4dvwj"]
 
-[ext_resource type="Texture2D" uid="uid://dnl5aeutbhr7b" path="res://Sistema/fondoPausa.jpg" id="1_kd4e3"]
 [ext_resource type="Script" path="res://Sistema/pantallaVictoria.gd" id="1_q5k1v"]
+[ext_resource type="Texture2D" uid="uid://kjswikjv5h8k" path="res://Sistema/pantallaVictoria_fondo.png" id="1_tm5b3"]
 [ext_resource type="AudioStream" uid="uid://bu62ajsrei2h1" path="res://Assets Generales/Audios/you-win-sequence-2-183949.mp3" id="3_jgd1j"]
 
 [node name="PantallaVictoria" type="CanvasLayer"]
 layer = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1147.0
+offset_bottom = 634.0
+texture = ExtResource("1_tm5b3")
+expand_mode = 3
 
 [node name="Control" type="Control" parent="."]
 process_mode = 2
@@ -17,23 +23,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q5k1v")
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
-modulate = Color(1, 1, 1, 0.223529)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -216.0
-offset_top = -320.0
-offset_right = 218.0
-offset_bottom = 245.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_kd4e3")
-expand_mode = 1
-
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -41,10 +30,10 @@ anchor_left = 0.5
 anchor_top = 0.482
 anchor_right = 0.5
 anchor_bottom = 0.482
-offset_left = -33.0
-offset_top = -266.336
-offset_right = 31.0
-offset_bottom = -243.336
+offset_left = -49.0
+offset_top = -172.336
+offset_right = 15.0
+offset_bottom = -149.336
 grow_horizontal = 2
 grow_vertical = 2
 text = "Ganaste"
@@ -58,14 +47,15 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 349.0
-offset_top = -306.0
-offset_right = -358.0
-offset_bottom = -252.0
+offset_left = 324.0
+offset_top = -81.0
+offset_right = -383.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 25
 alignment = 1
+metadata/_edit_group_ = true
 
 [node name="volverAJugar" type="Button" parent="Control/HBoxContainer"]
 layout_mode = 2
