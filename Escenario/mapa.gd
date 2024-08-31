@@ -43,7 +43,6 @@ var path2d_node
 
 @onready var timer = $Timer
 func _ready():
-	DifficultySettings.spawn_interval=0.5
 	randomize()
 	enemy_scene = enemies.normal
 	timer.start(3)
@@ -55,9 +54,9 @@ func _ready():
 
 
 var lastCheck = 0
-var checkInterval=10
+var checkInterval=15
+var checkCant = 0
 func _process(delta):
-	
 	if countingTime:
 		timeSurvived+=delta
 		update_time_left()
@@ -70,8 +69,15 @@ func _process(delta):
 
 
 func increaseDifficulty():
-	if DifficultySettings.spawn_interval>0:
+	checkCant +=1
+	if DifficultySettings.spawn_interval>0.3:
 		DifficultySettings.spawn_interval-=0.1
+	if checkCant < 10:
+		for key in DifficultySettings.enemySpeed.keys():
+			DifficultySettings.enemySpeed[key] = DifficultySettings.enemySpeed[key]*1.1
+	if checkCant % 2 == 0:
+		for key in DifficultySettings.enemyHP.keys():
+			DifficultySettings.enemyHP[key] = DifficultySettings.enemyHP[key]*1.1
 	
 # Método para generar un enemigo
 func select_enemy_based_on_probability() -> String:

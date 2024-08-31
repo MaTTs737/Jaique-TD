@@ -66,7 +66,10 @@ func _on_DetectionArea_area_exited(area):
 			area.disconnect("became_invisible", Callable(self, "_on_enemy_became_invisible"))
 			area.disconnect("became_visible", Callable(self, "_on_enemy_became_visible"))
 	if area.is_in_group("ammo") and area.get_parent() == self:
-		area.queue_free()
+		if (self.type=="bomb"):
+			area.explode()
+		else:
+			area.queue_free()
 	
 	
 

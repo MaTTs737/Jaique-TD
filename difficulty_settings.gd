@@ -1,36 +1,34 @@
 extends Node
 
-#Variables de las torres
-var towerCost = {
+const TOWER_COST_DEFAULT = {
 	normal = 30,
 	hard = 100,
 	ice = 50,
 	bomb = 300,
 }
-var towerDamage = {
+
+const TOWER_DAMAGE_DEFAULT = {
 	normal = 5,
 	hard = 10,
 	ice = 2,
 	bomb = 1,
 }
-var towerAttackInterval = {
+
+const TOWER_ATTACK_INTERVAL_DEFAULT = {
 	normal = 1,
 	hard = 1,
 	ice = 1,
 	bomb = 3,
 }
 
-#Variables de los proyectiles de las torres
-var projectileSpeed = {
+const PROJECTILE_SPEED_DEFAULT = {
 	normal = 500,
 	hard = 500,
 	ice = 400,
 	bomb = 300,
 }
 
-
-#Variables de los enemigos
-var enemyHP= {
+const ENEMY_HP_DEFAULT = {
 	normal = 10,
 	acc = 10,
 	acor = 60,
@@ -38,7 +36,8 @@ var enemyHP= {
 	spread = 40,
 	minion = 5
 }
-var enemyDamage= {
+
+const ENEMY_DAMAGE_DEFAULT = {
 	normal = 5,
 	acc = 5,
 	acor = 15,
@@ -46,7 +45,8 @@ var enemyDamage= {
 	spread = 50,
 	minion = 1
 }
-var enemyReward= {
+
+const ENEMY_REWARD_DEFAULT = {
 	normal = 1,
 	acc = 5,
 	acor = 5,
@@ -54,7 +54,8 @@ var enemyReward= {
 	spread = 10,
 	minion = 0
 }
-var enemySpeed= {
+
+const ENEMY_SPEED_DEFAULT = {
 	normal = 100,
 	acc = 300,
 	acor = 75,
@@ -63,7 +64,32 @@ var enemySpeed= {
 	minion = 100
 }
 
-#Variables de las oleadas
-var spawn_interval = 0.5
-var wave_interval = 30
+const SPAWN_INTERVAL_DEFAULT = 0.5
+const WAVE_INTERVAL_DEFAULT = 30
 const final_wave = 20
+
+# Variables que se usarán en el juego
+
+var towerCost = {}
+var towerDamage = {}
+var towerAttackInterval = {}
+var projectileSpeed = {}
+var enemyHP = {}
+var enemyDamage = {}
+var enemyReward = {}
+var enemySpeed = {}
+var spawn_interval
+var wave_interval
+
+# Función para reiniciar las variables a los valores por defecto
+func reset_difficulty_variables():
+	towerCost = TOWER_COST_DEFAULT.duplicate()
+	towerDamage = TOWER_DAMAGE_DEFAULT.duplicate()
+	towerAttackInterval = TOWER_ATTACK_INTERVAL_DEFAULT.duplicate()
+	projectileSpeed = PROJECTILE_SPEED_DEFAULT.duplicate()
+	enemyHP = ENEMY_HP_DEFAULT.duplicate()
+	enemyDamage = ENEMY_DAMAGE_DEFAULT.duplicate()
+	enemyReward = ENEMY_REWARD_DEFAULT.duplicate()
+	enemySpeed = ENEMY_SPEED_DEFAULT.duplicate()
+	spawn_interval = SPAWN_INTERVAL_DEFAULT
+	wave_interval = WAVE_INTERVAL_DEFAULT

@@ -5,7 +5,7 @@ var selectedTower
 var selectedSprite 
 var life_points = 100
 var max_life_points = 100
-var coins : int = 200
+var coins : int = 300
 var current_tower_slot
 
 @onready var tower_normal = $tower_button_normal
@@ -39,7 +39,7 @@ var towerSprites = {
 	"bomb"=preload("res://Torres/Torre Bomb/selectBomb.tscn")
 }
 
-var towerCost = DifficultySettings.towerCost
+var towerCost
 
 var arrival : Callable = func enemy_arrived(damage:int):
 	update_fog_intensity()
@@ -65,6 +65,8 @@ const pantallaDerrota = preload("res://Sistema/pantallaDerrota.tscn")
 const arriveEffect = preload("res://Enemigos/arrive_effect.tscn")
 
 func _ready():
+	DifficultySettings.reset_difficulty_variables()
+	towerCost = DifficultySettings.towerCost
 	update_fog_intensity()
 	disable_tower_buttons()
 	$audio_background.stream.loop = true
