@@ -3,8 +3,8 @@ extends Node
 const TOWER_COST_DEFAULT = {
 	normal = 30,
 	hard = 100,
-	ice = 50,
-	bomb = 300,
+	ice = 200,
+	bomb = 500,
 }
 
 const TOWER_DAMAGE_DEFAULT = {

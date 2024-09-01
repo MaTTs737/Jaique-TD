@@ -4,7 +4,9 @@ extends Node2D
 var enemy_scene # = preload ("res://Enemigos/enemigo_basico/enemy_basico.tscn")  Escena del enemigo
 var spawn_interval = 3 # Intervalo de tiempo entre la generación de enemigos
 var spawn_timer = 0
-var wave = 0 # Para probar - numero de oleada
+var wave = 1 # Para probar - numero de oleada
+var intro_waves = [3, 6, 10, 14]
+var intro_waves_triggered = {}
 const pointer = preload("res://Escenario/pointer.tscn")
 const base_enemies = 5
 var countingTime = false
@@ -13,7 +15,6 @@ var timeSurvived=0.0
 var enemiesAlive= 0
 var enemiesSpawned=0
 var enemiesInWave=0
-
 @onready var enemy_timer=$Timer
 @onready var audio_hdp = $audio_hdp
 @onready var time_left = $Control/timerLabel
@@ -48,7 +49,8 @@ func _ready():
 	timer.start(3)
 	# Buscar el nodo Path2D en el mapa
 	# path2d_node = get_node("Path2D")
-	pass
+	for wave in intro_waves:
+		intro_waves_triggered[wave] = false
 	# Obtener el nodo PathFollow2D del nodo Path2D
 	# path_follow = path2d_node.get_child(0)
 
@@ -75,9 +77,8 @@ func increaseDifficulty():
 	if checkCant < 10:
 		for key in DifficultySettings.enemySpeed.keys():
 			DifficultySettings.enemySpeed[key] = DifficultySettings.enemySpeed[key]*1.1
-	if checkCant % 2 == 0:
-		for key in DifficultySettings.enemyHP.keys():
-			DifficultySettings.enemyHP[key] = DifficultySettings.enemyHP[key]*1.1
+	for key in DifficultySettings.enemyHP.keys():
+		DifficultySettings.enemyHP[key] = DifficultySettings.enemyHP[key]*1.1
 	
 # Método para generar un enemigo
 func select_enemy_based_on_probability() -> String:
@@ -105,29 +106,29 @@ func spawn_enemy(enemy_key: String):
 #ajusta la posibilidad de que un enemigo aparezca
 func set_enemy_chance(wave:int):
 	match wave:
-		2: 
+		3: 
+			enemyProbabilities.normal=0.8
+			enemyProbabilities.acc=0.2
+			enemyProbabilities.invi=0.0
+			enemyProbabilities.acor=0.0
+			enemyProbabilities.spread=0.0
+		6:
 			enemyProbabilities.normal=0.6
 			enemyProbabilities.acc=0.2
 			enemyProbabilities.invi=0.0
 			enemyProbabilities.acor=0.2
-			enemyProbabilities.spread=0.0
-		4:
-			enemyProbabilities.normal=0.6
-			enemyProbabilities.acc=0.15
-			enemyProbabilities.invi=0.1
-			enemyProbabilities.acor=0.15
 			enemyProbabilities.spread=0
-		6:
+		10:
 			enemyProbabilities.normal=0.5
 			enemyProbabilities.acc=0.2
 			enemyProbabilities.invi=0.1
 			enemyProbabilities.acor=0.2
-			enemyProbabilities.spread=0.1
-		8:  
-			enemyProbabilities.normal=0.5
+			enemyProbabilities.spread=0.0
+		14:  
+			enemyProbabilities.normal=0.4
 			enemyProbabilities.acc=0.2
 			enemyProbabilities.invi=0.1
-			enemyProbabilities.acor=0.1
+			enemyProbabilities.acor=0.2
 			enemyProbabilities.spread=0.1
 		20:  
 			enemyProbabilities.normal=0.2
@@ -145,18 +146,39 @@ func set_wave(wave:int) -> int:
 	
 	return total_enemies
 
-func launch_wave():
-	enemiesSpawned=0
-	if wave == 1 :
-		audio_hdp.play()
-	enemiesInWave=set_wave(wave)
-	for i in range(enemiesInWave):
+func intro_wave(type:String):
+	enemiesInWave=3
+	for i in enemiesInWave:
 		await get_tree().create_timer(DifficultySettings.spawn_interval).timeout
-		var enemy_type = select_enemy_based_on_probability()
 		enemiesSpawned+=1
 		enemiesAlive+=1
-		spawn_enemy(enemy_type)
-		
+		spawn_enemy(type)
+
+func launch_wave():
+	enemiesSpawned=0
+	if (wave in intro_waves and not intro_waves_triggered [wave]):
+		intro_waves_triggered[wave]=true
+		match wave:
+			3: 
+				await intro_wave("acc")
+			6:
+				await intro_wave("acor")
+			10:
+				await intro_wave("invi")
+			14:  
+				await intro_wave("spread")
+	else:
+		if wave == 1 :
+			audio_hdp.play()
+		var enemy_type
+		enemiesInWave=set_wave(wave)
+		for i in range(enemiesInWave):
+			await get_tree().create_timer(DifficultySettings.spawn_interval).timeout
+			enemy_type = select_enemy_based_on_probability()
+			enemiesSpawned+=1
+			enemiesAlive+=1
+			spawn_enemy(enemy_type)
+		wave+=1
 
 
 func final_wave_protocol ():
@@ -181,11 +203,10 @@ func update_time_left():
 		time_left.text = str(ceil(timeSurvived))
 
 func _on_timer_timeout():
-	wave+=1
 	nextButton.visible=false
 	time_left.visible=false
-	print("OLEADA: ", wave)
 	if (wave < DifficultySettings.final_wave):
+		print ("OLEADA: ", wave)
 		launch_wave()
 	else:
 		final_wave_protocol()
@@ -197,8 +218,7 @@ func _on_next_wave_button_pressed():
 
 func on_enemy_eliminated():
 	enemiesAlive-=1
-	if (enemiesAlive==0) and (enemiesSpawned==enemiesInWave):
-		print ("TODOS MUERTOS")
+	if (enemiesAlive==0) and (enemiesSpawned>=enemiesInWave):
 		nextButton.visible=true
 		time_left.visible=true
 		timer.start(DifficultySettings.wave_interval)
