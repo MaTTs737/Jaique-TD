@@ -11,11 +11,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
-	if healthPoints>20 and state == enemyState.idle:
+	if healthPoints>60 and state == enemyState.idle:
 		anim.animation = "idle"
-	if healthPoints<15 and healthPoints >= 101 and state == enemyState.idle:
+	if healthPoints<45 and healthPoints >= 101 and state == enemyState.idle:
 		anim.animation = "broken_1"
-	elif healthPoints<10 and state == enemyState.idle:
+	elif healthPoints<20 and state == enemyState.idle:
 		anim.animation = "broken_2"
 
 func transition_to(new_state:enemyState):
@@ -25,9 +25,9 @@ func transition_to(new_state:enemyState):
 			get_parent().speed = initialSpeed
 		enemyState.frozen:
 			audio_freeze.play()
-			if healthPoints>=20:
+			if healthPoints>=60:
 				anim.animation = "frozen"
-			elif healthPoints > 15:
+			elif healthPoints > 45:
 				anim.animation = "broken_1_f"
 			else : anim.animation = "broken_2_f"
 			

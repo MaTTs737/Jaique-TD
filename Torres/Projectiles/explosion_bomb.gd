@@ -1,6 +1,6 @@
 extends Area2D
 
-var damage = 500
+var damage = 5
 var type = "bomb"
 # Called when the node enters the scene tree for the first time.
 func _ready():
