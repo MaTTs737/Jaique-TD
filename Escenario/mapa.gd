@@ -113,10 +113,10 @@ func set_enemy_chance(wave:int):
 			enemyProbabilities.acor=0.0
 			enemyProbabilities.spread=0.0
 		6:
-			enemyProbabilities.normal=0.6
+			enemyProbabilities.normal=0.65
 			enemyProbabilities.acc=0.2
 			enemyProbabilities.invi=0.0
-			enemyProbabilities.acor=0.2
+			enemyProbabilities.acor=0.15
 			enemyProbabilities.spread=0
 		10:
 			enemyProbabilities.normal=0.5
