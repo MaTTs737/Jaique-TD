@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg6d3vns7a0he"]
+
+[ext_resource type="PackedScene" uid="uid://dregqpu04glnx" path="res://Torres/torre_class_2.tscn" id="1_ft865"]
+[ext_resource type="Script" path="res://Torres/Torre Normal/torre_normal_2.gd" id="2_dfhkx"]
+
+[node name="torre_normal_2" instance=ExtResource("1_ft865")]
+script = ExtResource("2_dfhkx")
+
+[node name="Sprite" parent="." index="1"]
+position = Vector2(-4.76837e-07, -5.96046e-08)
+scale = Vector2(0.23, 0.202)
+hframes = 3

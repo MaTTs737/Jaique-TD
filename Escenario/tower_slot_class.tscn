@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctgawr3olqt0f"]
+[gd_scene load_steps=14 format=3 uid="uid://ctgawr3olqt0f"]
 
 [ext_resource type="Script" path="res://towerSlotClass.gd" id="1_rtqnm"]
 [ext_resource type="Texture2D" uid="uid://djyri0o4hixev" path="res://Escenario/assets/images/slot_normal.png" id="2_koffx"]
@@ -9,9 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://pw6faiiutciq" path="res://Torres/assets/pngs botones/boton_delete_p.png" id="7_ye0l4"]
 [ext_resource type="Texture2D" uid="uid://drai0fwtj87ra" path="res://Torres/assets/pngs botones/boton_delete_h.png" id="8_iprs8"]
 [ext_resource type="Texture2D" uid="uid://bwf0vhcl8iyt7" path="res://Torres/assets/pngs botones/boton_delete_d.png" id="9_b3vhe"]
+[ext_resource type="Texture2D" uid="uid://bujkyly2xwfns" path="res://Torres/assets/pngs botones/boton_torre_n.png" id="10_b5b6q"]
+[ext_resource type="Texture2D" uid="uid://bbxoraxm85bu" path="res://Torres/assets/pngs botones/boton_torre_p.png" id="11_q55wi"]
+[ext_resource type="Texture2D" uid="uid://cy5a8xow3u4n6" path="res://Torres/assets/pngs botones/boton_torre_h.png" id="12_40jab"]
+[ext_resource type="Texture2D" uid="uid://6pjbuigkdq21" path="res://Torres/assets/pngs botones/boton_torre_d.png" id="13_ecg2r"]
 
 [node name="towerSlotClass" type="Area2D"]
 script = ExtResource("1_rtqnm")
+metadata/_edit_vertical_guides_ = [16.0]
 
 [node name="TextureButton" type="TextureButton" parent="."]
 offset_left = -28.0
@@ -27,9 +32,9 @@ stretch_mode = 0
 
 [node name="delete_button" type="TextureButton" parent="."]
 offset_left = 16.0
-offset_top = 16.0
+offset_top = 18.0
 offset_right = 35.0
-offset_bottom = 36.0
+offset_bottom = 38.0
 texture_normal = ExtResource("6_366ab")
 texture_pressed = ExtResource("7_ye0l4")
 texture_hover = ExtResource("8_iprs8")
@@ -37,5 +42,18 @@ texture_disabled = ExtResource("9_b3vhe")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="upgrade_button" type="TextureButton" parent="."]
+offset_left = 16.0
+offset_top = -38.0
+offset_right = 35.0
+offset_bottom = -18.0
+texture_normal = ExtResource("10_b5b6q")
+texture_pressed = ExtResource("11_q55wi")
+texture_hover = ExtResource("12_40jab")
+texture_disabled = ExtResource("13_ecg2r")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="delete_button" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="upgrade_button" to="." method="_on_upgrade_button_pressed"]

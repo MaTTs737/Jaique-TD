@@ -10,10 +10,10 @@ var enemies_in_range = []
 var enemyIn = Callable(self,"_on_DetectionArea_area_entered")
 var enemyOut = Callable(self,"_on_DetectionArea_area_exited")
 var projectil = preload("res://Torres/Projectiles/projectil_normal.tscn")
+
 @onready var anim = $AnimationPlayer
 @onready var collision_shape = $DetectionArea/colision
 var can_shoot = true
-
 
 func shoot():
 	var disparo = projectil.instantiate()
@@ -70,9 +70,6 @@ func _on_DetectionArea_area_exited(area):
 			area.explode()
 		else:
 			area.queue_free()
-	
-	
-
 
 func _on_shoot_timer_timeout():
 	can_shoot = true

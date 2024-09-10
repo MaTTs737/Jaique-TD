@@ -64,6 +64,29 @@ const ENEMY_SPEED_DEFAULT = {
 	minion = 100
 }
 
+const LEVEL_2_TOWERS = {
+	normal = preload("res://Torres/Torre Normal/torre_normal_2.tscn"),
+	ice = preload("res://Torres/Torre Ice/torre_ice_2.tscn"),
+	hard = preload("res://Torres/Torre Hard/torre_hard_2.tscn"),
+	bomb = preload("res://Torres/Torre Bomb/torre_bomb_2.tscn")
+}
+
+const TOWER_DAMAGE_DEFAULT_2 = {
+	normal = 20,
+	hard = 40,
+	ice = 0,
+	bomb = 30
+}
+
+const TOWER_ATTACK_INTERVAL_DEFAULT_2 = {
+	normal = 0.8,
+	ice = 0.8,
+	hard = 1,
+	bomb = 2.5
+}
+
+
+
 const SPAWN_INTERVAL_DEFAULT = 0.5
 const WAVE_INTERVAL_DEFAULT = 30
 const final_wave = 20

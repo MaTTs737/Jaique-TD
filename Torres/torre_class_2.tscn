@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dregqpu04glnx"]
+
+[ext_resource type="PackedScene" uid="uid://c2n8qqufu3gyv" path="res://Torres/torreClass.tscn" id="1_rrujt"]
+[ext_resource type="Script" path="res://Torres/torre_class_2.gd" id="2_qomxx"]
+
+[node name="torreClass_2" instance=ExtResource("1_rrujt")]
+script = ExtResource("2_qomxx")
