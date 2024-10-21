@@ -1,7 +1,5 @@
 extends Area2D
 
-signal delete
-
 @onready var delete_button = $delete_button
 @onready var textureButton = $TextureButton
 
@@ -13,19 +11,13 @@ func _ready():
 	delete_button.disabled = true
 	connect("delete",get_tree().current_scene.delete_tower)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if selected : 
-		pass
-	
 func _on_texture_button_pressed():
 	if !has_tower:   # chequea si ya tiene una torre
-		get_tree().get_current_scene().current_tower_slot = self # devuelve el slot al main
-		get_tree().get_current_scene().slotSelected = true
-		textureButton.button_pressed = true
-		for i in get_parent().get_children():
-			selected = false
-		selected = true
+		add_child(get_tree().current_scene.selectedTower.instantiate())
+		has_tower = true
+		get_parent().update_slots()
+		delete_button.disabled = false
+	
 			   # Funcion preparada para upgradear torres en el futuro
 	#else:
 	#	get_tree().get_current_scene().current_tower_slot = self
@@ -38,4 +30,9 @@ func find_tower():    # Devuelve la torre que esta en este slot
 
 
 func _on_delete_button_pressed() -> void:
-	emit_signal("delete",self)
+	for i in get_children():
+		if i.is_in_group("towers"):
+			i.queue_free()
+	has_tower = false
+	delete_button.disabled = true
+	get_parent().update_slots()

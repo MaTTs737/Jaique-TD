@@ -1,18 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://fwhu1sfaumvb"]
 
 [ext_resource type="PackedScene" uid="uid://ctgawr3olqt0f" path="res://Escenario/tower_slot_class.tscn" id="1_3iwsk"]
-[ext_resource type="Texture2D" uid="uid://diersvy6p2ohe" path="res://Escenario/fondo_version1.png" id="1_rrla5"]
+[ext_resource type="Script" path="res://Escenario/tower_slots.gd" id="1_t3ph4"]
 
 [node name="towerSlots" type="Node2D"]
-
-[node name="FondoVersion1" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(575.983, 323.99)
-rotation = 1.5708
-scale = Vector2(1.83192, 1.66784)
-texture = ExtResource("1_rrla5")
-flip_h = true
-flip_v = true
+script = ExtResource("1_t3ph4")
 
 [node name="towerSlotClass" parent="." instance=ExtResource("1_3iwsk")]
 position = Vector2(88, 222)

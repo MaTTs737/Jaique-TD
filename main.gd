@@ -1,12 +1,5 @@
 extends Node
 
-var towerSelected = false
-var selectedTower
-var selectedSprite 
-var life_points = 100
-var max_life_points = 100
-var coins : int = 300
-var current_tower_slot
 
 @onready var tower_normal = $tower_button_normal
 @onready var tower_ice = $tower_button_ice
@@ -16,7 +9,12 @@ var current_tower_slot
 @onready var audio_arrival = $audio_arrival
 @onready var arrival_sound = load("res://Assets Generales/Audios/splash-death-splash-46048.mp3")
 
-var slotSelected = false
+var towerSelected = false
+var selectedTower
+var selectedSprite 
+var life_points = 100
+var max_life_points = 100
+var coins : int = 300
 
 var tower_buttons = [
 	tower_normal,
@@ -68,13 +66,11 @@ func _ready():
 	DifficultySettings.reset_difficulty_variables()
 	towerCost = DifficultySettings.towerCost
 	update_fog_intensity()
-	disable_tower_buttons()
 	$audio_background.stream.loop = true
 	Global.player_won = false
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	$towerSlots.disable_slots()
+	
 func _process(_delta):
-	if slotSelected:
-		enable_tower_buttons()
 	if Input.is_action_just_pressed("pausa"):
 		var pausaScreen = pantallaPausa.instantiate()
 		add_child(pausaScreen)
@@ -94,49 +90,43 @@ func _process(_delta):
 #			place_tower(event.position)
 
 #func place_tower(position):
-func place_tower():# Example function to place a tower at the clicked position
-	#selectedTower.position = position
-	var new_tower = selectedTower.instantiate()
-	current_tower_slot.add_child(new_tower)
-	$audio_place_tower.play()
-	coins -= towerCost[new_tower.type]
-	#updateTowerCost(new_tower.type)
-	current_tower_slot.delete_button.disabled = false
-	current_tower_slot.textureButton.disabled = true
-	current_tower_slot.selected = false
-	towerSelected = false
-	#selectedSprite.queue_free()
-	disable_tower_buttons()
-	current_tower_slot = null
-	slotSelected = false
-	
+
 
 # Funciones al apretar boton de nueva torre
 func _on_new_tower_button_pressed():
 	selectedTower=torres.normal
-	place_tower()
 	disable_tower_buttons()
+	$towerSlots.choose_place()
+	towerCost = DifficultySettings.TOWER_COST_DEFAULT.normal
+	coins -= towerCost
+	
 	#selectTower("normal")
 	#towerSelected = true
 
 func _on_tower_button_ice_pressed():
 	selectedTower=torres.ice
-	place_tower()
 	disable_tower_buttons()
+	$towerSlots.choose_place()
+	towerCost = DifficultySettings.TOWER_COST_DEFAULT.ice
+	coins -= towerCost
 	#selectTower("ice")
 	#towerSelected = true # Replace with function body.
 
 func _on_tower_button_hard_pressed():
 	selectedTower=torres.hard
-	place_tower()
 	disable_tower_buttons()
+	$towerSlots.choose_place()
+	towerCost = DifficultySettings.TOWER_COST_DEFAULT.hard
+	coins -= towerCost
 	#selectTower("hard")
 	#towerSelected = true # Replace with function body.
 
 func _on_tower_button_bomb_pressed():
 	selectedTower=torres.bomb
-	place_tower()
 	disable_tower_buttons()
+	$towerSlots.choose_place()
+	towerCost = DifficultySettings.TOWER_COST_DEFAULT.bomb
+	coins -= towerCost
 	#selectTower("bomb")
 	#towerSelected = true
 

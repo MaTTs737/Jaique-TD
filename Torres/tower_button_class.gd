@@ -12,8 +12,10 @@ func _process(delta):
 	update_cost_coins()
 	if coins < cost:
 		disabled=true
+	else :
+		disabled = false
 	$Label.text = str(cost)
 
 func update_cost_coins():
 	coins = get_tree().current_scene.coins
-	cost = get_tree().current_scene.towerCost[type]
+	cost = DifficultySettings.TOWER_COST_DEFAULT[type]
