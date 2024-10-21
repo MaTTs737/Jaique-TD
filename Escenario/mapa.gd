@@ -178,6 +178,7 @@ func launch_wave():
 			enemiesSpawned+=1
 			enemiesAlive+=1
 			spawn_enemy(enemy_type)
+		get_parent().update_progress()
 		wave+=1
 
 

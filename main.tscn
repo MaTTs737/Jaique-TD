@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b7oo4wr7nfyvh"]
+[gd_scene load_steps=30 format=3 uid="uid://b7oo4wr7nfyvh"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_0wtpu"]
 [ext_resource type="PackedScene" uid="uid://dyk00xro5fje3" path="res://Escenario/mapa.tscn" id="1_qomae"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Torres/tower_button_bomb.gd" id="23_vb4hr"]
 [ext_resource type="PackedScene" uid="uid://ck8vm4q205we2" path="res://Escenario/coin_sprite.tscn" id="24_3ekwo"]
 [ext_resource type="PackedScene" uid="uid://cn3pvm6kc0tw8" path="res://Escenario/life_sprite.tscn" id="25_vxa5f"]
+[ext_resource type="Script" path="res://progress_bar.gd" id="29_81nef"]
 [ext_resource type="AudioStream" uid="uid://buw1lj472e7nl" path="res://Assets Generales/Audios/freemusicbg.com-Royal Banana.mp3" id="31_ugqw3"]
 [ext_resource type="AudioStream" uid="uid://dhgx48iqngwvo" path="res://Assets Generales/Audios/police-siren-one-loop-loop-able-104019.mp3" id="32_rq5pt"]
 
@@ -36,7 +37,7 @@ script = ExtResource("1_0wtpu")
 position = Vector2(593, 334)
 
 [node name="map" parent="." instance=ExtResource("1_qomae")]
-position = Vector2(20, 10)
+position = Vector2(5, 0)
 
 [node name="towerSlots" parent="." instance=ExtResource("23_sdt4q")]
 position = Vector2(47, 39)
@@ -104,6 +105,32 @@ autoplay = true
 [node name="audio_place_tower" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("32_rq5pt")
 volume_db = -15.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -310.0
+offset_top = 22.0
+offset_right = 312.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+self_modulate = Color(0.152941, 0.976471, 0.239216, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("29_81nef")
 
 [connection signal="pressed" from="tower_button_normal" to="." method="_on_new_tower_button_pressed"]
 [connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]

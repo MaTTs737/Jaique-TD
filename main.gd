@@ -178,3 +178,6 @@ func updateTowerCost(tower):
 func update_fog_intensity():
 	var fog_intensity = 1.0 - float(life_points)/float(max_life_points)
 	fog_material.set_shader_parameter("fog_intensity",fog_intensity)
+
+func update_progress():
+	$Control/ProgressBar.value = $map.wave
