@@ -44,8 +44,6 @@ func transition_to(new_state:enemyState):
 			$specialCondition.start()
 			emit_signal("special_s")
 
-
-
 #func getSpecialCondition(time,atribute,amount):
 #	specialCondition = true
 #	$specialCondition.start(time)

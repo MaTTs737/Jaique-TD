@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=3 uid="uid://bnapf8rk7pfwr"]
+
+[ext_resource type="PackedScene" uid="uid://b7ga7w5ckfte5" path="res://Enemigos/enemyClass.tscn" id="1_3ufsc"]
+[ext_resource type="Texture2D" uid="uid://bg7qm1wjx2sms" path="res://Enemigos/assets/sprites/jaique_enemy_sheet_normal_f.png" id="2_a3xa3"]
+[ext_resource type="Texture2D" uid="uid://bq3l4pjmtww3d" path="res://Enemigos/assets/sprites/cabellera_saiyayin_2.png" id="4_6cyca"]
+[ext_resource type="Texture2D" uid="uid://d321n7qkb7i5c" path="res://Enemigos/assets/sprites/jaique-enemigo-sheet.png" id="4_arf2q"]
+
+[sub_resource type="GDScript" id="GDScript_iihea"]
+script/source = "extends \"res://Enemigos/enemyClass.gd\"
+ 
+#func rage():
+#	set_state(RAGE)
+#	$kameTimer.start(1)
+#	$idleTimer.start()
+#	for area in $buffer.get_overlapping_areas():
+#		area.buff3()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvxf3"]
+atlas = ExtResource("2_a3xa3")
+region = Rect2(0, 0, 183, 289)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwn8t"]
+atlas = ExtResource("2_a3xa3")
+region = Rect2(183, 0, 183, 289)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dmatc"]
+atlas = ExtResource("4_arf2q")
+region = Rect2(0, 0, 218, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogbpc"]
+atlas = ExtResource("4_arf2q")
+region = Rect2(218, 0, 218, 291)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62dcl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvxf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwn8t")
+}],
+"loop": true,
+"name": &"frozen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dmatc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogbpc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"special",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_jx4rm"]
+script/source = "extends AnimatedSprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+# Recibe senial del enemy y modifica la animation que muestra
+
+func freeze():
+	animation = \"frozen\"	
+func back_to_normal():
+	animation = \"idle\"
+func special():
+	animation = \"special\"
+
+
+func _on_enemy_class_back_to_normal():
+	back_to_normal()
+
+func _on_enemy_class_freeze():
+	freeze() # Replace with function body.
+
+func _on_enemy_class_special_s():
+	special() # Replace with function body.
+"
+
+[node name="boss" instance=ExtResource("1_3ufsc")]
+script = SubResource("GDScript_iihea")
+initialSpeed = 0
+
+[node name="aura_boss" parent="." index="2"]
+position = Vector2(2, -11.625)
+scale = Vector2(0.160514, 0.172699)
+frame_progress = 0.424732
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(-5, -3)
+scale = Vector2(0.397248, 0.363194)
+sprite_frames = SubResource("SpriteFrames_62dcl")
+frame_progress = 0.585911
+script = SubResource("GDScript_jx4rm")
+
+[node name="cabellera" type="Sprite2D" parent="." index="4"]
+visible = false
+position = Vector2(-4.36328, -40.8291)
+scale = Vector2(0.44497, 0.498845)
+texture = ExtResource("4_6cyca")

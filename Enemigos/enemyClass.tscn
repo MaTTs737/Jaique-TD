@@ -1,11 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7ga7w5ckfte5"]
+[gd_scene load_steps=14 format=3 uid="uid://b7ga7w5ckfte5"]
 
 [ext_resource type="Script" path="res://Enemigos/enemyClass.gd" id="1_awxay"]
+[ext_resource type="Texture2D" uid="uid://d321n7qkb7i5c" path="res://Enemigos/assets/sprites/jaique-enemigo-sheet.png" id="2_3dppu"]
+[ext_resource type="Texture2D" uid="uid://csf1lu5uasq04" path="res://Enemigos/assets/sprites/aura_boss_2_sheet.png" id="2_fpp6n"]
 [ext_resource type="Script" path="res://Enemigos/AnimatedSprite2D.gd" id="2_uuoi5"]
 [ext_resource type="AudioStream" uid="uid://r54dylprrf13" path="res://Assets Generales/Audios/breaking-ice-98676.mp3" id="3_ptk3i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5qc8v"]
 size = Vector2(6, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kof1k"]
+atlas = ExtResource("2_fpp6n")
+region = Rect2(0, 0, 623, 815)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5aln"]
+atlas = ExtResource("2_fpp6n")
+region = Rect2(623, 0, 623, 815)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54xe4"]
+atlas = ExtResource("2_fpp6n")
+region = Rect2(1246, 0, 623, 815)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ev2pn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kof1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5aln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54xe4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wobh"]
+atlas = ExtResource("2_3dppu")
+region = Rect2(0, 0, 218, 291)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_456p6"]
+atlas = ExtResource("2_3dppu")
+region = Rect2(218, 0, 218, 291)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_86auw"]
 animations = [{
@@ -14,7 +53,13 @@ animations = [{
 "name": &"frozen",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wobh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_456p6")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
@@ -36,11 +81,18 @@ shape = SubResource("RectangleShape2D_5qc8v")
 [node name="specialCondition" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="aura_boss" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(2, -1)
+scale = Vector2(0.0742376, 0.069632)
+sprite_frames = SubResource("SpriteFrames_ev2pn")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.178, 0.164)
 sprite_frames = SubResource("SpriteFrames_86auw")
 animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.704648
 script = ExtResource("2_uuoi5")
 
 [node name="audio_freeze" type="AudioStreamPlayer2D" parent="."]
