@@ -21,9 +21,9 @@ var specialCondition = false
 var path_follow : PathFollow2D
 var proyectil # Almacena el tipo de proyectil que golpea
 
-const efectoMuerte = preload("res://Enemigos/assets/effects/effect_death.tscn")
-const hitEffect = preload("res://Enemigos/assets/effects/effect_hit..tscn")
-
+const efectoMuerte = preload("res://Enemigos/assets/effects/effect_death.tscn") # Estas lineas precargan escenas de efectos visuales
+const efectoHit = preload("res://Enemigos/assets/effects/effect_hit..tscn")
+const efectoDrop = preload("res://Enemigos/assets/effects/effect_coinDrop.tscn")
 @onready var sonido_freeze = load("res://Assets Generales/Audios/breaking-ice-98676.mp3")
 
 func transition_to(new_state:enemyState):
@@ -52,10 +52,14 @@ func transition_to(new_state:enemyState):
 	
 func die():
 	emit_signal("enemy_died")
-	var efecto = efectoMuerte.instantiate() # Instancia escena con efecto de muerte
+	var efecto = efectoMuerte.instantiate()
+	var drop = efectoDrop.instantiate() # Instancian escena con efecto de muerte y drop
 	efecto.global_position = global_position
+	drop.global_position = global_position
+	
 	get_tree().current_scene.add_child(efecto) # Lo agrega a la escena main
 	get_tree().current_scene.coins += reward # Entrega recompensa
+	get_tree().current_scene.add_child(drop) # Crea efecto drop
 	queue_free()
 
 # Called when the node enters the scene tree for the first time.
@@ -80,7 +84,7 @@ func _process(_delta):
 	#print("no hay")
 
 func get_hit(damage,type):
-	var efecto = hitEffect.instantiate()  # Instancia escena de efecto grafico de golpe
+	var efecto = efectoHit.instantiate()  # Instancia escena de efecto grafico de golpe
 	efecto.global_position = global_position
 	get_tree().current_scene.add_child(efecto)
 	healthPoints -= damage
