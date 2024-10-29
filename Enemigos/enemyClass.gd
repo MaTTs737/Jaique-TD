@@ -21,8 +21,8 @@ var specialCondition = false
 var path_follow : PathFollow2D
 var proyectil # Almacena el tipo de proyectil que golpea
 
-const efectoMuerte = preload("res://Enemigos/efectoMuerte.tscn")
-const hitEffect = preload("res://Enemigos/Hit_effect.tscn")
+const efectoMuerte = preload("res://Enemigos/assets/effects/effect_death.tscn")
+const hitEffect = preload("res://Enemigos/assets/effects/effect_hit..tscn")
 
 @onready var sonido_freeze = load("res://Assets Generales/Audios/breaking-ice-98676.mp3")
 

@@ -1,0 +1,138 @@
+[gd_scene load_steps=30 format=3 uid="uid://b7oo4wr7nfyvh"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_0wtpu"]
+[ext_resource type="PackedScene" uid="uid://dyk00xro5fje3" path="res://Escenario/mapa.tscn" id="1_qomae"]
+[ext_resource type="Texture2D" uid="uid://cmsa4qjdr61d8" path="res://Torres/assets/pngs botones/boton_torre_normal_n.png" id="2_f43k7"]
+[ext_resource type="PackedScene" uid="uid://d3vv6nyrtvwbv" path="res://Torres/tower_button_class.tscn" id="3_1yxke"]
+[ext_resource type="Texture2D" uid="uid://cl05p41tqgohq" path="res://Torres/assets/pngs botones/boton_torre_normal_p.png" id="3_bd2mq"]
+[ext_resource type="Texture2D" uid="uid://clstr200gmndt" path="res://Torres/assets/pngs botones/boton_torre_normal_h.png" id="4_61dfj"]
+[ext_resource type="Texture2D" uid="uid://dxc3rcvn44xw" path="res://Torres/assets/pngs botones/boton_torre_normal_d.png" id="5_6bmr7"]
+[ext_resource type="Script" path="res://Torres/tower_button_normal.gd" id="8_5wq3v"]
+[ext_resource type="Texture2D" uid="uid://cc4x1m6o6kstg" path="res://Torres/assets/pngs botones/boton_manguera_n.png" id="10_q3k67"]
+[ext_resource type="Texture2D" uid="uid://obie1jnfjawh" path="res://Torres/assets/pngs botones/boton_manguera_p.png" id="11_fxje1"]
+[ext_resource type="Texture2D" uid="uid://1f4v57sa1uco" path="res://Torres/assets/pngs botones/boton_torre_hard_n.png" id="11_s2u77"]
+[ext_resource type="Texture2D" uid="uid://bhtrsnh2prero" path="res://Torres/assets/pngs botones/boton_manguera_h.png" id="12_5k2uk"]
+[ext_resource type="Texture2D" uid="uid://b7hxqg21iv0kt" path="res://Torres/assets/pngs botones/boton_torre_hard_p.png" id="12_xu1ks"]
+[ext_resource type="Texture2D" uid="uid://1g6hkffp1lbn" path="res://Torres/assets/pngs botones/boton_manguera_d.png" id="13_eh7ya"]
+[ext_resource type="Texture2D" uid="uid://bb555usosmaaf" path="res://Torres/assets/pngs botones/boton_torre_hard_h.png" id="13_n5i4y"]
+[ext_resource type="Script" path="res://Torres/tower_button_ice.gd" id="13_nps3w"]
+[ext_resource type="Texture2D" uid="uid://buk0b6vowbqjm" path="res://Torres/assets/pngs botones/boton_torre_hard_d.png" id="14_8tv8y"]
+[ext_resource type="Texture2D" uid="uid://b64748n1gcbeq" path="res://Torres/assets/pngs botones/boton_torre_bomb_n.png" id="15_davkb"]
+[ext_resource type="Texture2D" uid="uid://c5ue175fsgqah" path="res://Torres/assets/pngs botones/boton_torre_bomb_p.png" id="16_jwixc"]
+[ext_resource type="Texture2D" uid="uid://dkwyhnay38e4o" path="res://Torres/assets/pngs botones/boton_torre_bomb_h.png" id="17_kqw5x"]
+[ext_resource type="Texture2D" uid="uid://cfhfbpemjrtrr" path="res://Torres/assets/pngs botones/boton_torre_bomb_d.png" id="18_avwuc"]
+[ext_resource type="Script" path="res://Torres/tower_button_hard.gd" id="18_wodke"]
+[ext_resource type="PackedScene" uid="uid://fwhu1sfaumvb" path="res://Escenario/tower_slots.tscn" id="23_sdt4q"]
+[ext_resource type="Script" path="res://Torres/tower_button_bomb.gd" id="23_vb4hr"]
+[ext_resource type="PackedScene" uid="uid://ck8vm4q205we2" path="res://Escenario/coin_sprite.tscn" id="24_3ekwo"]
+[ext_resource type="PackedScene" uid="uid://cn3pvm6kc0tw8" path="res://Escenario/life_sprite.tscn" id="25_vxa5f"]
+[ext_resource type="Script" path="res://progress_bar.gd" id="29_81nef"]
+[ext_resource type="AudioStream" uid="uid://buw1lj472e7nl" path="res://Assets Generales/Audios/freemusicbg.com-Royal Banana.mp3" id="31_ugqw3"]
+[ext_resource type="AudioStream" uid="uid://dhgx48iqngwvo" path="res://Assets Generales/Audios/police-siren-one-loop-loop-able-104019.mp3" id="32_rq5pt"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_0wtpu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(593, 334)
+
+[node name="map" parent="." instance=ExtResource("1_qomae")]
+position = Vector2(5, 0)
+
+[node name="towerSlots" parent="." instance=ExtResource("23_sdt4q")]
+position = Vector2(47, 39)
+
+[node name="tower_button_normal" parent="." instance=ExtResource("3_1yxke")]
+z_index = 1
+offset_left = 46.0
+offset_top = 581.0
+offset_right = 102.0
+offset_bottom = 638.0
+texture_normal = ExtResource("2_f43k7")
+texture_pressed = ExtResource("3_bd2mq")
+texture_hover = ExtResource("4_61dfj")
+texture_disabled = ExtResource("5_6bmr7")
+script = ExtResource("8_5wq3v")
+
+[node name="tower_button_ice" parent="." instance=ExtResource("3_1yxke")]
+z_index = 1
+offset_left = 128.0
+offset_top = 581.0
+offset_right = 184.0
+offset_bottom = 638.0
+texture_normal = ExtResource("10_q3k67")
+texture_pressed = ExtResource("11_fxje1")
+texture_hover = ExtResource("12_5k2uk")
+texture_disabled = ExtResource("13_eh7ya")
+script = ExtResource("13_nps3w")
+
+[node name="tower_button_hard" parent="." instance=ExtResource("3_1yxke")]
+z_index = 1
+offset_left = 210.0
+offset_top = 581.0
+offset_right = 266.0
+offset_bottom = 638.0
+texture_normal = ExtResource("11_s2u77")
+texture_pressed = ExtResource("12_xu1ks")
+texture_hover = ExtResource("13_n5i4y")
+texture_disabled = ExtResource("14_8tv8y")
+script = ExtResource("18_wodke")
+
+[node name="tower_button_bomb" parent="." instance=ExtResource("3_1yxke")]
+z_index = 1
+offset_left = 289.0
+offset_top = 581.0
+offset_right = 345.0
+offset_bottom = 638.0
+texture_normal = ExtResource("15_davkb")
+texture_pressed = ExtResource("16_jwixc")
+texture_hover = ExtResource("17_kqw5x")
+texture_disabled = ExtResource("18_avwuc")
+script = ExtResource("23_vb4hr")
+
+[node name="coin_sprite" parent="." instance=ExtResource("24_3ekwo")]
+position = Vector2(970, 594)
+
+[node name="life_sprite" parent="." instance=ExtResource("25_vxa5f")]
+position = Vector2(1094, 596)
+
+[node name="audio_arrival" type="AudioStreamPlayer2D" parent="."]
+
+[node name="audio_background" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("31_ugqw3")
+autoplay = true
+
+[node name="audio_place_tower" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_rq5pt")
+volume_db = -15.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -310.0
+offset_top = 22.0
+offset_right = 312.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+self_modulate = Color(0.152941, 0.976471, 0.239216, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("29_81nef")
+
+[connection signal="pressed" from="tower_button_normal" to="." method="_on_new_tower_button_pressed"]
+[connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]
+[connection signal="pressed" from="tower_button_hard" to="." method="_on_tower_button_hard_pressed"]
+[connection signal="pressed" from="tower_button_bomb" to="." method="_on_tower_button_bomb_pressed"]

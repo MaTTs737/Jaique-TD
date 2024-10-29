@@ -60,7 +60,7 @@ var delete_tower : Callable = func delete_tower(towerSlot):
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
 const pantallaVictoria = preload("res://Sistema/pantallaVictoria.tscn")
 const pantallaDerrota = preload("res://Sistema/pantallaDerrota.tscn")
-const arriveEffect = preload("res://Enemigos/arrive_effect.tscn")
+const arriveEffect = preload("res://Enemigos/assets/effects/effect_arrive.tscn")
 
 func _ready():
 	DifficultySettings.reset_difficulty_variables()
@@ -79,18 +79,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_down"):
 		life_points -= 5
 		update_fog_intensity()
-# func selectTower(type):  # Selecciona torre y coloca sprite sobre el cursor3	selectedTower = torres[type].instantiate()
-#	selectedSprite = towerSprites[type].instantiate()
-#	add_child(selectedSprite)
-#	towerSelected = true
-
-#func _input(event): # Coloca torre al hacer click
-#	if event is InputEventMouseButton and towerSelected :
-#		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-#			place_tower(event.position)
-
-#func place_tower(position):
-
 
 # Funciones al apretar boton de nueva torre
 func _on_new_tower_button_pressed():
@@ -143,7 +131,7 @@ func enable_tower_buttons():
 	tower_hard.disabled = false
 	tower_bomb.disabled = false
 
-#func update_tower(new_tower):
+#func update_tower(new_tower):   // Futura func de upgrade de torre
 #	var old_tower = slotSelected.find_tower()
 #	var upgrade_tower = torres.normal.instantiate()
 #	old_tower.queue_free()
