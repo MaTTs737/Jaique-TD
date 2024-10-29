@@ -88,6 +88,8 @@ emission_ring_inner_radius = 0.0
 gravity = Vector3(0, 98, 0)
 radial_accel_min = -2.23517e-06
 radial_accel_max = 77.01
+scale_min = 3.0
+scale_max = 3.0
 
 [node name="EfectoCoinDrop" type="Node2D"]
 script = ExtResource("1_lejcd")
