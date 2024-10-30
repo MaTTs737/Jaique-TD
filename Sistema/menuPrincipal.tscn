@@ -34,19 +34,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -141.0
-offset_top = -199.0
-offset_right = 103.0
-offset_bottom = 105.0
+offset_left = -98.5
+offset_top = -165.5
+offset_right = 98.5
+offset_bottom = 165.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 150
+theme_override_constants/separation = 50
 alignment = 1
-metadata/_edit_group_ = true
 
 [node name="Button" type="Button" parent="MenuPrincipal/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.5
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.784314, 0.807843, 0.137255, 1)
 theme_override_colors/font_pressed_color = Color(0.782409, 0.8063, 0.138154, 1)
@@ -55,15 +56,30 @@ theme_override_fonts/font = SubResource("SystemFont_h8jgi")
 theme_override_font_sizes/font_size = 50
 text = "Jugar"
 flat = true
+icon_alignment = 1
 
 [node name="Button2" type="Button" parent="MenuPrincipal/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.5
 theme_override_colors/font_hover_color = Color(0.690343, 0.751626, 0.0329438, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 50
 text = "Salir"
 flat = true
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="MenuPrincipal/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.5
+theme_override_colors/font_hover_color = Color(0.690343, 0.751626, 0.0329438, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "Tutorial
+"
+flat = true
+icon_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuPrincipal"]
 layout_mode = 1
@@ -81,3 +97,4 @@ autoplay = true
 
 [connection signal="pressed" from="MenuPrincipal/VBoxContainer/Button" to="MenuPrincipal" method="_on_button_pressed"]
 [connection signal="pressed" from="MenuPrincipal/VBoxContainer/Button2" to="MenuPrincipal" method="_on_button_2_pressed"]
+[connection signal="pressed" from="MenuPrincipal/VBoxContainer/Button3" to="MenuPrincipal" method="_on_button_3_pressed"]
