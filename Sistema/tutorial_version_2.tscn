@@ -1,0 +1,250 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcvsa2s5djyya"]
+
+[ext_resource type="Texture2D" uid="uid://ckmth51gi4xun" path="res://Sistema/fondo_tutorial_1.jpeg" id="1_2lsny"]
+[ext_resource type="Script" path="res://Sistema/tutorial_version_2.gd" id="1_52tjv"]
+[ext_resource type="FontFile" uid="uid://e1lkj0lym6xc" path="res://Assets Generales/fonts/IHATCS__.TTF" id="2_a8gfu"]
+[ext_resource type="Script" path="res://Sistema/texture_button.gd" id="4_kfe2a"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_phklp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_f61av"]
+
+[node name="TutorialVersion2" type="Node2D"]
+script = ExtResource("1_52tjv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(581, 327)
+texture = ExtResource("1_2lsny")
+
+[node name="boton_siguiente" type="Button" parent="."]
+visible = false
+offset_left = 1037.0
+offset_top = 40.0
+offset_right = 1127.0
+offset_bottom = 71.0
+text = "SIGUIENTE"
+
+[node name="boton_anterior" type="Button" parent="."]
+visible = false
+offset_left = 30.0
+offset_top = 40.0
+offset_right = 118.0
+offset_bottom = 71.0
+text = "ANTERIOR"
+
+[node name="boton_reiniciar" type="Button" parent="."]
+visible = false
+offset_left = 394.0
+offset_top = 604.0
+offset_right = 561.0
+offset_bottom = 635.0
+text = "REINICIAR TUTORIAL"
+
+[node name="boton_volver_menu" type="Button" parent="."]
+offset_left = 702.0
+offset_top = 603.0
+offset_right = 847.0
+offset_bottom = 634.0
+text = "VOLVER AL MENU
+"
+
+[node name="display_seleccion_torre" type="Node2D" parent="."]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="display_seleccion_torre"]
+position = Vector2(181, -163)
+points = PackedVector2Array(-6, 706, 184, 576)
+
+[node name="Line2D2" type="Line2D" parent="display_seleccion_torre"]
+points = PackedVector2Array(15, 562, 30, 540, 131.926, 541.359, 207.458, 542.366, 330, 544, 348, 562)
+
+[node name="TextureRect" type="TextureRect" parent="display_seleccion_torre"]
+modulate = Color(0.0745098, 0.0941176, 0.054902, 0.776471)
+offset_left = 369.0
+offset_top = 112.0
+offset_right = 697.0
+offset_bottom = 408.0
+texture = SubResource("CanvasTexture_phklp")
+
+[node name="texto_torres" type="RichTextLabel" parent="display_seleccion_torre"]
+offset_left = 384.0
+offset_top = 132.0
+offset_right = 696.0
+offset_bottom = 409.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("2_a8gfu")
+theme_override_font_sizes/normal_font_size = 25
+text = "Estos botones son para seleccionar la torre que queres poner. 
+Si esta oscuro, es porque no te alcanzan las monedas.
+Cada torre tiene ataque y habilidades distintas. Descubrilas y usalas estrategicamente!"
+
+[node name="display_slots" type="Node2D" parent="."]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="display_slots"]
+points = PackedVector2Array(140, 305, 173, 304, 173, 263)
+
+[node name="Line2D2" type="Line2D" parent="display_slots"]
+position = Vector2(158, -42)
+points = PackedVector2Array(140, 305, 173, 304, 173, 263)
+
+[node name="Line2D3" type="Line2D" parent="display_slots"]
+position = Vector2(160, 75)
+points = PackedVector2Array(140, 305, 173, 304, 173, 263)
+
+[node name="Line2D4" type="Line2D" parent="display_slots"]
+position = Vector2(157, 175)
+points = PackedVector2Array(140, 305, 173, 304, 173, 263)
+
+[node name="Line2D5" type="Line2D" parent="display_slots"]
+position = Vector2(-11, 204)
+points = PackedVector2Array(140, 305, 173, 304, 173, 263)
+
+[node name="Line2D6" type="Line2D" parent="display_slots"]
+points = PackedVector2Array(333, 252, 452, 272)
+
+[node name="Line2D7" type="Line2D" parent="display_slots"]
+position = Vector2(0, 218)
+points = PackedVector2Array(333, 252, 450, 162)
+
+[node name="Line2D8" type="Line2D" parent="display_slots"]
+position = Vector2(-167, 227)
+points = PackedVector2Array(333, 252, 613, 125)
+
+[node name="Line2D9" type="Line2D" parent="display_slots"]
+position = Vector2(2, 126)
+points = PackedVector2Array(333, 252, 444, 206)
+
+[node name="Line2D10" type="Line2D" parent="display_slots"]
+position = Vector2(-156, 52)
+points = PackedVector2Array(333, 252, 601, 253)
+
+[node name="TextureRect" type="TextureRect" parent="display_slots"]
+modulate = Color(0.0745098, 0.0941176, 0.054902, 0.772549)
+offset_left = 447.0
+offset_top = 227.0
+offset_right = 777.0
+offset_bottom = 419.0
+texture = SubResource("CanvasTexture_f61av")
+
+[node name="texto_slot" type="RichTextLabel" parent="display_slots"]
+offset_left = 461.0
+offset_top = 234.0
+offset_right = 809.0
+offset_bottom = 451.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("2_a8gfu")
+theme_override_font_sizes/normal_font_size = 25
+text = "En estos casilleros podes colocar torres.
+ Se activan una vez que seleccionaste una torre para colocar. 
+La cruz roja elimina la torre."
+
+[node name="display_monedas_y_vidas" type="Node2D" parent="."]
+visible = false
+
+[node name="Line2D" type="Line2D" parent="display_monedas_y_vidas"]
+position = Vector2(749, 223)
+points = PackedVector2Array(175, 357, 173, 304, 228, 305)
+
+[node name="Line2D10" type="Line2D" parent="display_monedas_y_vidas"]
+position = Vector2(593, 275)
+points = PackedVector2Array(329, 253, 185, 113)
+
+[node name="Line2D2" type="Line2D" parent="display_monedas_y_vidas"]
+position = Vector2(845, 227)
+points = PackedVector2Array(175, 357, 173, 304, 228, 305)
+
+[node name="Line2D11" type="Line2D" parent="display_monedas_y_vidas"]
+position = Vector2(689, 279)
+points = PackedVector2Array(329, 253, 90, 76)
+
+[node name="boton_vidas" type="Node2D" parent="display_monedas_y_vidas"]
+position = Vector2(469, 344)
+script = ExtResource("4_kfe2a")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="display_monedas_y_vidas/boton_vidas"]
+modulate = Color(0.0745098, 0.0941176, 0.054902, 0.776471)
+offset_left = -129.0
+offset_top = -121.0
+offset_right = 316.0
+offset_bottom = 59.0
+texture = SubResource("CanvasTexture_phklp")
+
+[node name="texto_vidas" type="RichTextLabel" parent="display_monedas_y_vidas/boton_vidas"]
+offset_left = -111.0
+offset_top = -107.0
+offset_right = 291.0
+offset_bottom = 110.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("2_a8gfu")
+theme_override_font_sizes/normal_font_size = 25
+text = "Aca ves cuantas monedas y vidas te quedan.
+Conseguis monedas matando enemigos.
+Perdes vidas cuando un enemigo llega al final del recorrido."
+
+[node name="display_final" type="Node2D" parent="."]
+visible = false
+position = Vector2(36, 49)
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="display_final"]
+modulate = Color(0.0745098, 0.0941176, 0.054902, 0.776471)
+offset_left = 386.0
+offset_top = 176.0
+offset_right = 713.0
+offset_bottom = 432.0
+texture = SubResource("CanvasTexture_phklp")
+
+[node name="texto_torres" type="RichTextLabel" parent="display_final"]
+offset_left = 401.0
+offset_top = 196.0
+offset_right = 802.0
+offset_bottom = 413.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("2_a8gfu")
+theme_override_font_sizes/normal_font_size = 35
+text = "Eso es todo lo que necesitas saber. 
+El resto habra que descubrirlo jugando.
+ Buena suerte!"
+
+[node name="display_inicial" type="Node2D" parent="."]
+visible = false
+position = Vector2(17, 81)
+scale = Vector2(0.976886, 0.933874)
+
+[node name="TextureRect" type="TextureRect" parent="display_inicial"]
+modulate = Color(0.0745098, 0.0941176, 0.054902, 0.776471)
+offset_left = 265.0
+offset_top = 41.0
+offset_right = 826.0
+offset_bottom = 499.0
+texture = SubResource("CanvasTexture_phklp")
+
+[node name="texto_torres" type="RichTextLabel" parent="display_inicial"]
+offset_left = 292.0
+offset_top = 62.0
+offset_right = 819.0
+offset_bottom = 521.0
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("2_a8gfu")
+theme_override_font_sizes/normal_font_size = 25
+text = "En este juego de Defensa de Torres, tu objetivo es atravesar todas las oleadas de enemigos sin que tus vidas lleguen a 0. Perdes vidas cuando un enemigo llega al final del recorrido. Ojo, no siempre 1 enemigo = 1 vida. Cuidado!
+
+Los enemigos se mueven automaticamente, y las torres tambien atacan automaticamente. Tu tarea es ubicar las torres (o guardias) para lograr que ningun enemigo termine el recorrido. 
+
+Si llegas a 0 vidas, pierdes. Si completas todas las oleadas de enemigo con al menos 1 vida, ganas.
+ Sencillito!"
+
+[node name="boton_empezar" type="Button" parent="."]
+offset_left = 413.0
+offset_top = 79.0
+offset_right = 681.0
+offset_bottom = 110.0
+text = "ESTOY LISTO, EMPEZAR TUTORIAL"
+
+[connection signal="pressed" from="boton_siguiente" to="." method="_on_boton_siguiente_pressed"]
+[connection signal="pressed" from="boton_anterior" to="." method="_on_boton_anterior_pressed"]
+[connection signal="pressed" from="boton_reiniciar" to="." method="_on_boton_reiniciar_pressed"]
+[connection signal="pressed" from="boton_volver_menu" to="." method="_on_boton_volver_menu_pressed"]
+[connection signal="pressed" from="boton_empezar" to="." method="_on_boton_empezar_pressed"]

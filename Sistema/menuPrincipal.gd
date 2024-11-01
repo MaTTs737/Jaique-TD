@@ -20,4 +20,4 @@ func _on_button_2_pressed():
 
 
 func _on_button_3_pressed() -> void:
-	get_tree().change_scene_to_file("res://Sistema/tutorial.tscn")
+	get_tree().change_scene_to_file("res://Sistema/tutorial_version_2.tscn")
