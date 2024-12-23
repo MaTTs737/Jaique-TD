@@ -132,7 +132,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("29_81nef")
 
+[node name="waveCount" type="Label" parent="Control/ProgressBar"]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 3.0
+offset_right = 329.0
+offset_bottom = 26.0
+
+[node name="cancelButton" type="Button" parent="."]
+offset_left = 135.0
+offset_top = 521.0
+offset_right = 251.0
+offset_bottom = 550.0
+text = "Cancelar"
+
 [connection signal="pressed" from="tower_button_normal" to="." method="_on_new_tower_button_pressed"]
 [connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]
 [connection signal="pressed" from="tower_button_hard" to="." method="_on_tower_button_hard_pressed"]
 [connection signal="pressed" from="tower_button_bomb" to="." method="_on_tower_button_bomb_pressed"]
+[connection signal="pressed" from="cancelButton" to="." method="_on_cancel_button_pressed"]

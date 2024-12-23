@@ -15,10 +15,10 @@ const TOWER_DAMAGE_DEFAULT = {
 }
 
 const TOWER_ATTACK_INTERVAL_DEFAULT = {
-	normal = 1,
-	hard = 1,
-	ice = 1,
-	bomb = 3,
+	"normal" = 1,
+	"hard" = 1,
+	"ice" = 1,
+	"bomb" = 3,
 }
 
 const PROJECTILE_SPEED_DEFAULT = {

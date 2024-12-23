@@ -9,12 +9,18 @@ extends Node
 @onready var audio_arrival = $audio_arrival
 @onready var arrival_sound = load("res://Assets Generales/Audios/splash-death-splash-46048.mp3")
 
+var wave = 0
 var towerSelected = false
 var selectedTower
 var selectedSprite 
 var life_points = 100
 var max_life_points = 100
 var coins : int = 300
+var selectedType = ""
+var towerPlaced : Callable = func towerPlaced():
+	$cancelButton.disabled = true
+	enable_tower_buttons()
+	$towerSlots.update_slots()
 
 var tower_buttons = [
 	tower_normal,
@@ -37,8 +43,6 @@ var towerSprites = {
 	"bomb"=preload("res://Torres/Torre Bomb/selectBomb.tscn")
 }
 
-var towerCost
-
 @export var arrival : Callable = func enemy_arrived(damage:int):
 	update_fog_intensity()
 	audio_arrival.stream = arrival_sound
@@ -59,11 +63,11 @@ const arriveEffect = preload("res://Enemigos/assets/effects/effect_arrive.tscn")
 
 func _ready():
 	DifficultySettings.reset_difficulty_variables()
-	towerCost = DifficultySettings.towerCost
 	update_fog_intensity()
 	$audio_background.stream.loop = true
 	Global.player_won = false
 	$towerSlots.disable_slots()
+	$cancelButton.disabled = true
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("pausa"):
@@ -77,54 +81,42 @@ func _process(_delta):
 
 # Funciones al apretar boton de nueva torre
 func _on_new_tower_button_pressed():
-	selectedTower=torres.normal
-	disable_tower_buttons()
-	$towerSlots.choose_place()
-	towerCost = DifficultySettings.TOWER_COST_DEFAULT.normal
-	coins -= towerCost
+	selectTower("normal")
+	selectedType = "normal"
 	
 	#selectTower("normal")
 	#towerSelected = true
 
 func _on_tower_button_ice_pressed():
-	selectedTower=torres.ice
-	disable_tower_buttons()
-	$towerSlots.choose_place()
-	towerCost = DifficultySettings.TOWER_COST_DEFAULT.ice
-	coins -= towerCost
+	selectTower("ice")
+	selectedType = "ice"
 	#selectTower("ice")
 	#towerSelected = true # Replace with function body.
 
 func _on_tower_button_hard_pressed():
-	selectedTower=torres.hard
-	disable_tower_buttons()
-	$towerSlots.choose_place()
-	towerCost = DifficultySettings.TOWER_COST_DEFAULT.hard
-	coins -= towerCost
+	selectTower("hard")
+	selectedType = "hard"
 	#selectTower("hard")
 	#towerSelected = true # Replace with function body.
 
 func _on_tower_button_bomb_pressed():
-	selectedTower=torres.bomb
-	disable_tower_buttons()
-	$towerSlots.choose_place()
-	towerCost = DifficultySettings.TOWER_COST_DEFAULT.bomb
-	coins -= towerCost
+	selectTower("bomb")
+	selectedType = "bomb"
 	#selectTower("bomb")
 	#towerSelected = true
 
 
 func disable_tower_buttons():
-	tower_normal.disabled = true
-	tower_ice.disabled = true
-	tower_hard.disabled = true
-	tower_bomb.disabled = true
+	tower_normal.canceled = true
+	tower_ice.canceled = true
+	tower_hard.canceled = true
+	tower_bomb.canceled = true
 
 func enable_tower_buttons():
-	tower_normal.disabled = false
-	tower_ice.disabled = false
-	tower_hard.disabled = false
-	tower_bomb.disabled = false
+	tower_normal.canceled = false
+	tower_ice.canceled = false
+	tower_hard.canceled = false
+	tower_bomb.canceled = false
 
 #func update_tower(new_tower):   // Futura func de upgrade de torre
 #	var old_tower = slotSelected.find_tower()
@@ -144,9 +136,9 @@ func lose():
 func updateTowerCost(tower):
 	for i in torres:
 		if tower == i:
-			towerCost[tower] *= 1.05
-			towerCost[tower]=int(towerCost[tower])
-			print (towerCost[tower])
+			DifficultySettings.towerCost[tower] *= 1.05
+			DifficultySettings.towerCost[tower]=int(DifficultySettings.towerCost[tower])
+			print (DifficultySettings.towerCost[tower])
 
 func update_fog_intensity():
 	var fog_intensity = 1.0 - float(life_points)/float(max_life_points)
@@ -154,3 +146,21 @@ func update_fog_intensity():
 
 func update_progress():
 	$Control/ProgressBar.value = $map.wave
+
+func selectTower(type):
+	selectedTower = torres[type]
+	disable_tower_buttons()
+	$towerSlots.choose_place()
+	coins -= DifficultySettings.TOWER_COST_DEFAULT[type]
+	$cancelButton.disabled = false
+	
+func cancel_tower_selection(tower):
+	coins += DifficultySettings.TOWER_COST_DEFAULT[tower]
+	selectedTower = null
+	selectedType = null
+	enable_tower_buttons()
+	$towerSlots.update_slots()
+	
+func _on_cancel_button_pressed() -> void:
+	cancel_tower_selection(selectedType)
+	$cancelButton.disabled = true

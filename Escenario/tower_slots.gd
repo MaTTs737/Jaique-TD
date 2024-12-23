@@ -10,12 +10,7 @@ func enable_slots():
 
 func update_slots():
 	for i in get_children():
-		if i.has_tower:
-			i.textureButton.disabled = false
-			i.delete_button.disabled = false
-		else :
-			i.textureButton.disabled = true
-			i.delete_button.disabled = true
+		i.update()
 
 func choose_place():
 	for i in get_children():

@@ -12,14 +12,21 @@ const base_enemies = 5
 var countingTime = false
 var timeSurvived=0.0
 
+var lastCheck = 0
+var checkInterval=15
+var checkCant = 0
+
 var enemiesAlive= 0
 var enemiesSpawned=0
 var enemiesInWave=0
+
 @onready var enemy_timer=$Timer
 @onready var audio_hdp = $audio_hdp
 @onready var time_left = $Control/timerLabel
 @onready var winLabel = $Control/winLabel
 @onready var nextButton = $nextWave_button
+@onready var path_follow = $Path
+@onready var timer = $Timer
 
 const enemies = { # Diccionario de escenas de enemigos
 	normal = preload("res://Enemigos/enemigo_basico/enemy_basico.tscn"),
@@ -36,13 +43,9 @@ var enemyProbabilities = {
 	acor = 0     
 }
 
-
-
 # Variables para el Path2D
 var path2d_node
-@onready var path_follow = $Path
 
-@onready var timer = $Timer
 func _ready():
 	randomize()
 	enemy_scene = enemies.normal
@@ -54,10 +57,6 @@ func _ready():
 	# Obtener el nodo PathFollow2D del nodo Path2D
 	# path_follow = path2d_node.get_child(0)
 
-
-var lastCheck = 0
-var checkInterval=15
-var checkCant = 0
 func _process(delta):
 	if countingTime:
 		timeSurvived+=delta
@@ -68,7 +67,6 @@ func _process(delta):
 		
 	else:
 		update_time_left()
-
 
 func increaseDifficulty():
 	checkCant +=1
@@ -101,7 +99,6 @@ func spawn_enemy(enemy_key: String):
 	var new_pointer = pointer.instantiate() # Agregar un nuevo path follow
 	path_follow.add_child(new_pointer) 
 	new_pointer.add_child(new_enemy)# Agregar el nuevo enemigo como hijo del PathFollow2D
-
 
 #ajusta la posibilidad de que un enemigo aparezca
 func set_enemy_chance(wave:int):
@@ -155,6 +152,8 @@ func intro_wave(type:String):
 		spawn_enemy(type)
 
 func launch_wave():
+	get_parent().wave += 1
+	get_parent().update_progress()
 	enemiesSpawned=0
 	if (wave in intro_waves and not intro_waves_triggered [wave]):
 		intro_waves_triggered[wave]=true
@@ -178,9 +177,7 @@ func launch_wave():
 			enemiesSpawned+=1
 			enemiesAlive+=1
 			spawn_enemy(enemy_type)
-		get_parent().update_progress()
 		wave+=1
-
 
 func final_wave_protocol ():
 	Global.player_won = true
@@ -211,7 +208,6 @@ func _on_timer_timeout():
 		launch_wave()
 	else:
 		final_wave_protocol()
-
 
 func _on_next_wave_button_pressed():
 	timer.stop()
