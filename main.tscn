@@ -140,11 +140,11 @@ offset_right = 329.0
 offset_bottom = 26.0
 
 [node name="cancelButton" type="Button" parent="."]
-offset_left = 135.0
+offset_left = 118.0
 offset_top = 521.0
-offset_right = 251.0
-offset_bottom = 550.0
-text = "Cancelar"
+offset_right = 269.0
+offset_bottom = 552.0
+text = "Cancelar seleccion"
 
 [connection signal="pressed" from="tower_button_normal" to="." method="_on_new_tower_button_pressed"]
 [connection signal="pressed" from="tower_button_ice" to="." method="_on_tower_button_ice_pressed"]

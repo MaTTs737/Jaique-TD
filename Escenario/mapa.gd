@@ -136,7 +136,7 @@ func set_enemy_chance(wave:int):
 
 func set_wave(wave:int) -> int:
 	var total_enemies
-	total_enemies=  base_enemies* pow(1.15, wave - 1) # E(n)=E(1)⋅(1+r)^n-1 donde n es el numero de oleada y r es el incremento
+	total_enemies = base_enemies * pow(1.15, wave - 1) # E(n)=E(1)⋅(1+r)^n-1 donde n es el numero de oleada y r es el incremento
 	var increment= 1+0.01*(100-get_parent().life_points) # si se recibio 3 de daño aumenta 3%,etc
 	total_enemies=total_enemies*increment
 	set_enemy_chance(wave)
