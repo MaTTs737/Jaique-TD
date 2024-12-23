@@ -9,7 +9,7 @@ var selected = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	delete_button.disabled = true
-	connect("delete",get_tree().current_scene.delete_tower)
+	
 
 func _on_texture_button_pressed():
 	if !has_tower:   # chequea si ya tiene una torre

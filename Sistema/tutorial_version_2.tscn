@@ -242,6 +242,7 @@ offset_top = 79.0
 offset_right = 681.0
 offset_bottom = 110.0
 text = "ESTOY LISTO, EMPEZAR TUTORIAL"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="boton_siguiente" to="." method="_on_boton_siguiente_pressed"]
 [connection signal="pressed" from="boton_anterior" to="." method="_on_boton_anterior_pressed"]

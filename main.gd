@@ -39,7 +39,7 @@ var towerSprites = {
 
 var towerCost
 
-var arrival : Callable = func enemy_arrived(damage:int):
+@export var arrival : Callable = func enemy_arrived(damage:int):
 	update_fog_intensity()
 	audio_arrival.stream = arrival_sound
 	audio_arrival.volume_db = -10
@@ -50,12 +50,7 @@ var arrival : Callable = func enemy_arrived(damage:int):
 	life_points -= damage
 	if life_points <= 0:
 		lose()
-var delete_tower : Callable = func delete_tower(towerSlot):
-	for i in towerSlot.get_children():
-		if i.is_in_group("towers"):
-			i.queue_free()
-	towerSlot.has_tower = false
-	towerSlot.textureButton.disabled = false
+
 
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
 const pantallaVictoria = preload("res://Sistema/pantallaVictoria.tscn")
