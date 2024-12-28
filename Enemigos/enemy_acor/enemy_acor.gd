@@ -22,7 +22,7 @@ func transition_to(new_state:enemyState):
 	state = new_state
 	match state:
 		enemyState.idle:
-			get_parent().speed = initialSpeed
+			get_parent().speed = defaultSpeed
 		enemyState.frozen:
 			audio_freeze.play()
 			if healthPoints>=60:

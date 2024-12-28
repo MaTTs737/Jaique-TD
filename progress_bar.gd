@@ -5,5 +5,6 @@ func _ready():
 	max_value = 20
 	show_percentage = false
 
-func _process(delta: float) -> void:
-	$waveCount.text = str(get_tree().current_scene.wave)+" / 20"
+func update(wave:int):
+	$waveCount.text = str(wave)+" / 20"
+	value=wave

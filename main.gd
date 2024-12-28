@@ -15,7 +15,7 @@ var selectedTower
 var selectedSprite 
 var life_points = 100
 var max_life_points = 100
-var coins : int = 300
+var coins : int = 100
 var selectedType = ""
 var towerPlaced : Callable = func towerPlaced():
 	$cancelButton.disabled = true
@@ -42,20 +42,6 @@ var towerSprites = {
 	"hard"=preload("res://Torres/Torre Hard/selectHard.tscn"),
 	"bomb"=preload("res://Torres/Torre Bomb/selectBomb.tscn")
 }
-
-@export var arrival : Callable = func enemy_arrived(damage:int):
-	update_fog_intensity()
-	audio_arrival.stream = arrival_sound
-	audio_arrival.volume_db = -10
-	audio_arrival.play()
-	var arrive_effect = arriveEffect.instantiate()
-	arrive_effect.global_position = $map/end/CollisionShape2D.global_position
-	add_child(arrive_effect)
-	life_points -= damage
-	if life_points <= 0:
-		lose()
-
-
 const pantallaPausa = preload("res://Sistema/pantallaPausa.tscn")
 const pantallaVictoria = preload("res://Sistema/pantallaVictoria.tscn")
 const pantallaDerrota = preload("res://Sistema/pantallaDerrota.tscn")
@@ -78,6 +64,24 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_down"):
 		life_points -= 5
 		update_fog_intensity()
+
+func on_enemy_arrived(damage:int):
+	update_fog_intensity()
+	audio_arrival.stream = arrival_sound
+	audio_arrival.volume_db = -10
+	audio_arrival.play()
+	var arrive_effect = arriveEffect.instantiate()
+	arrive_effect.global_position = $map/end/CollisionShape2D.global_position
+	add_child(arrive_effect)
+	life_points -= damage
+	if life_points <= 0:
+		lose()
+
+func on_enemy_died(efecto,drop,reward):
+	add_child(efecto) # Lo agrega a la escena main
+	add_child(drop) # Crea efecto drop
+	coins += reward # Entrega recompensa
+
 
 # Funciones al apretar boton de nueva torre
 func _on_new_tower_button_pressed():
@@ -144,8 +148,6 @@ func update_fog_intensity():
 	var fog_intensity = 1.0 - float(life_points)/float(max_life_points)
 	fog_material.set_shader_parameter("fog_intensity",fog_intensity)
 
-func update_progress():
-	$Control/ProgressBar.value = $map.wave
 
 func selectTower(type):
 	selectedTower = torres[type]

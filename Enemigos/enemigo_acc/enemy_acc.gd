@@ -5,30 +5,26 @@ extends "res://Enemigos/enemyClass.gd"
 func _ready():
 	type = "acc"
 	super._ready()
-	$acc_timer.start()
+	#Cuenta cada cuanto tiempo se activa la habilidad especial
+	$acc_timer.start(randi() % 5 + 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	super._process(delta)
 
-func transition_to(new_state:enemyState):
-	state = new_state
-	match state:
-		enemyState.idle:
-			emit_signal("back_to_normal")
-			get_parent().speed = initialSpeed
-			$acc_timer.start()
-		enemyState.frozen:
-			get_parent().speed /= 4
-			specialCondition = true
-			$specialCondition.start()
-			emit_signal("freeze")
-		enemyState.special:
-			get_parent().speed *= 2
-			specialCondition = true
-			$specialCondition.start()
-			emit_signal("special_s")
+func go_idle():
+	super.go_idle()
+	$acc_timer.start(randi() % 5 + 1)
+
+func go_special ():
+	if (state!=enemyState.frozen):
+		get_parent().speed = defaultSpeed*8
+		specialCondition = true
+		#Cuenta cuanto dura la habilidad especial
+		emit_signal("special_s")
+	$specialCondition.start(randi() % 3 + 1)
 
 
+#Activa la habilidad especial
 func _on_acc_timer_timeout():
 	transition_to(enemyState.special)

@@ -130,9 +130,10 @@ animations = [{
 [node name="enemy_acor" instance=ExtResource("1_t1c7g")]
 script = ExtResource("2_ajoje")
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="3"]
 position = Vector2(3, -1)
 sprite_frames = SubResource("SpriteFrames_oyojb")
+frame_progress = 0.0
 
 [node name="audio_hit" type="AudioStreamPlayer2D" parent="." index="4"]
 stream = ExtResource("9_gdw2p")

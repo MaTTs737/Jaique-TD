@@ -48,9 +48,9 @@ animations = [{
 
 [node name="enemy_minion" instance=ExtResource("1_anutx")]
 script = ExtResource("2_pdaxn")
-initialSpeed = 0
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="3"]
 position = Vector2(-5.96046e-08, 0)
 scale = Vector2(0.0909091, 0.0896861)
 sprite_frames = SubResource("SpriteFrames_pq1mg")
+frame_progress = 0.0

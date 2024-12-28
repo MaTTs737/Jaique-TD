@@ -3,92 +3,96 @@ extends Area2D
 signal freeze
 signal special_s
 signal back_to_normal
-signal arrived_signal(dmg)
-signal enemy_died
+signal enemy_arrived(dmg)
+signal enemy_died (efecto,drop,reward)
+signal enemy_eliminated
 enum enemyState{idle, frozen, special}
 
-var healthPoints: int = 200
+var healthPoints: int
 var damage:int
 var type: String
-@export var initialSpeed : int
-var speed : int
-var reward : int = 10
+var defaultSpeed : int
+var reward : int
 var specialCondition = false
+
+var frozenTime = 3
+
 @onready var state = enemyState.idle
 @onready var anim = $AnimatedSprite2D
 @onready var audio_freeze = $audio_freeze
 
-var path_follow : PathFollow2D
-var proyectil # Almacena el tipo de proyectil que golpea
-
-const efectoMuerte = preload("res://Enemigos/assets/effects/effect_death.tscn") # Estas lineas precargan escenas de efectos visuales
+# Estas lineas precargan escenas de efectos visuales
+const efectoMuerte = preload("res://Enemigos/assets/effects/effect_death.tscn") 
 const efectoHit = preload("res://Enemigos/assets/effects/effect_hit..tscn")
 const efectoDrop = preload("res://Enemigos/assets/effects/effect_coinDrop.tscn")
 @onready var sonido_freeze = load("res://Assets Generales/Audios/breaking-ice-98676.mp3")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	#instancia los valores segun el tipo del que se trate
+	healthPoints=DifficultySettings.enemyHP[type]
+	reward=DifficultySettings.enemyReward[type]
+	damage=DifficultySettings.enemyDamage[type]
+	
+	# Para que la velocidad tome efecto se la debe asignar la nodo pathFollow2D del cual los enemigos son hijos
+	defaultSpeed= DifficultySettings.enemySpeed[type]
+	get_parent().speed = defaultSpeed
+
+# Called every frame.
+func _process(_delta):
+	pass
+
+
+func go_idle():
+	emit_signal("back_to_normal")
+	get_parent().speed = defaultSpeed
+	specialCondition = false
+	
+func go_frozen():
+	audio_freeze.play()
+	get_parent().speed = defaultSpeed/4
+	specialCondition = true
+	$specialCondition.start(frozenTime)
+	emit_signal("freeze")
+	
+func go_special ():
+	specialCondition = true
+	$specialCondition.start()
+	emit_signal("special_s")
 
 func transition_to(new_state:enemyState):
 	state = new_state
 	match state:
 		enemyState.idle:
-			emit_signal("back_to_normal")
-			get_parent().speed = initialSpeed
-			specialCondition = false
+			go_idle()
 		enemyState.frozen:
-			audio_freeze.play()
-			get_parent().speed /= 4
-			specialCondition = true
-			$specialCondition.start()
-			emit_signal("freeze")
+			go_frozen()
 		enemyState.special:
-			specialCondition = true
-			$specialCondition.start()
-			emit_signal("special_s")
-
-#func getSpecialCondition(time,atribute,amount):
-#	specialCondition = true
-#	$specialCondition.start(time)
-#	self.atribute = self.atribute+amount
-	
-	
-func die():
-	emit_signal("enemy_died")
-	var efecto = efectoMuerte.instantiate()
-	var drop = efectoDrop.instantiate() # Instancian escena con efecto de muerte y drop
-	efecto.global_position = global_position
-	drop.global_position = global_position
-	
-	get_tree().current_scene.add_child(efecto) # Lo agrega a la escena main
-	get_tree().current_scene.coins += reward # Entrega recompensa
-	get_tree().current_scene.add_child(drop) # Crea efecto drop
-	queue_free()
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	healthPoints=DifficultySettings.enemyHP[type]
-	reward=DifficultySettings.enemyReward[type]
-	initialSpeed=DifficultySettings.enemySpeed[type]
-	damage=DifficultySettings.enemyDamage[type]
-	get_parent().speed = initialSpeed
-	 #path_follow = self.get_parent() // devuelve que no se puede asignar un valor de tipo nodo a un objeto pathfollow.
-	connect("arrived_signal",get_tree().current_scene.arrival)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-		
-	if healthPoints <= 0:
-		die()
-	# Verificar si el nodo PathFollow2D está configurado
-	#if path_follow:
-	#	path_follow.progress+=1
-	#else:
-	#print("no hay")
+			go_special()
 
 func get_hit(damage,type):
 	var efecto = efectoHit.instantiate()  # Instancia escena de efecto grafico de golpe
 	efecto.global_position = global_position
 	get_tree().current_scene.add_child(efecto)
 	healthPoints -= damage
+	if healthPoints <= 0:
+		die()
 	
+
+func die():
+	var efecto = efectoMuerte.instantiate()
+	var drop = efectoDrop.instantiate() # Instancian escena con efecto de muerte y drop
+	efecto.global_position = global_position
+	drop.global_position = global_position
+	emit_signal("enemy_eliminated")
+	emit_signal("enemy_died",efecto,drop,reward)
+	queue_free()
+
+func arrived():
+	emit_signal("enemy_eliminated")
+	emit_signal("enemy_arrived",damage)
+	queue_free()
+
 
 func _on_special_condition_timeout():
 	specialCondition = false
@@ -98,12 +102,5 @@ func _on_special_condition_timeout():
 func _on_area_entered(area):
 	if area.is_in_group("ammo"):
 		get_hit(area.damage,area.type)
-		proyectil = area.type  # Identifica el tipo de proyectil para definir sonido
 		if (area.type == "ice") and (state != enemyState.frozen):
 			transition_to(enemyState.frozen)
-			
-
-func arrived():
-	emit_signal("arrived_signal",damage)
-	emit_signal("enemy_died")
-	queue_free()

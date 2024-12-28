@@ -68,10 +68,16 @@ animations = [{
 [node name="enemy_acc" instance=ExtResource("1_k16rq")]
 script = ExtResource("2_21w8y")
 
-[node name="AnimatedSprite2D" parent="." index="2"]
-sprite_frames = SubResource("SpriteFrames_drq8h")
+[node name="specialCondition" parent="." index="1"]
+wait_time = 2.0
+one_shot = true
 
 [node name="acc_timer" type="Timer" parent="." index="3"]
 wait_time = 4.0
+one_shot = true
+
+[node name="AnimatedSprite2D" parent="." index="4"]
+sprite_frames = SubResource("SpriteFrames_drq8h")
+frame_progress = 0.0
 
 [connection signal="timeout" from="acc_timer" to="." method="_on_acc_timer_timeout"]

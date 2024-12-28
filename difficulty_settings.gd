@@ -3,7 +3,7 @@ extends Node
 const TOWER_COST_DEFAULT = {
 	normal = 30,
 	hard = 100,
-	ice = 200,
+	ice = 50,
 	bomb = 500,
 }
 
@@ -33,7 +33,7 @@ const ENEMY_HP_DEFAULT = {
 	acc = 10,
 	acor = 60,
 	invi = 5,
-	spread = 40,
+	spread = 60,
 	minion = 5
 }
 
@@ -57,11 +57,11 @@ const ENEMY_REWARD_DEFAULT = {
 
 const ENEMY_SPEED_DEFAULT = {
 	normal = 100,
-	acc = 300,
-	acor = 75,
-	invi = 100,
+	acc = 100,
+	acor = 100,
+	invi = 150,
 	spread = 100,
-	minion = 100
+	minion = 150
 }
 
 const SPAWN_INTERVAL_DEFAULT = 0.5

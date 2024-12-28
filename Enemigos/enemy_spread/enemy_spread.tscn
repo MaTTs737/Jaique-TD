@@ -49,5 +49,6 @@ animations = [{
 [node name="enemy_spread" instance=ExtResource("1_bftia")]
 script = ExtResource("2_iumcb")
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="3"]
 sprite_frames = SubResource("SpriteFrames_6grly")
+frame_progress = 0.0

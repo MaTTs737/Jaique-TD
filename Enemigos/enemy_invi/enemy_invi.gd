@@ -21,7 +21,7 @@ func transition_to(new_state:enemyState):
 	match state:
 		enemyState.idle:
 			emit_signal("back_to_normal")
-			get_parent().speed = initialSpeed
+			get_parent().speed = defaultSpeed
 		enemyState.frozen:
 			get_parent().speed /= 4
 			specialCondition = true
@@ -42,7 +42,7 @@ func go_invi():
 func go_visible():
 	is_visible=true
 	transition_to(enemyState.idle)
-	invi_timer.start(2)
+	invi_timer.start(1)
 	emit_signal("became_visible", self)
 
 func get_visibility()->bool:

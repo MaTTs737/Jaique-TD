@@ -4,7 +4,7 @@ extends Node2D
 var enemy_scene # = preload ("res://Enemigos/enemigo_basico/enemy_basico.tscn")  Escena del enemigo
 var spawn_interval = 3 # Intervalo de tiempo entre la generación de enemigos
 var spawn_timer = 0
-var wave = 1 # Para probar - numero de oleada
+var wave = 3 # Para probar - numero de oleada
 var intro_waves = [3, 6, 10, 14]
 var intro_waves_triggered = {}
 const pointer = preload("res://Escenario/pointer.tscn")
@@ -94,8 +94,9 @@ func spawn_enemy(enemy_key: String):
 	var new_enemy_instance = enemy_scene.instantiate()
 	var new_enemy = new_enemy_instance as Area2D
 	
-	new_enemy.connect("enemy_died", Callable(self, "on_enemy_eliminated"))
-	
+	new_enemy.connect("enemy_eliminated", Callable(self, "on_enemy_eliminated"))
+	new_enemy.connect("enemy_died", Callable(get_parent(), "on_enemy_died"))
+	new_enemy.connect("enemy_arrived", Callable(get_parent(), "on_enemy_arrived"))
 	var new_pointer = pointer.instantiate() # Agregar un nuevo path follow
 	path_follow.add_child(new_pointer) 
 	new_pointer.add_child(new_enemy)# Agregar el nuevo enemigo como hijo del PathFollow2D
@@ -151,9 +152,10 @@ func intro_wave(type:String):
 		enemiesAlive+=1
 		spawn_enemy(type)
 
+func update_progress(wave:int):
+	$Control_ProgressBar/ProgressBar.update(wave)
+
 func launch_wave():
-	get_parent().wave += 1
-	get_parent().update_progress()
 	enemiesSpawned=0
 	if (wave in intro_waves and not intro_waves_triggered [wave]):
 		intro_waves_triggered[wave]=true
@@ -167,6 +169,7 @@ func launch_wave():
 			14:  
 				await intro_wave("spread")
 	else:
+		update_progress(wave)
 		if wave == 1 :
 			audio_hdp.play()
 		var enemy_type
@@ -178,11 +181,11 @@ func launch_wave():
 			enemiesAlive+=1
 			spawn_enemy(enemy_type)
 		wave+=1
-
 func final_wave_protocol ():
 	Global.player_won = true
 	Global.playerScore.coinsLeft=self.get_parent().coins
 	Global.playerScore.lifeLeft=self.get_parent().life_points
+	$Control_ProgressBar/ProgressBar.visible=false
 	winLabel.visible = true
 	set_enemy_chance(wave)
 	time_left.visible=false
@@ -219,3 +222,4 @@ func on_enemy_eliminated():
 		nextButton.visible=true
 		time_left.visible=true
 		timer.start(DifficultySettings.wave_interval)
+		
