@@ -4,7 +4,7 @@ extends Node2D
 var enemy_scene # = preload ("res://Enemigos/enemigo_basico/enemy_basico.tscn")  Escena del enemigo
 var spawn_interval = 3 # Intervalo de tiempo entre la generación de enemigos
 var spawn_timer = 0
-var wave = 3 # Para probar - numero de oleada
+var wave = 1 # Para probar - numero de oleada
 var intro_waves = [3, 6, 10, 14]
 var intro_waves_triggered = {}
 const pointer = preload("res://Escenario/pointer.tscn")
@@ -35,6 +35,7 @@ const enemies = { # Diccionario de escenas de enemigos
 	invi = preload("res://Enemigos/enemy_invi/enemy_invi.tscn"),
 	acor = preload("res://Enemigos/enemy_acor/enemy_acor.tscn")
 }
+const minion = preload("res://Enemigos/enemy_spread/enemy_minion.tscn")
 var enemyProbabilities = {
 	normal = 1, 
 	acc = 0,     
@@ -174,11 +175,13 @@ func launch_wave():
 			audio_hdp.play()
 		var enemy_type
 		enemiesInWave=set_wave(wave)
+		print ("INWAVE:",enemiesInWave)
 		for i in range(enemiesInWave):
 			await get_tree().create_timer(DifficultySettings.spawn_interval).timeout
 			enemy_type = select_enemy_based_on_probability()
 			enemiesSpawned+=1
 			enemiesAlive+=1
+			print("ALIVE:", enemiesAlive)
 			spawn_enemy(enemy_type)
 		wave+=1
 func final_wave_protocol ():
@@ -207,7 +210,6 @@ func _on_timer_timeout():
 	nextButton.visible=false
 	time_left.visible=false
 	if (wave < DifficultySettings.final_wave):
-		print ("OLEADA: ", wave)
 		launch_wave()
 	else:
 		final_wave_protocol()
@@ -216,10 +218,23 @@ func _on_next_wave_button_pressed():
 	timer.stop()
 	timer.emit_signal("timeout")
 
-func on_enemy_eliminated():
-	enemiesAlive-=1
-	if (enemiesAlive==0) and (enemiesSpawned>=enemiesInWave):
+func count_enemies():
+	var enemy_count = 0
+	for i in range(path_follow.get_child_count()):
+		var path_child = path_follow.get_child(i)
+		if path_child is PathFollow2D:
+			for j in range(path_child.get_child_count()):
+				var possible_enemy = path_child.get_child(j)
+				if possible_enemy.is_in_group("enemies"): # Marca los enemigos con un grupo
+					enemy_count += 1
+	return enemy_count
+
+
+func on_enemy_eliminated(type):
+	print("conecto")
+	var enemy_count = count_enemies()
+	print("enemy_count:", enemy_count)
+	if (enemy_count == 1) and (enemiesSpawned>=enemiesInWave): # por algun motivo la cantidad minima siempre es uno
 		nextButton.visible=true
 		time_left.visible=true
 		timer.start(DifficultySettings.wave_interval)
-		

@@ -66,6 +66,7 @@ func _process(_delta):
 		update_fog_intensity()
 
 func on_enemy_arrived(damage:int):
+	print ("Arrived: ", damage)
 	update_fog_intensity()
 	audio_arrival.stream = arrival_sound
 	audio_arrival.volume_db = -10

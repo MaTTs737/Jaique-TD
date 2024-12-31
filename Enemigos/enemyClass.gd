@@ -5,7 +5,7 @@ signal special_s
 signal back_to_normal
 signal enemy_arrived(dmg)
 signal enemy_died (efecto,drop,reward)
-signal enemy_eliminated
+signal enemy_eliminated (type)
 enum enemyState{idle, frozen, special}
 
 var healthPoints: int
@@ -13,8 +13,6 @@ var damage:int
 var type: String
 var defaultSpeed : int
 var reward : int
-var specialCondition = false
-
 var frozenTime = 3
 
 @onready var state = enemyState.idle
@@ -46,23 +44,21 @@ func _process(_delta):
 func go_idle():
 	emit_signal("back_to_normal")
 	get_parent().speed = defaultSpeed
-	specialCondition = false
+	state=enemyState.idle
 	
 func go_frozen():
 	audio_freeze.play()
 	get_parent().speed = defaultSpeed/4
-	specialCondition = true
-	$specialCondition.start(frozenTime)
+	$frozenTime.start(frozenTime)
 	emit_signal("freeze")
+	state=enemyState.frozen
+
 	
 func go_special ():
-	specialCondition = true
-	$specialCondition.start()
-	emit_signal("special_s")
+	pass
 
 func transition_to(new_state:enemyState):
-	state = new_state
-	match state:
+	match new_state:
 		enemyState.idle:
 			go_idle()
 		enemyState.frozen:
@@ -84,23 +80,21 @@ func die():
 	var drop = efectoDrop.instantiate() # Instancian escena con efecto de muerte y drop
 	efecto.global_position = global_position
 	drop.global_position = global_position
-	emit_signal("enemy_eliminated")
+	emit_signal("enemy_eliminated",type)
 	emit_signal("enemy_died",efecto,drop,reward)
 	queue_free()
 
 func arrived():
-	emit_signal("enemy_eliminated")
+	emit_signal("enemy_eliminated",type)
 	emit_signal("enemy_arrived",damage)
 	queue_free()
-
-
-func _on_special_condition_timeout():
-	specialCondition = false
-	transition_to(enemyState.idle)
-
 
 func _on_area_entered(area):
 	if area.is_in_group("ammo"):
 		get_hit(area.damage,area.type)
 		if (area.type == "ice") and (state != enemyState.frozen):
 			transition_to(enemyState.frozen)
+
+
+func _on_frozenTime_timeout() -> void:
+	transition_to(enemyState.idle)
