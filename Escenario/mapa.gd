@@ -228,13 +228,25 @@ func count_enemies():
 				if possible_enemy.is_in_group("enemies"): # Marca los enemigos con un grupo
 					enemy_count += 1
 	return enemy_count
+	
+func debug_enemies():
+	print("Current enemies:")
+	for pointer in path_follow.get_children():
+		print("- Pointer:", pointer.name, "Type:", pointer.get_class())
+		for child in pointer.get_children():
+			print("  - Child:", child.name, "Type:", child.get_class(), "Queued for deletion:", child.is_queued_for_deletion())
 
+
+func check_wave_status():
+	#debug_enemies()
+	if (Global.player_won != true): 
+		var enemy_count = count_enemies()
+		print("enemy_count:", enemy_count)
+		if (enemy_count <= 0) and (enemiesSpawned>=enemiesInWave): # por algun motivo la cantidad minima siempre es uno, dejo  por si ocurre algun error, es mas probable que asi permita spawnear la siguiente oleada
+			nextButton.visible=true
+			time_left.visible=true
+			timer.start(DifficultySettings.wave_interval)
 
 func on_enemy_eliminated(type):
-	print("conecto")
-	var enemy_count = count_enemies()
-	print("enemy_count:", enemy_count)
-	if (enemy_count == 1) and (enemiesSpawned>=enemiesInWave): # por algun motivo la cantidad minima siempre es uno
-		nextButton.visible=true
-		time_left.visible=true
-		timer.start(DifficultySettings.wave_interval)
+	await get_tree().process_frame
+	call_deferred("check_wave_status")

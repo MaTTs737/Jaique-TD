@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhrybsvamaci0"]
+[gd_scene load_steps=8 format=3 uid="uid://bhrybsvamaci0"]
 
 [ext_resource type="PackedScene" uid="uid://c2n8qqufu3gyv" path="res://Torres/torreClass.tscn" id="1_4n66n"]
 [ext_resource type="Script" path="res://Torres/Torre Bomb/torre_bomb.gd" id="2_lc6xl"]
 [ext_resource type="Texture2D" uid="uid://ngcxh6bmw3dk" path="res://Torres/assets/towerSelectSprite/torre_bomb_sheet.png" id="2_n50le"]
+[ext_resource type="AudioStream" uid="uid://cixj8155u0e32" path="res://Torres/Torre Bomb/Assets/Audio/marching_drums.mp3" id="4_qhsb6"]
 
 [sub_resource type="Animation" id="Animation_ccicg"]
 length = 0.001
@@ -57,3 +58,6 @@ libraries = {
 "": SubResource("AnimationLibrary_duwnd")
 }
 autoplay = "RESET"
+
+[node name="audio_spawn" parent="." index="5"]
+stream = ExtResource("4_qhsb6")

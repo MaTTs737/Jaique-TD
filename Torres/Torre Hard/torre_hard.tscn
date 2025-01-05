@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bb1lhlslsbopr"]
+[gd_scene load_steps=9 format=3 uid="uid://bb1lhlslsbopr"]
 
 [ext_resource type="PackedScene" uid="uid://c2n8qqufu3gyv" path="res://Torres/torreClass.tscn" id="1_v20fo"]
 [ext_resource type="Script" path="res://Torres/Torre Hard/torre_hard.gd" id="2_7bla1"]
 [ext_resource type="Texture2D" uid="uid://b3kmtpv36vou1" path="res://Torres/assets/towerSelectSprite/torre_hard_sheet.png" id="2_ld5jr"]
+[ext_resource type="AudioStream" uid="uid://dw75e3jjxwb7x" path="res://Torres/Torre Hard/Assets/Audio/pistol_shot.wav" id="4_2rhte"]
+[ext_resource type="AudioStream" uid="uid://0hee5yomtcmr" path="res://Torres/Torre Hard/Assets/Audio/pistol_rack.wav" id="5_2yoq1"]
 
 [sub_resource type="Animation" id="Animation_xrc8k"]
 length = 0.001
@@ -54,3 +56,9 @@ libraries = {
 "": SubResource("AnimationLibrary_86unk")
 }
 autoplay = "RESET"
+
+[node name="audio_player_shoot" parent="." index="4"]
+stream = ExtResource("4_2rhte")
+
+[node name="audio_spawn" parent="." index="5"]
+stream = ExtResource("5_2yoq1")

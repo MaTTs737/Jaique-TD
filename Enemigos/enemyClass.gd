@@ -80,20 +80,33 @@ func die():
 	var drop = efectoDrop.instantiate() # Instancian escena con efecto de muerte y drop
 	efecto.global_position = global_position
 	drop.global_position = global_position
-	emit_signal("enemy_eliminated",type)
-	emit_signal("enemy_died",efecto,drop,reward)
+	
+	# Llamar a la emisión de señales de forma diferida para asegurarse de que el enemigo se haya eliminado antes
+	call_deferred("emit_deferred_signals", efecto, drop, reward)
+	
 	queue_free()
 
+func emit_deferred_signals(efecto, drop, reward):
+	emit_signal("enemy_eliminated", type)
+	emit_signal("enemy_died", efecto, drop, reward)
+
 func arrived():
-	emit_signal("enemy_eliminated",type)
-	emit_signal("enemy_arrived",damage)
+	# Llamar a la emisión de señales de forma diferida para asegurarse de que el enemigo se haya eliminado antes
+	call_deferred("emit_arrived_signals", damage)
 	queue_free()
+
+func emit_arrived_signals(damage):
+	emit_signal("enemy_eliminated", type)
+	emit_signal("enemy_arrived", damage)
+	
 
 func _on_area_entered(area):
 	if area.is_in_group("ammo"):
 		get_hit(area.damage,area.type)
 		if (area.type == "ice") and (state != enemyState.frozen):
 			transition_to(enemyState.frozen)
+
+
 
 
 func _on_frozenTime_timeout() -> void:

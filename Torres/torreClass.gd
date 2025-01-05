@@ -34,10 +34,7 @@ func _ready():
 	cost = DifficultySettings.towerCost[type]
 	$shootTimer.wait_time= DifficultySettings.towerAttackInterval[type]
 	$shootTimer.start()
-	print ("Tipo: ", type)
-	print ("daño: ", damage)
-	print ("velocidad de tiro: ", speed)
-	print ("costo: ", cost)
+	$audio_spawn.play()
 	#$DetectionArea.connect("area_entered", enemyIn)
 	#$DetectionArea.connect("area_exited", enemyOut)
 

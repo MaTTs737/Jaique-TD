@@ -4,14 +4,14 @@ const TOWER_COST_DEFAULT = {
 	normal = 30,
 	hard = 100,
 	ice = 50,
-	bomb = 500,
+	bomb = 300,
 }
 
 const TOWER_DAMAGE_DEFAULT = {
 	normal = 5,
-	hard = 10,
-	ice = 2,
-	bomb = 1,
+	hard = 20,
+	ice = 0,
+	bomb = 5,
 }
 
 const TOWER_ATTACK_INTERVAL_DEFAULT = {
